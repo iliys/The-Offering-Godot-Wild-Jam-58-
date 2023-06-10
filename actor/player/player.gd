@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 func move(delta: float) -> void:
 	var direction := Input.get_vector("left", "right", "up", "down")
 	var speed_mod := attack_speed_factor if attacking else 1.0
-	velocity = velocity.move_toward(direction * speed * speed_mod, dex * delta)
+	smooth_set_vel(direction * speed * speed_mod, delta)
 	move_and_slide()
 
 	if not attacking:

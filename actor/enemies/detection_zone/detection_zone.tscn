@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhgq51p8m8rth"]
+
+[ext_resource type="Script" path="res://actor/enemies/detection_zone/detection_zone.gd" id="1_pq5o2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qurpv"]
+resource_local_to_scene = true
+radius = 128.0
+
+[node name="DetectionZone" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_pq5o2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qurpv")
+
+[node name="RayCast" type="RayCast2D" parent="."]
+enabled = false
+target_position = Vector2(0, 0)
+collision_mask = 3
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

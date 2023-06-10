@@ -8,6 +8,7 @@ resource_local_to_scene = true
 size = Vector2(16, 16)
 
 [node name="Actor" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_e0126")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

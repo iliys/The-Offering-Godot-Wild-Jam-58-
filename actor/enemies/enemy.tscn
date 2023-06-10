@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://v7g84bwm8xnk"]
+
+[ext_resource type="PackedScene" uid="uid://bx8pdba81ce1e" path="res://actor/actor.tscn" id="1_wapaf"]
+[ext_resource type="Script" path="res://actor/enemies/enemy.gd" id="2_txdss"]
+[ext_resource type="PackedScene" uid="uid://bhgq51p8m8rth" path="res://actor/enemies/detection_zone/detection_zone.tscn" id="3_22il1"]
+[ext_resource type="Texture2D" uid="uid://b166ubn4tmut1" path="res://icon.svg" id="3_jllfm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w07g1"]
+radius = 7.07107
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_criig"]
+resource_local_to_scene = true
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6f8xf"]
+resource_local_to_scene = true
+radius = 128.0
+
+[node name="Enemy" instance=ExtResource("1_wapaf")]
+collision_layer = 8
+collision_mask = 11
+script = ExtResource("2_txdss")
+wander_time_randomization = 5.0
+wander_range = 128.0
+wander_speed_factor = 0.5
+min_move_distance = 4.0
+speed = 32
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("3_jllfm")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_w07g1")
+
+[node name="CollisionShape" parent="HitBox" index="0"]
+shape = SubResource("RectangleShape2D_criig")
+
+[node name="DetectionZone" parent="." index="3" instance=ExtResource("3_22il1")]
+
+[node name="CollisionShape2D" parent="DetectionZone" index="0"]
+shape = SubResource("CircleShape2D_6f8xf")
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="." index="4"]
+debug_enabled = true
+debug_path_custom_point_size = 2.0
+
+[node name="WanderTimer" type="Timer" parent="." index="5"]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
+
+[editable path="HitBox"]
+[editable path="DetectionZone"]
