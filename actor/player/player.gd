@@ -4,6 +4,7 @@ extends Actor
 
 
 @export var attack_speed_factor := 0.0
+@export var inertia := 128
 
 var attacking := false
 
@@ -18,6 +19,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	move(delta)
+	shove_boxes(delta)
 
 
 func move(delta: float) -> void:
@@ -33,6 +35,14 @@ func move(delta: float) -> void:
 func attack() -> void:
 	weapon.attack()
 	# Do some animation.
+
+
+func shove_boxes(delta: float) -> void:
+	for i in get_slide_collision_count():
+		var collision := get_slide_collision(i)
+		var collider := collision.get_collider()
+		if collider in get_tree().get_nodes_in_group("boxes"):
+			(collider as RigidBody2D).apply_impulse(-collision.get_normal() * inertia)
 
 
 func _on_weapon_attack_finished() -> void:

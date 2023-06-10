@@ -11,7 +11,7 @@ var player: Player = null
 func _physics_process(_delta: float) -> void:
 	if not ray_cast.enabled:
 		return
-	
+
 	var target_player: Player = get_overlapping_bodies()[0]
 	ray_cast.target_position = to_local(target_player.global_position)
 	if ray_cast.is_colliding() and ray_cast.get_collider() is Player:

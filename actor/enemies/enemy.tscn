@@ -27,6 +27,7 @@ min_move_distance = 4.0
 speed = 32
 
 [node name="Sprite2D" parent="." index="0"]
+modulate = Color(1, 0, 1, 1)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("3_jllfm")
 
@@ -42,6 +43,9 @@ shape = SubResource("RectangleShape2D_criig")
 shape = SubResource("CircleShape2D_6f8xf")
 
 [node name="NavigationAgent" type="NavigationAgent2D" parent="." index="4"]
+avoidance_enabled = true
+radius = 6.0
+neighbor_distance = 128.0
 debug_enabled = true
 debug_path_custom_point_size = 2.0
 
@@ -49,6 +53,7 @@ debug_path_custom_point_size = 2.0
 wait_time = 10.0
 autostart = true
 
+[connection signal="velocity_computed" from="NavigationAgent" to="." method="_on_navigation_agent_velocity_computed"]
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
 
 [editable path="HitBox"]
