@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkvv6pmyu0yly"]
+
+[ext_resource type="Script" path="res://hit_box.gd" id="1_vx066"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05j3n"]
+resource_local_to_scene = true
+size = Vector2(16, 16)
+
+[node name="HitBox" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_vx066")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+editor_description = "Shape will coppied by value because 'Local to Scene' was checked."
+shape = SubResource("RectangleShape2D_05j3n")
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="ImmunityTime" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="ImmunityTime" to="." method="_on_immunity_time_timeout"]

@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bx8pdba81ce1e"]
+[gd_scene load_steps=4 format=3 uid="uid://bx8pdba81ce1e"]
 
 [ext_resource type="Script" path="res://actor/actor.gd" id="1_e0126"]
+[ext_resource type="PackedScene" uid="uid://bkvv6pmyu0yly" path="res://combat_boxes/hit_box/hit_box.tscn" id="2_okx4s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8exm"]
+resource_local_to_scene = true
+size = Vector2(16, 16)
 
 [node name="Actor" type="CharacterBody2D"]
 script = ExtResource("1_e0126")
@@ -8,3 +13,12 @@ script = ExtResource("1_e0126")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="HitBox" parent="." instance=ExtResource("2_okx4s")]
+
+[node name="CollisionShape" parent="HitBox" index="0"]
+shape = SubResource("RectangleShape2D_x8exm")
+
+[connection signal="dmg_taken" from="HitBox" to="." method="_on_hit_box_dmg_taken"]
+
+[editable path="HitBox"]

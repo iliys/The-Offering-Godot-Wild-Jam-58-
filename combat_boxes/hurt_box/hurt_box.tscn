@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7tkgcmbnoj4u"]
+
+[ext_resource type="Script" path="res://combat_boxes/hurt_box/hurt_box.gd" id="1_kpqnr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a32d3"]
+resource_local_to_scene = true
+size = Vector2(16, 16)
+
+[node name="HurtBox" type="Area2D"]
+editor_description = "Shape will coppied by value because 'Local to Scene' was checked."
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_kpqnr")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_a32d3")
+disabled = true
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="CoolDown" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackDuration" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="CoolDown" to="." method="_on_cool_down_timeout"]
+[connection signal="timeout" from="AttackDuration" to="." method="_on_attack_duration_timeout"]
