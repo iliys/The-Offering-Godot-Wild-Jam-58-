@@ -33,6 +33,9 @@ region_rect = Rect2(160, 272, 16, 16)
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="NavigationObstacle2D"]
+rect = Rect2(-8, -8, 16, 16)
+
 [node name="AntiFreezeZone" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
@@ -40,9 +43,6 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AntiFreezeZone"]
 shape = SubResource("RectangleShape2D_llcvt")
-
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-rect = Rect2(-8, -8, 16, 16)
 
 [connection signal="body_entered" from="AntiFreezeZone" to="." method="_on_anti_freeze_zone_body_entered"]
 [connection signal="body_exited" from="AntiFreezeZone" to="." method="_on_anti_freeze_zone_body_exited"]
