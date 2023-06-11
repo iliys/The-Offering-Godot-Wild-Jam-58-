@@ -9,7 +9,8 @@ extends CharacterBody2D
 var hp := max_hp:
 	set(value):
 		hp = min(value, max_hp)
-		_die()
+		if hp <= 0:
+			_die()
 
 
 func _die() -> void:

@@ -46,7 +46,6 @@ shape = SubResource("CircleShape2D_6f8xf")
 avoidance_enabled = true
 radius = 6.0
 neighbor_distance = 128.0
-debug_enabled = true
 debug_path_custom_point_size = 2.0
 
 [node name="WanderTimer" type="Timer" parent="." index="5"]

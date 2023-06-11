@@ -1,10 +1,13 @@
-[gd_scene load_steps=57 format=3 uid="uid://cvhe7ib0rey8m"]
+[gd_scene load_steps=60 format=3 uid="uid://cvhe7ib0rey8m"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_7fgs2"]
 [ext_resource type="Texture2D" uid="uid://nat2nsqdq0rh" path="res://prototyping_tiles_from_kenney.png" id="1_pk2fv"]
 [ext_resource type="PackedScene" uid="uid://trdy53vwdy7u" path="res://actor/player/player.tscn" id="2_04bes"]
 [ext_resource type="Texture2D" uid="uid://bqrykudf6rf7s" path="res://map/ground_placholder.png" id="2_ix2le"]
 [ext_resource type="PackedScene" uid="uid://v7g84bwm8xnk" path="res://actor/enemies/enemy.tscn" id="4_xlb21"]
+[ext_resource type="PackedScene" uid="uid://cxcnpeq02ux3c" path="res://triggers/hit_trigger/hit_trigger.tscn" id="6_s2kpy"]
+[ext_resource type="PackedScene" uid="uid://c51vg2l5hcg6j" path="res://triggers/step_trigger/step_trigger.tscn" id="7_lku5s"]
+[ext_resource type="PackedScene" uid="uid://chj3y6c861rw4" path="res://triggers/standing_trigger/standing_trigger.tscn" id="8_aefxk"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ajvmi"]
 vertices = PackedVector2Array(0, 0, 8, 0, 8, 8, 0, 8)
@@ -3941,3 +3944,12 @@ position = Vector2(-152, -61)
 position = Vector2(-127, -67)
 
 [node name="Boxes" type="Node2D" parent="."]
+
+[node name="HitTrigger" parent="." instance=ExtResource("6_s2kpy")]
+position = Vector2(-96, 54)
+
+[node name="StepTrigger" parent="." instance=ExtResource("7_lku5s")]
+position = Vector2(40, 56)
+
+[node name="StandingTrigger" parent="." instance=ExtResource("8_aefxk")]
+position = Vector2(24, -56)

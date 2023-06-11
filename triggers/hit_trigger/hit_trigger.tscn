@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxcnpeq02ux3c"]
+
+[ext_resource type="PackedScene" uid="uid://bkvv6pmyu0yly" path="res://combat_boxes/hit_box/hit_box.tscn" id="1_osnqt"]
+[ext_resource type="Script" path="res://triggers/hit_trigger/hit_trigger.gd" id="2_f42nt"]
+[ext_resource type="Texture2D" uid="uid://nat2nsqdq0rh" path="res://prototyping_tiles_from_kenney.png" id="3_yesv3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wu15g"]
+resource_local_to_scene = true
+size = Vector2(16, 16)
+
+[node name="HitTrigger" instance=ExtResource("1_osnqt")]
+script = ExtResource("2_f42nt")
+
+[node name="CollisionShape" parent="." index="0"]
+shape = SubResource("RectangleShape2D_wu15g")
+
+[node name="Sprite" type="Sprite2D" parent="." index="3"]
+texture = ExtResource("3_yesv3")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(48, 160, 32, 16)
