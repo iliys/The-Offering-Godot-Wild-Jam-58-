@@ -2,15 +2,15 @@ class_name HitBox
 extends Area2D
 
 
-signal dmg_taken(amount: int)
+signal dmg_taken(amount: int, attacker: Actor)
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape
 @onready var hurt_sound: AudioStreamPlayer2D = $HurtSound
 @onready var immunity_time: Timer = $ImmunityTime
 
 
-func take_dmg(dmg: int) -> void:
-	dmg_taken.emit(dmg)
+func take_dmg(dmg: int, attacker: Actor) -> void:
+	dmg_taken.emit(dmg, attacker)
 	hurt_sound.play()
 	start_immunity()
 

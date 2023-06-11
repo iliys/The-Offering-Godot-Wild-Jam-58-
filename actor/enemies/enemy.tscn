@@ -52,6 +52,11 @@ debug_path_custom_point_size = 2.0
 wait_time = 10.0
 autostart = true
 
+[node name="AnimationTree" type="AnimationTree" parent="." index="6"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+editor_description = "Use AnimatedSprite2D or AnimationPlayer?"
+
 [connection signal="velocity_computed" from="NavigationAgent" to="." method="_on_navigation_agent_velocity_computed"]
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
 

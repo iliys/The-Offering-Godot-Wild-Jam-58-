@@ -20,6 +20,11 @@ script = ExtResource("1_e0126")
 [node name="CollisionShape" parent="HitBox" index="0"]
 shape = SubResource("RectangleShape2D_x8exm")
 
+[node name="KnockBackDuration" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="dmg_taken" from="HitBox" to="." method="_on_hit_box_dmg_taken"]
+[connection signal="timeout" from="KnockBackDuration" to="." method="_on_knock_back_duration_timeout"]
 
 [editable path="HitBox"]

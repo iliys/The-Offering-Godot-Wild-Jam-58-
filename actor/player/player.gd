@@ -19,17 +19,19 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	move(delta)
-	shove_boxes(delta)
+	if Input.is_action_pressed("shove"):
+		shove_boxes(delta)
 
 
 func move(delta: float) -> void:
-	var direction := Input.get_vector("left", "right", "up", "down")
-	var speed_mod := attack_speed_factor if attacking else 1.0
-	smooth_set_vel(direction * speed * speed_mod, delta)
-	move_and_slide()
+	if not stunned:
+		var direction := Input.get_vector("left", "right", "up", "down")
+		var speed_mod := attack_speed_factor if attacking else 1.0
+		smooth_set_vel(direction * speed * speed_mod, delta)
+		if not attacking:
+			hand.look_at(global_position + direction)
 
-	if not attacking:
-		hand.look_at(global_position + direction)
+	move_and_slide()
 
 
 func attack() -> void:
@@ -42,7 +44,7 @@ func shove_boxes(delta: float) -> void:
 		var collision := get_slide_collision(i)
 		var collider := collision.get_collider()
 		if collider in get_tree().get_nodes_in_group("boxes"):
-			(collider as RigidBody2D).apply_impulse(-collision.get_normal() * inertia)
+			(collider as RigidBody2D).apply_impulse(-collision.get_normal() * inertia)# * delta)
 
 
 func _on_weapon_attack_finished() -> void:

@@ -9,7 +9,7 @@ signal triggered
 
 
 func _on_body_entered(_body: Node2D) -> void:
-	collision_shape.disabled = true
-	monitoring = false
+	collision_shape.set_deferred("disabled", true)
+	set_deferred("monitoring", false)
 	sprite.frame = 1
 	triggered.emit()

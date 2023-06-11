@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://map/map.gd" id="1_7fgs2"]
 [ext_resource type="Texture2D" uid="uid://nat2nsqdq0rh" path="res://prototyping_tiles_from_kenney.png" id="1_pk2fv"]
 [ext_resource type="PackedScene" uid="uid://trdy53vwdy7u" path="res://actor/player/player.tscn" id="2_04bes"]
-[ext_resource type="Texture2D" uid="uid://bqrykudf6rf7s" path="res://map/ground_placholder.png" id="2_ix2le"]
+[ext_resource type="Texture2D" uid="uid://bqrykudf6rf7s" path="res://map/navigation_visualizer.png" id="2_h7p0f"]
 [ext_resource type="PackedScene" uid="uid://v7g84bwm8xnk" path="res://actor/enemies/enemy.tscn" id="4_xlb21"]
 [ext_resource type="PackedScene" uid="uid://cxcnpeq02ux3c" path="res://triggers/hit_trigger/hit_trigger.tscn" id="6_s2kpy"]
 [ext_resource type="PackedScene" uid="uid://c51vg2l5hcg6j" path="res://triggers/step_trigger/step_trigger.tscn" id="7_lku5s"]
@@ -245,7 +245,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32
 outlines = Array[PackedVector2Array]([PackedVector2Array(8, -8, 0, -8, 0, -1, -8, -1, -8, 1, -1, 1, -1, 8, 1, 8, 1, 0, 8, 0)])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_htf24"]
-texture = ExtResource("2_ix2le")
+texture = ExtResource("2_h7p0f")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -2793,6 +2793,7 @@ texture = ExtResource("1_pk2fv")
 17:14/0 = 0
 17:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 17:14/0/physics_layer_0/angular_velocity = 0.0
+17:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 18:14/0 = 0
 18:14/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 18:14/0/physics_layer_0/angular_velocity = 0.0
@@ -3904,13 +3905,12 @@ sources/3 = SubResource("TileSetAtlasSource_mth58")
 sources/1 = SubResource("TileSetAtlasSource_htf24")
 
 [node name="Map" type="Node2D"]
-texture_filter = 1
 script = ExtResource("1_7fgs2")
 
 [node name="TileMap" type="TileMap" parent="."]
-texture_filter = 1
 tile_set = SubResource("TileSet_niwgg")
 format = 2
+layer_0/tile_data = PackedInt32Array(327664, 1114115, 14, 393200, 1114115, 14, 393199, 1114115, 14, 393198, 1114115, 14, 327662, 1114115, 14, 262126, 1114115, 14, 196590, 1114115, 14, 131054, 1114115, 14, 65518, 1114115, 14, -18, 1114115, 14, -65554, 1114115, 14, -65553, 1114115, 14, -131089, 1114115, 14, -131088, 1114115, 14, -131087, 1114115, 14, -131086, 1114115, 14, -131085, 1114115, 14, -131084, 1114115, 14, -131083, 1114115, 14, -196619, 1114115, 14, -262155, 1114115, 14, -327691, 1114115, 14, -327690, 1114115, 14, -327689, 1114115, 14, -327688, 1114115, 14, -327687, 1114115, 14, -327686, 1114115, 14, -327685, 1114115, 14, -327684, 1114115, 14, -327683, 1114115, 14, -327682, 1114115, 14, -327681, 1114115, 14, -393216, 1114115, 14, -393215, 1114115, 14, -393214, 1114115, 14, -393213, 1114115, 14, -393212, 1114115, 14, -327676, 1114115, 14, -262140, 1114115, 14, -196604, 1114115, 14, -131068, 1114115, 14, -65532, 1114115, 14, 4, 1114115, 14, 65540, 1114115, 14, 131076, 1114115, 14, 196612, 1114115, 14, 262148, 1114115, 14, 327684, 1114115, 14, 327683, 1114115, 14, 327682, 1114115, 14, 327681, 1114115, 14, 327680, 1114115, 14, 393215, 1114115, 14, 393214, 1114115, 14, 393213, 1114115, 14, 393212, 1114115, 14, 393211, 1114115, 14, 393210, 1114115, 14, 393209, 1114115, 14, 393208, 1114115, 14, 393207, 1114115, 14, 327671, 1114115, 14, 262135, 1114115, 14, 196599, 1114115, 14, 131063, 1114115, 14, 65527, 1114115, 14, 65526, 1114115, 14, -10, 1114115, 14, -11, 1114115, 14, -12, 1114115, 14, -13, 1114115, 14, -14, 1114115, 14, -15, 1114115, 14, 65521, 1114115, 14, 131057, 1114115, 14, 196593, 1114115, 14, 262129, 1114115, 14, 327665, 1114115, 14)
 layer_1/name = "Navigation"
 layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
@@ -3928,20 +3928,11 @@ layer_2/tile_data = PackedInt32Array(65529, 655363, 17, 131065, 655363, 17, 1310
 
 [node name="Player" parent="." instance=ExtResource("2_04bes")]
 
-[node name="NavigationNote" type="Label" parent="."]
-offset_left = -427.0
-offset_top = -298.0
-offset_right = 292.0
-offset_bottom = -116.0
-text = "Blue stuff is navigation polygon; it will hide on game load.
-Perhaps the navigation tile layer should be on the same layer as the rest of the map to be able to utilize bucket fill.
-But then, how to hide the navigatable tiles on startup? Put navigation polygon on ground tile?"
-
 [node name="Enemy" parent="." instance=ExtResource("4_xlb21")]
 position = Vector2(-152, -61)
 
 [node name="Enemy2" parent="." instance=ExtResource("4_xlb21")]
-position = Vector2(-127, -67)
+position = Vector2(-248, -24)
 
 [node name="Boxes" type="Node2D" parent="."]
 
@@ -3953,3 +3944,23 @@ position = Vector2(40, 56)
 
 [node name="StandingTrigger" parent="." instance=ExtResource("8_aefxk")]
 position = Vector2(24, -56)
+
+[node name="NavigationNote" type="Label" parent="."]
+offset_left = -427.0
+offset_top = -298.0
+offset_right = 456.0
+offset_bottom = -116.0
+text = "Blue stuff is navigation polygon; it will hide on game load.
+Perhaps the navigation tile layer should be on the same layer as the rest of the map to be able to utilize bucket fill.
+But then, how to hide the navigatable tiles on startup? Put navigation polygon on ground tiles?"
+
+[node name="MapNote" type="Label" parent="."]
+offset_left = -320.0
+offset_top = 192.0
+offset_right = 267.0
+offset_bottom = 270.0
+text = "Current system for map:
+Navigation polygon drawn with tilemap on layer 'Navigation', using terrains.
+Any tile drawn on layer 'Boxes' will be replaced by a box on startup.
+Enemies and triggers added without using TileMap.
+Enemies placed by TileMap? Triggers should probably remain manualy added because of signal connection."

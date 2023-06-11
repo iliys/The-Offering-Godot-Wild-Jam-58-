@@ -1,3 +1,4 @@
+class_name Map
 extends Node2D
 
 
@@ -8,7 +9,7 @@ enum LAYERS {
 	BOXES,
 }
 
-# Calling BOX rather than Box, because of potential conflicts with class names.
+# Calling it BOX rather than Box, because of potential conflicts with class names.
 const BOX := preload("res://map/box/box.tscn")
 
 @onready var tile_map: TileMap = $TileMap

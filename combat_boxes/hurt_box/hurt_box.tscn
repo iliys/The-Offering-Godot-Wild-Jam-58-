@@ -23,7 +23,7 @@ disabled = true
 one_shot = true
 
 [node name="AttackDuration" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.25
 one_shot = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

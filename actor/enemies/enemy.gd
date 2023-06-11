@@ -12,20 +12,19 @@ extends Actor
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent
 @onready var wander_timer: Timer = $WanderTimer
 
-# So that 
-var global_delta := 0.0
-
 
 func _ready() -> void:
 	navigation_agent.max_speed = speed
 
 
 func _physics_process(delta: float) -> void:
-	global_delta = delta
-	if detection_zone.player == null:
-		wander(delta)
+	if stunned:
+		move_and_slide()
 	else:
-		chase(detection_zone.player.global_position, delta)
+		if detection_zone.player == null:
+			wander(delta)
+		else:
+			chase(detection_zone.player.global_position, delta)
 
 
 func wander(delta: float) -> void:
@@ -44,7 +43,7 @@ func go_to_localtion(location: Vector2, delta: float, speed_mod := 1.0) -> void:
 		smooth_set_vel(direction * speed * speed_mod, delta)
 	else:
 		smooth_set_vel(Vector2(), delta)
-	
+
 	navigation_agent.set_velocity(velocity)
 
 

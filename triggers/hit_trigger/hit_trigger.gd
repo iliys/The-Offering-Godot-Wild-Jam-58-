@@ -9,8 +9,10 @@ var on := false
 @onready var sprite: Sprite2D = $Sprite
 
 
-# Note: will be triggered by an enemy attack as well.
-func take_dmg(_dmg: int) -> void:
+func take_dmg(_dmg: int, attacker: Actor) -> void:
+	if attacker is Enemy:
+		return
+	
 	on = not on
 	sprite.frame = int(on)
 	toggled.emit(on)

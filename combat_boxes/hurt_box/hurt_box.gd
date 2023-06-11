@@ -30,7 +30,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.owner == owner:# Prevents the user from hitting itself.
 		return
 
-	area.take_dmg(dmg)
+	area.take_dmg(dmg, owner)
 	attack_sound.play()
 
 

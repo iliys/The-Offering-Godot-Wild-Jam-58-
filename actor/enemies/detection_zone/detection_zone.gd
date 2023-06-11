@@ -2,7 +2,7 @@ class_name DetectionZone
 extends Area2D
 
 
-# TODO: Make system not only be able to see player but other stuff to (i.e. make more flexible).
+# TODO: Make system not only be able to see player but other stuff too (i.e. make more flexible).
 var player: Player = null
 
 @onready var ray_cast: RayCast2D = $RayCast
