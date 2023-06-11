@@ -43,7 +43,6 @@ position_smoothing_speed = 4.0
 editor_description = "Rotate to change attack direction."
 
 [node name="Weapon" parent="Hand" index="0" instance=ExtResource("4_1jns1")]
-unique_name_in_owner = true
 position = Vector2(16, 0)
 
 [node name="CollisionShape" parent="Hand/Weapon" index="0"]

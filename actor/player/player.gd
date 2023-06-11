@@ -9,7 +9,7 @@ extends Actor
 var attacking := false
 
 @onready var hand: Marker2D = $Hand
-@onready var weapon: HurtBox = %Weapon
+@onready var weapon: HurtBox = hand.get_node("Weapon")
 
 
 func _unhandled_input(event: InputEvent) -> void:
