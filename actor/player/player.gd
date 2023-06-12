@@ -85,3 +85,4 @@ func _on_weapon_attack_finished() -> void:
 
 func _on_weapon_attacked() -> void:
 	stunned = true
+	velocity = Vector2()
