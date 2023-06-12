@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwhag178pphjo"]
+
+[ext_resource type="Texture2D" uid="uid://fpoa6ac41ekq" path="res://map/mirror/MirrorObsidian.png" id="1_awj88"]
+[ext_resource type="Script" path="res://map/mirror/mirror.gd" id="1_uagd7"]
+[ext_resource type="PackedScene" uid="uid://bkvv6pmyu0yly" path="res://combat_boxes/hit_box/hit_box.tscn" id="2_jnjt3"]
+[ext_resource type="PackedScene" uid="uid://cjwq17evldhg4" path="res://map/mirror/light_beam/light_beam.tscn" id="4_rorsb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2h2ex"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6hof"]
+resource_local_to_scene = true
+size = Vector2(16, 16)
+
+[node name="Mirror" type="StaticBody2D"]
+collision_mask = 11
+script = ExtResource("1_uagd7")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_awj88")
+hframes = 4
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2h2ex")
+
+[node name="HitBox" parent="." instance=ExtResource("2_jnjt3")]
+
+[node name="CollisionShape" parent="HitBox" index="0"]
+shape = SubResource("RectangleShape2D_c6hof")
+
+[node name="LightBeam" parent="." instance=ExtResource("4_rorsb")]
+rotation = 1.5708
+
+[connection signal="dmg_taken" from="HitBox" to="." method="_on_hit_box_dmg_taken"]
+
+[editable path="HitBox"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://csc8xxh2rx5at"]
+
+[ext_resource type="Script" path="res://map/mirror/bounce_mirror.gd" id="1_bd8yh"]
+[ext_resource type="Texture2D" uid="uid://fpoa6ac41ekq" path="res://map/mirror/MirrorObsidian.png" id="2_50xch"]
+[ext_resource type="PackedScene" uid="uid://bkvv6pmyu0yly" path="res://combat_boxes/hit_box/hit_box.tscn" id="3_avqk4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1k06"]
+size = Vector2(16, 16)
+
+[node name="BounceMirror" type="StaticBody2D"]
+collision_mask = 11
+script = ExtResource("1_bd8yh")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_50xch")
+hframes = 4
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_w1k06")
+
+[node name="HitBox" parent="." instance=ExtResource("3_avqk4")]
+
+[connection signal="dmg_taken" from="HitBox" to="." method="_on_hit_box_dmg_taken"]
