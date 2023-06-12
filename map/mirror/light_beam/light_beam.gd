@@ -16,6 +16,10 @@ var bounce_mirror: BounceMirror = null:
 @onready var end: Sprite2D = $EndPoints/End
 
 
+func _ready() -> void:
+	collision_shape.shape = collision_shape.shape.duplicate()
+
+
 func _physics_process(_delta: float) -> void:
 	var collision_point := target_position
 	if is_colliding():
@@ -26,10 +30,16 @@ func _physics_process(_delta: float) -> void:
 		elif bounce_mirror != null:
 			bounce_mirror = null
 
-	(collision_shape.shape as SegmentShape2D).b = collision_point
+	collision_shape.shape.b.x = collision_point.length() + 2
 	end.position = collision_point
 	sprite.scale.x = collision_point.length()
 
 
 func _on_hit_zone_body_entered(body: Node2D) -> void:
-	pass # Stone code goes here.
+	#if body is Crystal:
+	body.on = true
+
+
+func _on_hit_zone_body_exited(body: Node2D) -> void:
+	#if body is Crystal:
+	body.on = false

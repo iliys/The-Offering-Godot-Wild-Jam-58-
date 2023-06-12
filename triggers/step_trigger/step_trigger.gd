@@ -8,7 +8,7 @@ signal triggered
 @onready var sprite: Sprite2D = $Sprite
 
 
-func _on_body_entered(_body: Node2D) -> void:
+func _on_body_entered(_body: Node2D = null) -> void:
 	collision_shape.set_deferred("disabled", true)
 	set_deferred("monitoring", false)
 	sprite.frame = 1

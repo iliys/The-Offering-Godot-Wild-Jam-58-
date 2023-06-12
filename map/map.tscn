@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://cvhe7ib0rey8m"]
+[gd_scene load_steps=69 format=3 uid="uid://cvhe7ib0rey8m"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_7fgs2"]
 [ext_resource type="Texture2D" uid="uid://nat2nsqdq0rh" path="res://prototyping_tiles_from_kenney.png" id="1_pk2fv"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cdxjrox0dc1xj" path="res://map/door/door.tscn" id="9_g3rsh"]
 [ext_resource type="PackedScene" uid="uid://dlfoeec6n5mu" path="res://ui/ui.tscn" id="10_dvrgg"]
 [ext_resource type="PackedScene" uid="uid://drmce1rgl26xj" path="res://items/chest/chest.tscn" id="10_fxbgc"]
+[ext_resource type="PackedScene" uid="uid://cuwmprg4wsv0h" path="res://triggers/crystal/crystal.tscn" id="10_rwe7k"]
 [ext_resource type="PackedScene" uid="uid://nxpk8pdc1kso" path="res://items/key_pickup/key_0.tscn" id="11_ogjob"]
 [ext_resource type="PackedScene" uid="uid://cfdn845oa72qe" path="res://items/key_pickup/key_1.tscn" id="12_mqaik"]
 [ext_resource type="PackedScene" uid="uid://diowkwuoomboo" path="res://items/key_pickup/key_2.tscn" id="13_neqev"]
@@ -3958,6 +3959,9 @@ position = Vector2(40, 56)
 [node name="StandingTrigger" parent="Triggers" instance=ExtResource("8_aefxk")]
 position = Vector2(24, -56)
 
+[node name="Crystal" parent="Triggers" instance=ExtResource("10_rwe7k")]
+position = Vector2(-56, 72)
+
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Chest" parent="Items" instance=ExtResource("10_fxbgc")]
@@ -3989,9 +3993,6 @@ position = Vector2(-24, 24)
 [node name="BounceMirror" parent="BounceMirrors" instance=ExtResource("16_3mowk")]
 position = Vector2(-24, -72)
 
-[node name="BounceMirror2" parent="BounceMirrors" instance=ExtResource("16_3mowk")]
-position = Vector2(-24, 72)
-
 [node name="BounceMirror3" parent="BounceMirrors" instance=ExtResource("16_3mowk")]
 position = Vector2(8, 24)
 
@@ -4003,9 +4004,6 @@ position = Vector2(56, 40)
 
 [node name="BounceMirror6" parent="BounceMirrors" instance=ExtResource("16_3mowk")]
 position = Vector2(56, 72)
-
-[node name="BounceMirror7" parent="BounceMirrors" instance=ExtResource("16_3mowk")]
-position = Vector2(-72, 24)
 
 [node name="BounceMirror8" parent="BounceMirrors" instance=ExtResource("16_3mowk")]
 position = Vector2(-104, -72)
@@ -4034,3 +4032,4 @@ Enemies placed by TileMap? Triggers should probably remain manualy added because
 [connection signal="key_count_changed" from="Player" to="UI" method="set_key_count"]
 [connection signal="max_hp_initialized" from="Player" to="UI" method="init_max_hp"]
 [connection signal="toggled" from="Triggers/StandingTrigger" to="Doors/Door" method="set_open"]
+[connection signal="active_set" from="Triggers/Crystal" to="Triggers/HitTrigger" method="take_dmg"]

@@ -9,6 +9,7 @@ b = Vector2(0, 0)
 
 [node name="LightBeam" type="RayCast2D"]
 target_position = Vector2(1024, 0)
+collision_mask = 17
 script = ExtResource("1_otpox")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -17,8 +18,7 @@ offset = Vector2(0.5, 0)
 
 [node name="HitZone" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 8
-monitorable = false
+collision_mask = 24
 
 [node name="CollisionShape" type="CollisionShape2D" parent="HitZone"]
 shape = SubResource("SegmentShape2D_ua30d")
@@ -32,3 +32,4 @@ texture = ExtResource("3_wq3xp")
 texture = ExtResource("3_wq3xp")
 
 [connection signal="body_entered" from="HitZone" to="." method="_on_hit_zone_body_entered"]
+[connection signal="body_exited" from="HitZone" to="." method="_on_hit_zone_body_exited"]

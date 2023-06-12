@@ -13,11 +13,11 @@ var on := false:
 @onready var sprite: Sprite2D = $Sprite
 
 
-func _on_body_entered(_body: Node2D) -> void:
+func _on_body_entered(_body: Node2D = null) -> void:
 	if get_overlapping_bodies().size() == 1:
 		on = true
 
 
-func _on_body_exited(_body: Node2D) -> void:
+func _on_body_exited(_body: Node2D = null) -> void:
 	if get_overlapping_bodies().size() <= 0:
 		on = false
