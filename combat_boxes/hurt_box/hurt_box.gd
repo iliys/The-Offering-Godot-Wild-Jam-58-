@@ -6,7 +6,7 @@ signal cool_down_finished
 signal attack_finished
 signal attacked
 
-@export var dmg := 50
+@export var dmg := 1
 
 var cooling := false
 

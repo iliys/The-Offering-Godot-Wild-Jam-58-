@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://v7g84bwm8xnk"]
+[gd_scene load_steps=10 format=3 uid="uid://v7g84bwm8xnk"]
 
 [ext_resource type="PackedScene" uid="uid://bx8pdba81ce1e" path="res://actor/actor.tscn" id="1_wapaf"]
 [ext_resource type="Script" path="res://actor/enemies/enemy.gd" id="2_txdss"]
 [ext_resource type="PackedScene" uid="uid://bhgq51p8m8rth" path="res://actor/enemies/detection_zone/detection_zone.tscn" id="3_22il1"]
 [ext_resource type="Texture2D" uid="uid://b166ubn4tmut1" path="res://icon.svg" id="3_jllfm"]
+[ext_resource type="PackedScene" uid="uid://c7tkgcmbnoj4u" path="res://combat_boxes/hurt_box/hurt_box.tscn" id="5_75g6e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w07g1"]
 radius = 7.07107
@@ -16,6 +17,10 @@ size = Vector2(16, 16)
 resource_local_to_scene = true
 radius = 128.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54aqy"]
+resource_local_to_scene = true
+size = Vector2(17, 17)
+
 [node name="Enemy" instance=ExtResource("1_wapaf")]
 collision_layer = 8
 collision_mask = 11
@@ -25,6 +30,8 @@ wander_range = 128.0
 wander_speed_factor = 0.5
 min_move_distance = 4.0
 speed = 32
+max_hp = 2
+is_enemy = true
 
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(1, 0, 1, 1)
@@ -46,7 +53,6 @@ shape = SubResource("CircleShape2D_6f8xf")
 avoidance_enabled = true
 radius = 6.0
 neighbor_distance = 128.0
-debug_enabled = true
 debug_path_custom_point_size = 2.0
 
 [node name="WanderTimer" type="Timer" parent="." index="5"]
@@ -61,8 +67,15 @@ editor_description = "Use AnimatedSprite2D or AnimationPlayer?"
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." index="9"]
 rect = Rect2(-8, -8, 16, 16)
 
+[node name="HurtBox" parent="." index="10" instance=ExtResource("5_75g6e")]
+
+[node name="CollisionShape" parent="HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_54aqy")
+disabled = false
+
 [connection signal="velocity_computed" from="NavigationAgent" to="." method="_on_navigation_agent_velocity_computed"]
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
 
 [editable path="HitBox"]
 [editable path="DetectionZone"]
+[editable path="HurtBox"]

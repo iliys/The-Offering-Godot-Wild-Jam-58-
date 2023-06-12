@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdxjrox0dc1xj"]
+[gd_scene load_steps=7 format=3 uid="uid://cdxjrox0dc1xj"]
 
 [ext_resource type="Script" path="res://map/door/door.gd" id="1_edemh"]
 [ext_resource type="Texture2D" uid="uid://3fvmoa71cnj1" path="res://map/door/DoorLocked.png" id="1_isb2p"]
@@ -26,6 +26,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_de81f"]
 size = Vector2(16, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_we3d8"]
+size = Vector2(8, 48)
+
 [node name="Door" type="StaticBody2D"]
 collision_mask = 11
 script = ExtResource("1_edemh")
@@ -37,3 +40,12 @@ autoplay = "closed"
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_de81f")
+
+[node name="InteractionZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone"]
+position = Vector2(12, 0)
+shape = SubResource("RectangleShape2D_we3d8")

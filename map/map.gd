@@ -17,6 +17,7 @@ const BOX := preload("res://map/box/box.tscn")
 
 
 func _ready() -> void:
+	randomize()
 	tile_map.set_layer_modulate(LAYERS.NAVIGATION, Color.TRANSPARENT)
 	load_boxes()
 

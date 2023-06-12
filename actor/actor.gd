@@ -2,18 +2,23 @@ class_name Actor
 extends CharacterBody2D
 
 
+signal hp_changed(hp: int)
+
 @export var speed := 64
-@export var max_hp := 100# scale of hp might need to be changed
+@export var max_hp := 6
 @export var dex := 300
-@export var knock_back_factor := 2.0
+@export var knock_back_speed := 256
+@export var is_enemy := false
 
 var stunned := false
-var hp := max_hp:
+
+@onready var hp := max_hp:
 	set(value):
 		hp = min(value, max_hp)
 		if hp <= 0:
 			_die()
 
+		hp_changed.emit(hp)
 @onready var knock_back_duration: Timer = $KnockBackDuration
 
 
@@ -26,9 +31,12 @@ func smooth_set_vel(to: Vector2, delta: float) -> void:
 
 
 func _on_hit_box_dmg_taken(amount: int, attacker: Actor) -> void:
+	if is_enemy and attacker is Enemy:
+		return
+
 	hp -= amount
 	var knock_back_dir := attacker.global_position.direction_to(global_position)
-	velocity = knock_back_dir * amount * knock_back_factor
+	velocity = knock_back_dir * knock_back_speed
 	stunned = true
 	knock_back_duration.start()
 

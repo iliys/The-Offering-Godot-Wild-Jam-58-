@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlfoeec6n5mu"]
+
+[ext_resource type="Script" path="res://ui/ui.gd" id="1_r22b8"]
+[ext_resource type="Texture2D" uid="uid://dyb0cy1mwotu8" path="res://temp_heart.png" id="2_eccx2"]
+[ext_resource type="Texture2D" uid="uid://3suk2dohx3ss" path="res://ui/icons/temp_key_0_icon.png" id="3_efxcf"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_r22b8")
+
+[node name="HPBar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 16.0
+
+[node name="BG" type="TextureRect" parent="HPBar"]
+modulate = Color(1, 1, 1, 0.25098)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 16.0
+texture = ExtResource("2_eccx2")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Fill" type="TextureRect" parent="HPBar"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("2_eccx2")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="KeyHUD" type="HBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_bottom = 16.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="Icon" type="TextureRect" parent="KeyHUD"]
+layout_mode = 2
+texture = ExtResource("3_efxcf")
+stretch_mode = 2
+
+[node name="Counter" type="Label" parent="KeyHUD"]
+layout_mode = 2
+text = "0"
