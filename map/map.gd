@@ -29,4 +29,6 @@ func load_boxes() -> void:
 		box.tile_map = tile_map
 		box.position = tile_map.map_to_local(tile)
 		boxes.add_child(box)
+		tile_map.erase_cell(LAYERS.NAVIGATION, tile)
+
 	tile_map.set_layer_enabled(LAYERS.BOXES, false)
