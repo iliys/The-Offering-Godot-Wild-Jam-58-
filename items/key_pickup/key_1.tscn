@@ -6,4 +6,4 @@
 id = 1
 
 [node name="Sprite" parent="." index="0"]
-frame = 1
+region_rect = Rect2(16, 0, 16, 16)

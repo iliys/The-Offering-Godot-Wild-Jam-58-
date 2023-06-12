@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://cvhe7ib0rey8m"]
+[gd_scene load_steps=68 format=3 uid="uid://cvhe7ib0rey8m"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_7fgs2"]
 [ext_resource type="Texture2D" uid="uid://nat2nsqdq0rh" path="res://prototyping_tiles_from_kenney.png" id="1_pk2fv"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://cuwmprg4wsv0h" path="res://triggers/crystal/crystal.tscn" id="10_rwe7k"]
 [ext_resource type="PackedScene" uid="uid://nxpk8pdc1kso" path="res://items/key_pickup/key_0.tscn" id="11_ogjob"]
 [ext_resource type="PackedScene" uid="uid://cfdn845oa72qe" path="res://items/key_pickup/key_1.tscn" id="12_mqaik"]
-[ext_resource type="PackedScene" uid="uid://diowkwuoomboo" path="res://items/key_pickup/key_2.tscn" id="13_neqev"]
 [ext_resource type="PackedScene" uid="uid://dwhag178pphjo" path="res://map/mirror/mirror.tscn" id="15_wpcqk"]
 [ext_resource type="PackedScene" uid="uid://csc8xxh2rx5at" path="res://map/mirror/bounce_mirror.tscn" id="16_3mowk"]
 
@@ -3938,6 +3937,17 @@ layer_2/tile_data = PackedInt32Array(65529, 655363, 17, 131065, 655363, 17, 1310
 
 [node name="UI" parent="." instance=ExtResource("10_dvrgg")]
 
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="Door" parent="Doors" instance=ExtResource("9_g3rsh")]
+position = Vector2(72, -16)
+rotation = 3.14159
+
+[node name="Door2" parent="Doors" instance=ExtResource("9_g3rsh")]
+position = Vector2(-128, -88)
+rotation = 1.57079
+id = 1
+
 [node name="Player" parent="." instance=ExtResource("2_04bes")]
 
 [node name="Enemies" type="Node2D" parent="."]
@@ -3966,24 +3976,13 @@ position = Vector2(-56, 72)
 
 [node name="Chest" parent="Items" instance=ExtResource("10_fxbgc")]
 position = Vector2(-104, -24)
-drops = Array[PackedScene]([ExtResource("11_ogjob"), ExtResource("12_mqaik"), ExtResource("13_neqev")])
+drops = Array[PackedScene]([ExtResource("11_ogjob"), ExtResource("12_mqaik")])
 
 [node name="Chest2" parent="Items" instance=ExtResource("10_fxbgc")]
 position = Vector2(8, -40)
 id = 0
 
 [node name="Boxes" type="Node2D" parent="."]
-
-[node name="Doors" type="Node2D" parent="."]
-
-[node name="Door" parent="Doors" instance=ExtResource("9_g3rsh")]
-position = Vector2(72, -16)
-rotation = 3.14159
-
-[node name="Door2" parent="Doors" instance=ExtResource("9_g3rsh")]
-position = Vector2(-128, -88)
-rotation = 1.57079
-id = 1
 
 [node name="Mirror" parent="." instance=ExtResource("15_wpcqk")]
 position = Vector2(-24, 24)

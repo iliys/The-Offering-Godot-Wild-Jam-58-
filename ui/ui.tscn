@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlfoeec6n5mu"]
+[gd_scene load_steps=6 format=3 uid="uid://dlfoeec6n5mu"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_r22b8"]
-[ext_resource type="Texture2D" uid="uid://dyb0cy1mwotu8" path="res://temp_heart.png" id="2_eccx2"]
-[ext_resource type="Texture2D" uid="uid://3suk2dohx3ss" path="res://ui/icons/temp_key_0_icon.png" id="3_efxcf"]
+[ext_resource type="Texture2D" uid="uid://hgmyseb2mqrw" path="res://ui/icons/health_empty.png" id="2_bj5vg"]
+[ext_resource type="Texture2D" uid="uid://cl0jd1rkksxbs" path="res://ui/icons/health_full.png" id="3_lfdgq"]
+[ext_resource type="Texture2D" uid="uid://bl3bsy2vy7g0b" path="res://items/key_pickup/key_0.png" id="4_a0l37"]
+[ext_resource type="Texture2D" uid="uid://6haj7wtgy5kp" path="res://items/key_pickup/key_1.png" id="5_0bsqr"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_r22b8")
@@ -17,33 +19,37 @@ offset_bottom = 16.0
 modulate = Color(1, 1, 1, 0.25098)
 layout_mode = 0
 offset_right = 32.0
-offset_bottom = 16.0
-texture = ExtResource("2_eccx2")
+offset_bottom = 8.0
+texture = ExtResource("2_bj5vg")
 expand_mode = 1
 stretch_mode = 1
 
 [node name="Fill" type="TextureRect" parent="HPBar"]
 layout_mode = 0
 offset_right = 16.0
-offset_bottom = 16.0
-texture = ExtResource("2_eccx2")
+offset_bottom = 8.0
+texture = ExtResource("3_lfdgq")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="KeyHUD" type="HBoxContainer" parent="."]
+[node name="Items" type="VBoxContainer" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -128.0
 offset_bottom = 16.0
 grow_horizontal = 0
-alignment = 2
 
-[node name="Icon" type="TextureRect" parent="KeyHUD"]
+[node name="Key0" type="TextureRect" parent="Items"]
 layout_mode = 2
-texture = ExtResource("3_efxcf")
-stretch_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("4_a0l37")
+expand_mode = 1
+stretch_mode = 1
 
-[node name="Counter" type="Label" parent="KeyHUD"]
+[node name="Key1" type="TextureRect" parent="Items"]
 layout_mode = 2
-text = "0"
+size_flags_horizontal = 8
+texture = ExtResource("5_0bsqr")
+expand_mode = 1
+stretch_mode = 1

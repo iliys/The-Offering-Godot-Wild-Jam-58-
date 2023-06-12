@@ -4,7 +4,7 @@ extends Actor
 
 
 signal max_hp_initialized(max_hp: int)
-signal key_count_changed(count: int)
+signal key_count_changed(id: int, count: int)
 
 @export var attack_speed_factor := 0.0
 @export var inertia := 128
@@ -75,8 +75,7 @@ func modify_key_count(id: int, modifer: int) -> void:
 	elif modifer > 0:
 		keys[id] = modifer
 
-	if id == 0:
-		key_count_changed.emit(keys[id])
+	key_count_changed.emit(id, keys[id])
 
 
 func _on_weapon_attack_finished() -> void:

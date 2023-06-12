@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://diowkwuoomboo"]
-
-[ext_resource type="PackedScene" uid="uid://dgtris6xifv56" path="res://items/key_pickup/key_pickup.tscn" id="1_ml5uq"]
-
-[node name="Key2" instance=ExtResource("1_ml5uq")]
-id = 2
-
-[node name="Sprite" parent="." index="0"]
-frame = 2
