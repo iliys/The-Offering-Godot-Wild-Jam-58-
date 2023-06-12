@@ -23,6 +23,7 @@ func _ready() -> void:
 
 
 func load_boxes() -> void:
+	# TileSetScenesCollectionSource might be able to do the instantiation.
 	for tile in tile_map.get_used_cells(LAYERS.BOXES):
 		var box: RigidBody2D = BOX.instantiate()
 		box.position = tile_map.map_to_local(tile)

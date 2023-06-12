@@ -40,9 +40,11 @@ func go_to_localtion(location: Vector2, delta: float, speed_mod := 1.0) -> void:
 	var next_path_pos := navigation_agent.get_next_path_position()
 	if global_position.distance_to(next_path_pos) >= min_move_distance:
 		var direction := global_position.direction_to(next_path_pos)
-		smooth_set_vel(direction * speed * speed_mod, delta)
+		#smooth_set_vel(direction * speed * speed_mod, delta)
+		velocity = direction * speed * speed_mod
 	else:
-		smooth_set_vel(Vector2(), delta)
+		#smooth_set_vel(Vector2(), delta)
+		velocity = Vector2()
 
 	navigation_agent.set_velocity(velocity)
 

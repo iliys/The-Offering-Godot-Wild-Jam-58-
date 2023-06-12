@@ -44,10 +44,9 @@ func move(delta: float) -> void:
 		if direction.length() > 0:
 			last_dir = direction
 		var speed_mod := attack_speed_factor if attacking else 1.0
-		smooth_set_vel(direction * speed * speed_mod, delta)
-	else:
-		smooth_set_vel(Vector2(), delta)
-	
+		#smooth_set_vel(direction * speed * speed_mod, delta)
+		velocity = direction * speed * speed_mod
+
 	var prioritized_dir := last_dir
 	prioritized_dir.x *= 1.5
 	var target_rotation := snappedf(prioritized_dir.angle(), PI / 2)
