@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://cvhe7ib0rey8m"]
+[gd_scene load_steps=69 format=3 uid="uid://cvhe7ib0rey8m"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_7fgs2"]
 [ext_resource type="Texture2D" uid="uid://nat2nsqdq0rh" path="res://prototyping_tiles_from_kenney.png" id="1_pk2fv"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cuwmprg4wsv0h" path="res://triggers/crystal/crystal.tscn" id="10_rwe7k"]
 [ext_resource type="PackedScene" uid="uid://nxpk8pdc1kso" path="res://items/key_pickup/key_0.tscn" id="11_ogjob"]
 [ext_resource type="PackedScene" uid="uid://cfdn845oa72qe" path="res://items/key_pickup/key_1.tscn" id="12_mqaik"]
+[ext_resource type="PackedScene" uid="uid://cyv7g07yfvixl" path="res://items/health_pickup/health_pickup.tscn" id="15_d5h7c"]
 [ext_resource type="PackedScene" uid="uid://dwhag178pphjo" path="res://map/mirror/mirror.tscn" id="15_wpcqk"]
 [ext_resource type="PackedScene" uid="uid://csc8xxh2rx5at" path="res://map/mirror/bounce_mirror.tscn" id="16_3mowk"]
 
@@ -3981,6 +3982,10 @@ drops = Array[PackedScene]([ExtResource("11_ogjob"), ExtResource("12_mqaik")])
 [node name="Chest2" parent="Items" instance=ExtResource("10_fxbgc")]
 position = Vector2(8, -40)
 id = 0
+drops = Array[PackedScene]([ExtResource("15_d5h7c")])
+
+[node name="HealthPickup" parent="Items" instance=ExtResource("15_d5h7c")]
+position = Vector2(-72, -40)
 
 [node name="Boxes" type="Node2D" parent="."]
 

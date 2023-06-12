@@ -25,6 +25,8 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if stunned:
+		return
 	if event.is_action_pressed("attack"):
 		attack()
 	elif event.is_action_pressed("interact"):
