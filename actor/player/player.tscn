@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://trdy53vwdy7u"]
+[gd_scene load_steps=12 format=3 uid="uid://trdy53vwdy7u"]
 
 [ext_resource type="PackedScene" uid="uid://bx8pdba81ce1e" path="res://actor/actor.tscn" id="1_wimsm"]
 [ext_resource type="Script" path="res://actor/player/player.gd" id="2_eied7"]
@@ -8,6 +8,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvcd4"]
 resource_local_to_scene = true
 size = Vector2(18, 12)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_bvpkx"]
+b = Vector2(0, 2)
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_2tpmm"]
 
@@ -54,6 +57,14 @@ editor_description = "Will probably be deleted later."
 modulate = Color(1, 0, 0, 1)
 scale = Vector2(0.126, 0.063)
 texture = ExtResource("2_l3cdn")
+
+[node name="ShoveZone" type="Area2D" parent="Hand" index="1"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hand/ShoveZone" index="0"]
+position = Vector2(7, 0)
+rotation = -1.5708
+shape = SubResource("SegmentShape2D_bvpkx")
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="3"]
 tree_root = SubResource("AnimationNodeStateMachine_0se8w")

@@ -6,7 +6,7 @@ signal hp_changed(hp: int)
 
 @export var speed := 64
 @export var max_hp := 6
-@export var dex := 300
+#@export var dex := 300
 @export var knock_back_speed := 256
 @export var is_enemy := false
 
@@ -26,8 +26,8 @@ func _die() -> void:
 	queue_free()# Default behavior; overide with death anim.
 
 
-func smooth_set_vel(to: Vector2, delta: float) -> void:
-	velocity = velocity.move_toward(to, dex * delta)
+#func smooth_set_vel(to: Vector2, delta: float) -> void:
+#	velocity = velocity.move_toward(to, dex * delta)
 
 
 func _on_hit_box_dmg_taken(amount: int, attacker: Actor) -> void:

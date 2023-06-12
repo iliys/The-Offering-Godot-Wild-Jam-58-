@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://nat2nsqdq0rh" path="res://prototyping_tiles_from_kenney.png" id="2_gsk7e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2g13t"]
-size = Vector2(16, 16)
+size = Vector2(15, 15)
 
 [node name="StepTrigger" type="Area2D"]
 collision_layer = 0

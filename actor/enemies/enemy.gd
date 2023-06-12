@@ -17,25 +17,25 @@ func _ready() -> void:
 	navigation_agent.max_speed = speed
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if stunned:
 		move_and_slide()
 	else:
 		if detection_zone.player == null:
-			wander(delta)
+			wander()
 		else:
-			chase(detection_zone.player.global_position, delta)
+			chase(detection_zone.player.global_position)
 
 
-func wander(delta: float) -> void:
-	go_to_localtion(wander_position, delta, wander_speed_factor)
+func wander() -> void:
+	go_to_localtion(wander_position, wander_speed_factor)
 
 
-func chase(player_pos: Vector2, delta: float) -> void:
-	go_to_localtion(player_pos, delta)
+func chase(player_pos: Vector2) -> void:
+	go_to_localtion(player_pos)
 
 
-func go_to_localtion(location: Vector2, delta: float, speed_mod := 1.0) -> void:
+func go_to_localtion(location: Vector2, speed_mod := 1.0) -> void:
 	navigation_agent.target_position = location
 	var next_path_pos := navigation_agent.get_next_path_position()
 	if global_position.distance_to(next_path_pos) >= min_move_distance:
