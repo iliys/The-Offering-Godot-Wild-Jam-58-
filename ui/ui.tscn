@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlfoeec6n5mu"]
+[gd_scene load_steps=8 format=3 uid="uid://dlfoeec6n5mu"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_r22b8"]
 [ext_resource type="Texture2D" uid="uid://hgmyseb2mqrw" path="res://ui/icons/health_empty.png" id="2_bj5vg"]
 [ext_resource type="Texture2D" uid="uid://cl0jd1rkksxbs" path="res://ui/icons/health_full.png" id="3_lfdgq"]
-[ext_resource type="Texture2D" uid="uid://bl3bsy2vy7g0b" path="res://items/key_pickup/key_0.png" id="4_a0l37"]
-[ext_resource type="Texture2D" uid="uid://6haj7wtgy5kp" path="res://items/key_pickup/key_1.png" id="5_0bsqr"]
+[ext_resource type="Texture2D" uid="uid://bl3bsy2vy7g0b" path="res://ui/icons/key_0.png" id="4_3rh8n"]
+[ext_resource type="Texture2D" uid="uid://6haj7wtgy5kp" path="res://ui/icons/key_1.png" id="5_wnudv"]
+[ext_resource type="Texture2D" uid="uid://b77ybbwta85hk" path="res://ui/icons/key_2.png" id="6_fqwdi"]
+[ext_resource type="Texture2D" uid="uid://cvcg7to7t10gq" path="res://ui/icons/sword.png" id="7_hvtuc"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_r22b8")
@@ -39,17 +41,36 @@ anchor_right = 1.0
 offset_left = -128.0
 offset_bottom = 16.0
 grow_horizontal = 0
+theme_override_constants/separation = 0
 
 [node name="Key0" type="TextureRect" parent="Items"]
 layout_mode = 2
 size_flags_horizontal = 8
-texture = ExtResource("4_a0l37")
+texture = ExtResource("4_3rh8n")
 expand_mode = 1
 stretch_mode = 1
 
 [node name="Key1" type="TextureRect" parent="Items"]
 layout_mode = 2
 size_flags_horizontal = 8
-texture = ExtResource("5_0bsqr")
+texture = ExtResource("5_wnudv")
 expand_mode = 1
 stretch_mode = 1
+
+[node name="Key2" type="TextureRect" parent="Items"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("6_fqwdi")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="RHand" type="TextureRect" parent="Items"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("7_hvtuc")
+stretch_mode = 2
+
+[node name="LHand" type="TextureRect" parent="Items"]
+layout_mode = 2
+size_flags_horizontal = 8
+stretch_mode = 2

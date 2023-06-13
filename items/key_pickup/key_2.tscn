@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4watgg4up0rc"]
+
+[ext_resource type="PackedScene" uid="uid://dgtris6xifv56" path="res://items/key_pickup/key_pickup.tscn" id="1_777l7"]
+[ext_resource type="Texture2D" uid="uid://csji453xk2a0c" path="res://stuff.png" id="2_ggafy"]
+
+[node name="Key2" instance=ExtResource("1_777l7")]
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_ggafy")
+region_rect = Rect2(48, 16, 16, 16)

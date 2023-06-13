@@ -24,10 +24,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_de81f"]
-size = Vector2(16, 32)
+size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_we3d8"]
-size = Vector2(8, 48)
+size = Vector2(8, 32)
 
 [node name="Door" type="StaticBody2D"]
 collision_mask = 11

@@ -5,18 +5,23 @@ extends Actor
 
 signal max_hp_initialized(max_hp: int)
 signal key_count_changed(id: int, count: int)
+signal hand_updated(right: bool, icon: Texture2D)
 
 @export var attack_speed_factor := 0.0
-@export var inertia := 128
+#@export var inertia := 128
 #@export var swing_speed := 20
 
 var attacking := false
 var sword_dir := Vector2.RIGHT
 var keys := {}# {id: amount}
+var tools := {r = weapon, l = null}
 
 @onready var hand: Marker2D = $Hand
 @onready var weapon: HurtBox = hand.get_node("Weapon")
 @onready var shove_zone: Area2D = hand.get_node("ShoveZone")
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
+@onready var shove_timer: Timer = $ShoveTimer
 
 
 func _ready() -> void:
@@ -29,12 +34,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("attack"):
 		attack()
-	elif event.is_action_pressed("interact"):
-		shove_boxes()
 
 
 func _physics_process(_delta: float) -> void:
 	move()
+	if Input.is_action_pressed("interact") and not stunned:
+		shove_boxes()
 
 
 func _die() -> void:
@@ -54,6 +59,12 @@ func move() -> void:
 
 	#hand.rotation = lerp_angle(hand.rotation, sword_dir.angle(), swing_speed * delta)
 	hand.rotation = sword_dir.angle()
+	if velocity.length() > 0.0:
+		playback.travel("Run")
+	else:
+		playback.travel("Idle")
+	animation_tree.set("parameters/Idle/blend_position", sword_dir)
+	animation_tree.set("parameters/Run/blend_position", sword_dir)
 
 	move_and_slide()
 
@@ -67,7 +78,10 @@ func shove_boxes() -> void:
 	for collider in shove_zone.get_overlapping_bodies():
 		if collider is Box:
 			#(collider as RigidBody2D).apply_impulse(-collision.get_normal() * inertia)# * delta)
-			collider.push(sword_dir)
+			if collider.push(sword_dir):
+				stunned = true
+				velocity = sword_dir * speed
+				shove_timer.start(collider.slide_duration)
 
 
 func modify_key_count(id: int, modifer: int) -> void:
@@ -87,3 +101,7 @@ func _on_weapon_attack_finished() -> void:
 func _on_weapon_attacked() -> void:
 	stunned = true
 	velocity = Vector2()
+
+
+func _on_shove_timer_timeout() -> void:
+	stunned = false
