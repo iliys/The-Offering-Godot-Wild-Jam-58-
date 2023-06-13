@@ -36,10 +36,10 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_hit_zone_body_entered(body: Node2D) -> void:
-	#if body is Crystal:
-	body.on = true
+	if body is Crystal:
+		body.on = true
 
 
 func _on_hit_zone_body_exited(body: Node2D) -> void:
-	#if body is Crystal:
-	body.on = false
+	if body is Crystal:
+		body.on = false

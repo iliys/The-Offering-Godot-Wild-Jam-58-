@@ -4,9 +4,13 @@ extends HitBox
 
 signal toggled(on: bool)
 
-var on := false
+@export var on := false
 
 @onready var sprite: Sprite2D = $Sprite
+
+
+func _ready() -> void:
+	sprite.frame = int(on)
 
 
 func take_dmg(_dmg := 0, attacker: Actor = null) -> void:

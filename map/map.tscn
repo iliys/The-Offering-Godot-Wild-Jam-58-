@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://cvhe7ib0rey8m"]
+[gd_scene load_steps=70 format=3 uid="uid://cvhe7ib0rey8m"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_7fgs2"]
 [ext_resource type="Texture2D" uid="uid://nat2nsqdq0rh" path="res://prototyping_tiles_from_kenney.png" id="1_pk2fv"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cyv7g07yfvixl" path="res://items/health_pickup/health_pickup.tscn" id="15_d5h7c"]
 [ext_resource type="PackedScene" uid="uid://dwhag178pphjo" path="res://map/mirror/mirror.tscn" id="15_wpcqk"]
 [ext_resource type="PackedScene" uid="uid://csc8xxh2rx5at" path="res://map/mirror/bounce_mirror.tscn" id="16_3mowk"]
+[ext_resource type="PackedScene" uid="uid://bvxcacfvh13xx" path="res://map/gate/gate.tscn" id="16_lflmi"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ajvmi"]
 vertices = PackedVector2Array(0, 0, 8, 0, 8, 8, 0, 8)
@@ -3963,6 +3964,7 @@ position = Vector2(-248, -24)
 
 [node name="HitTrigger" parent="Triggers" instance=ExtResource("6_s2kpy")]
 position = Vector2(-96, 54)
+on = true
 
 [node name="StepTrigger" parent="Triggers" instance=ExtResource("7_lku5s")]
 position = Vector2(40, 56)
@@ -3989,6 +3991,11 @@ position = Vector2(-72, -40)
 
 [node name="Boxes" type="Node2D" parent="."]
 
+[node name="Gates" type="Node2D" parent="."]
+
+[node name="Gate" parent="Gates" instance=ExtResource("16_lflmi")]
+position = Vector2(40, -72)
+
 [node name="Mirror" parent="." instance=ExtResource("15_wpcqk")]
 position = Vector2(-24, 24)
 
@@ -4008,9 +4015,6 @@ position = Vector2(56, 40)
 
 [node name="BounceMirror6" parent="BounceMirrors" instance=ExtResource("16_3mowk")]
 position = Vector2(56, 72)
-
-[node name="BounceMirror8" parent="BounceMirrors" instance=ExtResource("16_3mowk")]
-position = Vector2(-104, -72)
 
 [node name="NavigationNote" type="Label" parent="."]
 offset_left = -427.0
@@ -4035,5 +4039,6 @@ Enemies placed by TileMap? Triggers should probably remain manualy added because
 [connection signal="hp_changed" from="Player" to="UI" method="display_hp"]
 [connection signal="key_count_changed" from="Player" to="UI" method="set_key_count"]
 [connection signal="max_hp_initialized" from="Player" to="UI" method="init_max_hp"]
+[connection signal="toggled" from="Triggers/HitTrigger" to="Gates/Gate" method="set_active"]
 [connection signal="toggled" from="Triggers/StandingTrigger" to="Doors/Door" method="set_open"]
 [connection signal="active_set" from="Triggers/Crystal" to="Triggers/HitTrigger" method="take_dmg"]
