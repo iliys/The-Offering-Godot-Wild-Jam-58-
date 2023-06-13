@@ -6,6 +6,7 @@ extends Node2D
 enum LAYERS {
 	MAIN,
 	NAVIGATION,
+	BOX_SLOTS,
 	BOXES,
 }
 
