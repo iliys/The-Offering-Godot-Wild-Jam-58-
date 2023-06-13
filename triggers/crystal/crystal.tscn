@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://triggers/crystal/crystal.gd" id="1_e30cy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0n6uy"]
-size = Vector2(10, 9)
+size = Vector2(6, 12)
 
 [node name="Crystal" type="StaticBody2D"]
 collision_layer = 17
@@ -16,5 +16,5 @@ texture = ExtResource("1_0npmj")
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3.5)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_0n6uy")

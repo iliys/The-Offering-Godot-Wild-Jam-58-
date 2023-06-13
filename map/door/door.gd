@@ -4,6 +4,8 @@ extends StaticBody2D
 
 @export var id := -1
 
+var close_anim_name := "closed"
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite
 @onready var collision_shape: CollisionShape2D = $CollisionShape
 @onready var interation_zone: Area2D = $InteractionZone
@@ -12,6 +14,9 @@ extends StaticBody2D
 func _ready() -> void:
 	if id < 0:
 		interation_zone.queue_free()
+	else:
+		close_anim_name = "closed_locked"
+	animated_sprite.play(close_anim_name)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -31,5 +36,5 @@ func open_w_key() -> void:
 
 
 func set_open(open := true) -> void:
-	animated_sprite.play("open" if open else "closed")
+	animated_sprite.play("open" if open else close_anim_name)
 	collision_shape.set_deferred("disabled", open)

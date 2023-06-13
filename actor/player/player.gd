@@ -17,7 +17,7 @@ var keys := {}# {id: amount}
 var tools := {r = weapon, l = null}
 
 @onready var hand: Marker2D = $Hand
-@onready var weapon: HurtBox = hand.get_node("Weapon")
+@onready var weapon: HurtBox = $Weapon
 @onready var shove_zone: Area2D = hand.get_node("ShoveZone")
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
@@ -59,6 +59,7 @@ func move() -> void:
 
 	#hand.rotation = lerp_angle(hand.rotation, sword_dir.angle(), swing_speed * delta)
 	hand.rotation = sword_dir.angle()
+	weapon.rotation = sword_dir.angle()
 	if velocity.length() > 0.0:
 		playback.travel("Run")
 	else:

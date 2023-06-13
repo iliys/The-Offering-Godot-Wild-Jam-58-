@@ -1,10 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://c51vg2l5hcg6j"]
 
 [ext_resource type="Script" path="res://triggers/step_trigger/step_trigger.gd" id="1_oehn6"]
-[ext_resource type="Texture2D" uid="uid://nat2nsqdq0rh" path="res://prototyping_tiles_from_kenney.png" id="2_gsk7e"]
+[ext_resource type="Texture2D" uid="uid://b8mst6h8vueix" path="res://triggers/Button.png" id="2_3jx4h"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2g13t"]
-size = Vector2(15, 15)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pqasq"]
+radius = 4.0
+height = 12.0
 
 [node name="StepTrigger" type="Area2D"]
 collision_layer = 0
@@ -13,13 +14,13 @@ monitorable = false
 script = ExtResource("1_oehn6")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 0, 1)
-texture = ExtResource("2_gsk7e")
+texture = ExtResource("2_3jx4h")
 hframes = 2
 region_enabled = true
-region_rect = Rect2(16, 160, 32, 16)
+region_rect = Rect2(0, 0, 32, 16)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_2g13t")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pqasq")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

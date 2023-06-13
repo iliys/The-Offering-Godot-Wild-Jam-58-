@@ -26,7 +26,8 @@ func _physics_process(_delta: float) -> void:
 		collision_point = to_local(get_collision_point())
 		if get_collider() is BounceMirror:
 			bounce_mirror = get_collider()
-			bounce_mirror.light_source = global_position.direction_to(bounce_mirror.global_position)
+			bounce_mirror.light_source = global_position.direction_to(
+					bounce_mirror.global_position).snapped(Vector2.ONE)
 		elif bounce_mirror != null:
 			bounce_mirror = null
 

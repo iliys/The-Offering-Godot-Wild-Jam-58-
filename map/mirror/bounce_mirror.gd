@@ -19,6 +19,7 @@ var light_source := Vector2():
 			if not has_node("LightBeam"):
 				var light_beam: LightBeam = LIGHT_BEAM.instantiate()
 				add_child(light_beam, true)
+				light_beam.position.y -= 4
 				rotate_beam()
 		elif has_node("LightBeam"):
 			var light_beam: LightBeam = get_node("LightBeam")
