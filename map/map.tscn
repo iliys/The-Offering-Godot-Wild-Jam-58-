@@ -3950,7 +3950,7 @@ layer_3/modulate = Color(1, 1, 1, 1)
 layer_3/y_sort_enabled = false
 layer_3/y_sort_origin = 0
 layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array(65531, 2, 0, 262142, 2, 0, -131070, 2, 0)
+layer_3/tile_data = PackedInt32Array(65531, 2, 0, -131070, 2, 0, 131073, 2, 0)
 
 [node name="UI" parent="." instance=ExtResource("10_dvrgg")]
 

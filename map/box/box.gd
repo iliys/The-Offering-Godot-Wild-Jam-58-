@@ -15,8 +15,11 @@ func push(direction: Vector2) -> void:
 		return
 	var motion := direction * Vector2(grid_size)
 	var final_pos := position + motion
-	if (test_move(transform.scaled_local(Vector2(0.9, 0.9)), motion, null, 0.0)
-			or not tile_map.local_to_map(final_pos) in tile_map.get_used_cells(2)):
+	var grooves := tile_map.get_used_cells(2)
+	var in_grooves := tile_map.local_to_map(position) in grooves
+	var is_final_pos_in_grooves := tile_map.local_to_map(final_pos) in grooves
+	var has_move_space := test_move(transform.scaled_local(Vector2(0.9, 0.9)), motion, null, 0.0)
+	if has_move_space or (in_grooves and not is_final_pos_in_grooves):
 		return
 
 	var tween := create_tween()
