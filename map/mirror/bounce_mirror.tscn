@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://csc8xxh2rx5at"]
+[gd_scene load_steps=7 format=3 uid="uid://csc8xxh2rx5at"]
 
 [ext_resource type="Script" path="res://map/mirror/bounce_mirror.gd" id="1_bd8yh"]
 [ext_resource type="Texture2D" uid="uid://fpoa6ac41ekq" path="res://map/mirror/MirrorObsidian.png" id="2_50xch"]
 [ext_resource type="PackedScene" uid="uid://bkvv6pmyu0yly" path="res://combat_boxes/hit_box/hit_box.tscn" id="3_avqk4"]
+[ext_resource type="PackedScene" uid="uid://y8msskprn1hr" path="res://map/mirror/reflective/reflective.tscn" id="4_h0uol"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1k06"]
-size = Vector2(8, 9)
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pavfx"]
+size = Vector2(10, 10)
 
 [node name="BounceMirror" type="StaticBody2D"]
+collision_layer = 128
 collision_mask = 11
 script = ExtResource("1_bd8yh")
 
@@ -18,13 +23,17 @@ hframes = 4
 frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_w1k06")
 
 [node name="HitBox" parent="." instance=ExtResource("3_avqk4")]
 position = Vector2(0, -4)
 
-[node name="LightBeams" type="Node2D" parent="."]
-position = Vector2(0, -4)
+[node name="Reflective" parent="." instance=ExtResource("4_h0uol")]
+position = Vector2(0, -5)
+
+[node name="CollisionShape2D" parent="Reflective" index="0"]
+shape = SubResource("RectangleShape2D_pavfx")
 
 [connection signal="dmg_taken" from="HitBox" to="." method="_on_hit_box_dmg_taken"]
+
+[editable path="Reflective"]

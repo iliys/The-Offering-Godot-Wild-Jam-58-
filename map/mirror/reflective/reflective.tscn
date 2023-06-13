@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://y8msskprn1hr"]
+
+[ext_resource type="Script" path="res://map/mirror/reflective/reflective.gd" id="1_8uamc"]
+
+[node name="Reflective" type="Area2D"]
+collision_layer = 64
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_8uamc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="LightBeams" type="Node2D" parent="."]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvtoat8mj1tbb"]
+
+[ext_resource type="Texture2D" uid="uid://csji453xk2a0c" path="res://stuff.png" id="1_2kltx"]
+[ext_resource type="PackedScene" uid="uid://y8msskprn1hr" path="res://map/mirror/reflective/reflective.tscn" id="2_pqmqh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrvg6"]
+size = Vector2(16, 16)
+
+[node name="MirrorShield" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2kltx")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="Reflective" parent="." instance=ExtResource("2_pqmqh")]
+
+[node name="CollisionShape2D" parent="Reflective" index="0"]
+shape = SubResource("RectangleShape2D_hrvg6")
+
+[editable path="Reflective"]

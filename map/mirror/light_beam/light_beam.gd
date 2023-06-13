@@ -2,14 +2,14 @@ class_name LightBeam
 extends RayCast2D
 
 
-var bounce_mirror: BounceMirror = null:
+var reflector: Area2D = null:
 	set(value):
-		if bounce_mirror == null:
-			bounce_mirror = value
+		if reflector == null:
+			reflector = value
 			return
-		if value == null or bounce_mirror != value:
-			bounce_mirror.remove_beam(get_instance_id())
-			bounce_mirror = value
+		if value == null or reflector != value:
+			reflector.clear_beams()
+			reflector = value
 
 @onready var sprite: Sprite2D = $Sprite
 @onready var collision_shape: CollisionShape2D = $HitZone/CollisionShape
@@ -24,15 +24,26 @@ func _physics_process(_delta: float) -> void:
 	var collision_point := target_position
 	if is_colliding():
 		collision_point = to_local(get_collision_point())
-		if get_collider() is BounceMirror:
-			if get_collider() != bounce_mirror:
-				bounce_mirror = get_collider()
-				var light_source := global_position.direction_to( bounce_mirror.global_position
-						).snapped(Vector2.ONE)
-				bounce_mirror.add_beam(light_source, get_instance_id())
-		elif bounce_mirror != null:
-			bounce_mirror = null
+		if get_collider() is Area2D and get_collider().get_collision_layer_value(7):
+			if get_collider() != reflector:
+				set_reflector()
+		elif reflector != null:
+			reflector = null
 
+	adjust_length(collision_point)
+
+
+func set_reflector() -> void:
+	if get_collider().light_sources.keys().size() > 2:
+		return
+
+	reflector = get_collider()
+	var light_source := global_position.direction_to(reflector.global_position
+			).snapped(Vector2.ONE)
+	reflector.add_beam(light_source, get_instance_id())
+
+
+func adjust_length(collision_point: Vector2) -> void:
 	collision_shape.shape.b.x = collision_point.length() + 2
 	end.position = collision_point
 	sprite.scale.x = collision_point.length()

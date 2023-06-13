@@ -23,3 +23,7 @@ func set_key_count(id: int, count: int) -> void:
 	var counter: TextureRect = items.get_node("Key" + str(id))
 	counter.custom_minimum_size = Vector2(counter.texture.get_width() * count,
 			counter.texture.get_height() if count > 0 else 0)
+
+
+func set_hand(hand: String, icon: Texture2D) -> void:
+	items.get_node(hand + "Hand").texture = icon

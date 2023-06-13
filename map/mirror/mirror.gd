@@ -3,7 +3,7 @@ extends StaticBody2D
 
 
 @onready var sprite: Sprite2D = $Sprite
-@onready var light_beam: LightBeam = $LightBeam
+@onready var light_beam: RayCast2D = $LightBeam
 
 
 func rotate_mirror() -> void:

@@ -36,6 +36,7 @@ func open_w_key() -> void:
 	set_open(true)
 
 
+@warning_ignore("shadowed_variable")
 func set_open(open := true) -> void:
 	self.open = open
 	animated_sprite.play("open" if open else close_anim_name)

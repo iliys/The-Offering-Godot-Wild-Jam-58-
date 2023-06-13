@@ -5,7 +5,7 @@ extends Actor
 
 signal max_hp_initialized(max_hp: int)
 signal key_count_changed(id: int, count: int)
-signal hand_updated(right: bool, icon: Texture2D)
+signal hand_updated(hand: String, icon: Texture2D)
 
 @export var attack_speed_factor := 0.0
 #@export var inertia := 128
@@ -14,14 +14,16 @@ signal hand_updated(right: bool, icon: Texture2D)
 var attacking := false
 var sword_dir := Vector2.RIGHT
 var keys := {}# {id: amount}
-var tools := {r = weapon, l = null}
 
 @onready var hand: Marker2D = $Hand
-@onready var weapon: HurtBox = $Weapon
-@onready var shove_zone: Area2D = hand.get_node("ShoveZone")
+@onready var weapon: HurtBox = hand.get_node("Weapon")
+@onready var tools := {R = weapon, L = null}
+
+@onready var shove_zone: Area2D = $ShoveZone
+@onready var shove_timer: Timer = $ShoveTimer
+
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
-@onready var shove_timer: Timer = $ShoveTimer
 
 
 func _ready() -> void:
@@ -46,6 +48,17 @@ func _die() -> void:
 	get_tree().reload_current_scene()
 
 
+@warning_ignore("shadowed_variable")
+func set_tool(hand: String, to: PackedScene, icon: Texture2D) -> void:
+	if tools[hand] != null:
+		tools[hand].queue_free()
+	var tool: Node2D = to.instantiate()
+	self.hand.add_child(tool)
+	tools[hand] = tool
+
+	hand_updated.emit(hand, icon)
+
+
 func move() -> void:
 	if not stunned:
 		var direction := Input.get_vector("left", "right", "up", "down")
@@ -59,7 +72,7 @@ func move() -> void:
 
 	#hand.rotation = lerp_angle(hand.rotation, sword_dir.angle(), swing_speed * delta)
 	hand.rotation = sword_dir.angle()
-	weapon.rotation = sword_dir.angle()
+	shove_zone.rotation = sword_dir.angle()
 	if velocity.length() > 0.0:
 		playback.travel("Run")
 	else:

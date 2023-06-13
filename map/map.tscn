@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://cvhe7ib0rey8m"]
+[gd_scene load_steps=89 format=3 uid="uid://cvhe7ib0rey8m"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_7fgs2"]
 [ext_resource type="Texture2D" uid="uid://nat2nsqdq0rh" path="res://prototyping_tiles_from_kenney.png" id="1_pk2fv"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://dwhag178pphjo" path="res://map/mirror/mirror.tscn" id="15_wpcqk"]
 [ext_resource type="PackedScene" uid="uid://csc8xxh2rx5at" path="res://map/mirror/bounce_mirror.tscn" id="16_3mowk"]
 [ext_resource type="PackedScene" uid="uid://bvxcacfvh13xx" path="res://map/gate/gate.tscn" id="16_lflmi"]
+[ext_resource type="PackedScene" uid="uid://bcdr284i7yy3s" path="res://items/mirror_shield_pickup/mirror_shield_pickup.tscn" id="28_a1op1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ebfpu"]
 texture = ExtResource("2_fuclc")
@@ -3977,7 +3978,7 @@ texture_region_size = Vector2i(48, 48)
 
 [sub_resource type="TileSet" id="TileSet_niwgg"]
 physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 3
+physics_layer_0/collision_mask = 131
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
@@ -4137,7 +4138,11 @@ Any tile drawn on layer 'Boxes' will be replaced by a box on startup.
 Enemies and triggers added without using TileMap.
 Enemies placed by TileMap? Triggers should probably remain manualy added because of signal connection."
 
+[node name="MirrorShieldPickup" parent="." instance=ExtResource("28_a1op1")]
+position = Vector2(-56, 40)
+
 [connection signal="toggled" from="ButtonTriggers/StandingTrigger" to="Doors/Door" method="set_open"]
+[connection signal="hand_updated" from="YSorted/Player" to="UI" method="set_hand"]
 [connection signal="hp_changed" from="YSorted/Player" to="UI" method="display_hp"]
 [connection signal="key_count_changed" from="YSorted/Player" to="UI" method="set_key_count"]
 [connection signal="max_hp_initialized" from="YSorted/Player" to="UI" method="init_max_hp"]

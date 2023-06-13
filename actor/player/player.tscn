@@ -6,13 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://dn3axytproq30" path="res://actor/player/Player.png" id="3_aalpr"]
 [ext_resource type="PackedScene" uid="uid://c7tkgcmbnoj4u" path="res://combat_boxes/hurt_box/hurt_box.tscn" id="4_1jns1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvcd4"]
-resource_local_to_scene = true
-size = Vector2(12, 16)
-
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_bvpkx"]
 a = Vector2(-1.44243e-05, 4)
 b = Vector2(-2.16961e-05, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvcd4"]
+resource_local_to_scene = true
+size = Vector2(12, 16)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dkgj4"]
 animation = &"idle_down"
@@ -319,7 +319,7 @@ size = Vector2(8, 12)
 
 [node name="Player" instance=ExtResource("1_wimsm")]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 139
 script = ExtResource("2_eied7")
 attack_speed_factor = 0.0
 
@@ -333,30 +333,30 @@ vframes = 3
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 
-[node name="Weapon" parent="." index="2" instance=ExtResource("4_1jns1")]
+[node name="ShoveZone" type="Area2D" parent="." index="2"]
+position = Vector2(0, -2)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShoveZone" index="0"]
+rotation = -1.5708
+shape = SubResource("SegmentShape2D_bvpkx")
+
+[node name="Hand" type="Marker2D" parent="." index="3"]
+editor_description = "Rotate to change attack direction."
 position = Vector2(0, -4)
 
-[node name="CollisionShape" parent="Weapon" index="0"]
+[node name="Weapon" parent="Hand" index="0" instance=ExtResource("4_1jns1")]
+
+[node name="CollisionShape" parent="Hand/Weapon" index="0"]
 position = Vector2(12.032, 0)
 shape = SubResource("RectangleShape2D_vvcd4")
 
-[node name="Sprite2D" type="Sprite2D" parent="Weapon" index="3"]
+[node name="Sprite2D" type="Sprite2D" parent="Hand/Weapon" index="3"]
 editor_description = "Will probably be deleted later."
 modulate = Color(1, 0, 0, 0.501961)
 position = Vector2(12.032, 0)
 scale = Vector2(0.09425, 0.125)
 texture = ExtResource("2_l3cdn")
-
-[node name="Hand" type="Marker2D" parent="." index="3"]
-editor_description = "Rotate to change attack direction."
-position = Vector2(0, -2)
-
-[node name="ShoveZone" type="Area2D" parent="Hand" index="0"]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hand/ShoveZone" index="0"]
-rotation = -1.5708
-shape = SubResource("SegmentShape2D_bvpkx")
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="4"]
 tree_root = SubResource("AnimationNodeStateMachine_0se8w")
@@ -382,9 +382,9 @@ shape = SubResource("RectangleShape2D_kwwde")
 [node name="ShoveTimer" type="Timer" parent="." index="9"]
 one_shot = true
 
-[connection signal="attack_finished" from="Weapon" to="." method="_on_weapon_attack_finished"]
-[connection signal="attacked" from="Weapon" to="." method="_on_weapon_attacked"]
+[connection signal="attack_finished" from="Hand/Weapon" to="." method="_on_weapon_attack_finished"]
+[connection signal="attacked" from="Hand/Weapon" to="." method="_on_weapon_attacked"]
 [connection signal="timeout" from="ShoveTimer" to="." method="_on_shove_timer_timeout"]
 
-[editable path="Weapon"]
+[editable path="Hand/Weapon"]
 [editable path="HitBox"]

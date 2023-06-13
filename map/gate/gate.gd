@@ -16,5 +16,6 @@ extends StaticBody2D
 @onready var detector: Area2D = $detector
 
 
+# Signal should be connected to this method.
 func set_active(value: int) -> void:
 	active = value

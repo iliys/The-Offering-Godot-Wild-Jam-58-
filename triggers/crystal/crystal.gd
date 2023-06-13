@@ -1,5 +1,5 @@
 class_name Crystal
-extends StaticBody2D
+extends Area2D
 
 
 signal active_set(on: bool)
