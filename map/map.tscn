@@ -4095,6 +4095,12 @@ position = Vector2(56, 24)
 [node name="BounceMirror3" parent="YSorted/BounceMirrors" instance=ExtResource("16_3mowk")]
 position = Vector2(56, 72)
 
+[node name="BounceMirror4" parent="YSorted/BounceMirrors" instance=ExtResource("16_3mowk")]
+position = Vector2(8, 24)
+
+[node name="BounceMirror5" parent="YSorted/BounceMirrors" instance=ExtResource("16_3mowk")]
+position = Vector2(8, 72)
+
 [node name="TallTriggers" type="Node2D" parent="YSorted"]
 y_sort_enabled = true
 

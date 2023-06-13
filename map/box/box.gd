@@ -14,7 +14,7 @@ func push(direction: Vector2) -> bool:
 	if moving:
 		return false
 	var motion := direction * Vector2(grid_size)
-	var final_pos := position + motion
+	var final_pos := (position + motion).snapped(Vector2.ONE * Vector2(grid_size) / 2.0)
 	var grooves := tile_map.get_used_cells(2)
 	var in_grooves := tile_map.local_to_map(position) in grooves
 	var is_final_pos_in_grooves := tile_map.local_to_map(final_pos) in grooves

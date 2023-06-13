@@ -17,7 +17,7 @@ var light_source := Vector2():
 		light_source = value
 		if light_source != Vector2():
 			if not has_node("LightBeam"):
-				var light_beam: LightBeam = LIGHT_BEAM.instantiate()
+				var light_beam: RayCast2D = LIGHT_BEAM.instantiate()
 				add_child(light_beam, true)
 				light_beam.position.y -= 4
 				rotate_beam()
