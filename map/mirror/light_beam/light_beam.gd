@@ -8,7 +8,7 @@ var bounce_mirror: BounceMirror = null:
 			bounce_mirror = value
 			return
 		if value == null or bounce_mirror != value:
-			bounce_mirror.light_source = Vector2()
+			bounce_mirror.remove_beam(get_instance_id())
 			bounce_mirror = value
 
 @onready var sprite: Sprite2D = $Sprite
@@ -25,9 +25,11 @@ func _physics_process(_delta: float) -> void:
 	if is_colliding():
 		collision_point = to_local(get_collision_point())
 		if get_collider() is BounceMirror:
-			bounce_mirror = get_collider()
-			bounce_mirror.light_source = global_position.direction_to(
-					bounce_mirror.global_position).snapped(Vector2.ONE)
+			if get_collider() != bounce_mirror:
+				bounce_mirror = get_collider()
+				var light_source := global_position.direction_to( bounce_mirror.global_position
+						).snapped(Vector2.ONE)
+				bounce_mirror.add_beam(light_source, get_instance_id())
 		elif bounce_mirror != null:
 			bounce_mirror = null
 

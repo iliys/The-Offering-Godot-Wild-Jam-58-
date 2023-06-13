@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cjwq17evldhg4" path="res://map/mirror/light_beam/light_beam.tscn" id="4_rorsb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2h2ex"]
-size = Vector2(8, 8)
+size = Vector2(8, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6hof"]
 resource_local_to_scene = true
@@ -23,6 +23,7 @@ hframes = 4
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_2h2ex")
 
 [node name="HitBox" parent="." instance=ExtResource("2_jnjt3")]
