@@ -4093,7 +4093,7 @@ position = Vector2(-24, 24)
 y_sort_enabled = true
 
 [node name="BounceMirror" parent="YSorted/BounceMirrors" instance=ExtResource("16_3mowk")]
-position = Vector2(-24, 8)
+position = Vector2(-24, -56)
 
 [node name="BounceMirror2" parent="YSorted/BounceMirrors" instance=ExtResource("16_3mowk")]
 position = Vector2(56, 24)
