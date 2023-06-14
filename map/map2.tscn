@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://dco1jt8jtb7n2"]
+[gd_scene load_steps=91 format=3 uid="uid://dco1jt8jtb7n2"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_kgoiv"]
 [ext_resource type="Texture2D" uid="uid://52jeqi0kgm4m" path="res://map/Floortile.png" id="2_exp6a"]
@@ -751,6 +751,13 @@ texture = ExtResource("4_5jrt4")
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_srxkw"]
+resource_name = "Wall (no collision)"
+texture = ExtResource("4_5jrt4")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jmx6q"]
 texture = ExtResource("5_4xbrt")
@@ -3995,6 +4002,7 @@ sources/7 = SubResource("TileSetAtlasSource_uiug4")
 sources/8 = SubResource("TileSetAtlasSource_pb2dk")
 sources/9 = SubResource("TileSetAtlasSource_v3773")
 sources/10 = SubResource("TileSetAtlasSource_ygdgg")
+sources/11 = SubResource("TileSetAtlasSource_srxkw")
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_kgoiv")
@@ -4031,7 +4039,14 @@ layer_4/modulate = Color(1, 1, 1, 1)
 layer_4/y_sort_enabled = false
 layer_4/y_sort_origin = 0
 layer_4/z_index = 0
-layer_4/tile_data = PackedInt32Array(-65536, 9, 0, -655366, 10, 0, -65530, 10, 0, -458752, 10, 0, 327680, 10, 0, -6, 10, 0, 393204, 10, 0, -393230, 10, 0)
+layer_4/tile_data = PackedInt32Array(-65536, 9, 0, -65530, 10, 0, 327680, 10, 0, -6, 10, 0, 393204, 10, 0, -393230, 10, 0)
+layer_5/name = "Walls (no collision)"
+layer_5/enabled = true
+layer_5/modulate = Color(1, 1, 1, 1)
+layer_5/y_sort_enabled = false
+layer_5/y_sort_origin = 0
+layer_5/z_index = 1
+layer_5/tile_data = PackedInt32Array(-458752, 11, 0, -655366, 11, 0)
 
 [node name="UI" parent="." instance=ExtResource("13_045nt")]
 
