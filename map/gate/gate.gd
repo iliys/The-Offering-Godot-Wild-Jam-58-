@@ -19,3 +19,12 @@ extends StaticBody2D
 # Signal should be connected to this method.
 func set_active(value: int) -> void:
 	active = value
+
+
+func _on_standing_trigger_toggled(on):
+	set_active(0)
+
+
+func _on_standing_trigger_body_exited(body):
+	set_active(1)
+
