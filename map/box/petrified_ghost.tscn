@@ -1,12 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1srykccvrdpq"]
+[gd_scene load_steps=3 format=3 uid="uid://b1srykccvrdpq"]
 
-[ext_resource type="PackedScene" uid="uid://bgnmflu1lbrxe" path="res://map/box/box.tscn" id="1_f4h8a"]
 [ext_resource type="Texture2D" uid="uid://k6op5r0lebby" path="res://map/box/GhostStatue.png" id="2_ellec"]
-[ext_resource type="Script" path="res://map/box/petrified_ghost.gd" id="2_t1tew"]
 
-[node name="PetrifiedGhost" instance=ExtResource("1_f4h8a")]
-script = ExtResource("2_t1tew")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddpmo"]
+size = Vector2(16, 16)
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="PetrifiedGhost" type="StaticBody2D"]
+collision_layer = 128
+collision_mask = 907
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ellec")
 vframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ddpmo")
