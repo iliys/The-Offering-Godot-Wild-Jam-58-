@@ -61,3 +61,5 @@ shape = SubResource("RectangleShape2D_o7cve")
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(1.19209e-07, 4.76837e-07)
 scale = Vector2(0.7, 0.8)
+
+[connection signal="body_entered" from="InteractZone" to="." method="_on_interact_zone_body_entered"]
