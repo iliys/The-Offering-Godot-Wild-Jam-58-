@@ -23,7 +23,6 @@ var is_ready := false
 func _ready() -> void:
 	is_ready = true
 
-
-# Signal should be connected to this method.
 func set_active(_value: bool) -> void:
 	active = not active
+
