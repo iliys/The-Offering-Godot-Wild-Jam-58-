@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://cvhe7ib0rey8m"]
+[gd_scene load_steps=93 format=3 uid="uid://cvhe7ib0rey8m"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_7fgs2"]
 [ext_resource type="Texture2D" uid="uid://nat2nsqdq0rh" path="res://prototyping_tiles_from_kenney.png" id="1_pk2fv"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://76aygha0riwo" path="res://actor/enemies/ghost/ghost.tscn" id="19_sox14"]
 [ext_resource type="PackedScene" uid="uid://v3x40textpy8" path="res://map/box/moveable_mirror/moveable_mirror.tscn" id="25_m684i"]
 [ext_resource type="PackedScene" uid="uid://bcdr284i7yy3s" path="res://items/mirror_shield_pickup/mirror_shield_pickup.tscn" id="28_a1op1"]
+[ext_resource type="PackedScene" uid="uid://dyhybv7r2jkmn" path="res://triggers/hit_trigger/colored_switch/colored_switch.tscn" id="31_hdk7a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ebfpu"]
 texture = ExtResource("2_fuclc")
@@ -4128,6 +4129,29 @@ y_sort_enabled = true
 position = Vector2(40, -56)
 active = false
 
+[node name="ColoredSwitch" parent="YSorted/Gates" instance=ExtResource("31_hdk7a")]
+
+[node name="HitTrigger" parent="YSorted/Gates/ColoredSwitch" index="0"]
+position = Vector2(-152, -56)
+
+[node name="Gate" parent="YSorted/Gates/ColoredSwitch/Red" index="0" instance=ExtResource("16_lflmi")]
+position = Vector2(-104, -72)
+
+[node name="Gate2" parent="YSorted/Gates/ColoredSwitch/Red" index="1" instance=ExtResource("16_lflmi")]
+position = Vector2(-152, -24)
+
+[node name="Gate3" parent="YSorted/Gates/ColoredSwitch/Red" index="2" instance=ExtResource("16_lflmi")]
+position = Vector2(-168, -24)
+
+[node name="Gate4" parent="YSorted/Gates/ColoredSwitch/Blue" index="0" instance=ExtResource("16_lflmi")]
+position = Vector2(-72, -72)
+
+[node name="Gate5" parent="YSorted/Gates/ColoredSwitch/Blue" index="1" instance=ExtResource("16_lflmi")]
+position = Vector2(-72, -56)
+
+[node name="Gate6" parent="YSorted/Gates/ColoredSwitch/Blue" index="2" instance=ExtResource("16_lflmi")]
+position = Vector2(-88, -56)
+
 [node name="NavigationNote" type="Label" parent="."]
 offset_left = -427.0
 offset_top = -298.0
@@ -4158,3 +4182,5 @@ position = Vector2(-56, 40)
 [connection signal="max_hp_initialized" from="YSorted/Player" to="UI" method="init_max_hp"]
 [connection signal="toggled" from="YSorted/TallTriggers/HitTrigger" to="YSorted/Gates/Gate" method="set_active"]
 [connection signal="active_set" from="YSorted/TallTriggers/Crystal" to="YSorted/TallTriggers/HitTrigger" method="take_dmg"]
+
+[editable path="YSorted/Gates/ColoredSwitch"]

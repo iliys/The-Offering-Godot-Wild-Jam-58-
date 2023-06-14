@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyhybv7r2jkmn"]
+
+[ext_resource type="PackedScene" uid="uid://cxcnpeq02ux3c" path="res://triggers/hit_trigger/hit_trigger.tscn" id="1_4nova"]
+[ext_resource type="Script" path="res://triggers/hit_trigger/colored_switch/colored_switch.gd" id="1_uutda"]
+
+[node name="ColoredSwitch" type="Node2D"]
+script = ExtResource("1_uutda")
+
+[node name="HitTrigger" parent="." instance=ExtResource("1_4nova")]
+
+[node name="Red" type="Node2D" parent="."]
+modulate = Color(1, 0.5, 0.5, 1)
+
+[node name="Blue" type="Node2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+
+[connection signal="toggled" from="HitTrigger" to="." method="_on_hit_trigger_toggled"]
