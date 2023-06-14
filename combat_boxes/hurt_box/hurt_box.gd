@@ -3,8 +3,8 @@ extends Area2D
 
 
 signal cool_down_finished
-signal attack_finished
-signal attacked
+signal finished
+signal activated
 
 @export var dmg := 1
 
@@ -23,7 +23,7 @@ func attack() -> void:
 	attack_duration.start()
 	cooling = true
 	cool_down.start()
-	attacked.emit()
+	activated.emit()
 
 
 func _on_area_entered(area: Area2D) -> void:
@@ -41,4 +41,4 @@ func _on_cool_down_timeout() -> void:
 
 func _on_attack_duration_timeout() -> void:
 	collision_shape.set_deferred("disabled", true)
-	attack_finished.emit()
+	finished.emit()

@@ -9,7 +9,7 @@ b = Vector2(0, 0)
 
 [node name="LightBeam" type="RayCast2D"]
 target_position = Vector2(1024, 0)
-collision_mask = 81
+collision_mask = 337
 collide_with_areas = true
 script = ExtResource("1_go6lc")
 
@@ -19,7 +19,7 @@ offset = Vector2(0.5, 0)
 
 [node name="HitZone" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 24
+collision_mask = 280
 
 [node name="CollisionShape" type="CollisionShape2D" parent="HitZone"]
 shape = SubResource("SegmentShape2D_ua30d")
@@ -32,6 +32,7 @@ texture = ExtResource("3_wq3xp")
 [node name="End" type="Sprite2D" parent="EndPoints"]
 texture = ExtResource("3_wq3xp")
 
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="area_entered" from="HitZone" to="." method="_on_hit_zone_area_entered"]
 [connection signal="area_exited" from="HitZone" to="." method="_on_hit_zone_area_exited"]
 [connection signal="body_entered" from="HitZone" to="." method="_on_hit_zone_body_entered"]

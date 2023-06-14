@@ -16,8 +16,7 @@ var sword_dir := Vector2.RIGHT
 var keys := {}# {id: amount}
 
 @onready var hand: Marker2D = $Hand
-@onready var weapon: HurtBox = hand.get_node("Weapon")
-@onready var tools := {R = weapon, L = null}
+@onready var tools := {R = hand.get_node("Weapon"), L = null}
 
 @onready var shove_zone: Area2D = $ShoveZone
 @onready var shove_timer: Timer = $ShoveTimer
@@ -36,6 +35,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("attack"):
 		attack()
+	elif event.is_action_pressed("block") and tools.L != null:
+		block()
 
 
 func _physics_process(_delta: float) -> void:
@@ -53,8 +54,10 @@ func set_tool(hand: String, to: PackedScene, icon: Texture2D) -> void:
 	if tools[hand] != null:
 		tools[hand].queue_free()
 	var tool: Node2D = to.instantiate()
-	self.hand.add_child(tool)
+	self.hand.call_deferred("add_child", tool)
 	tools[hand] = tool
+	tool.activated.connect(_on_tool_activated)
+	tool.finished.connect(_on_tool_finished)
 
 	hand_updated.emit(hand, icon)
 
@@ -84,8 +87,12 @@ func move() -> void:
 
 
 func attack() -> void:
-	weapon.attack()
+	tools.R.attack()
 	# Do some animation.
+
+
+func block() -> void:
+	tools.L.block()
 
 
 func shove_boxes() -> void:
@@ -108,13 +115,13 @@ func modify_key_count(id: int, modifer: int) -> void:
 	key_count_changed.emit(id, keys[id])
 
 
-func _on_weapon_attack_finished() -> void:
-	stunned = false
-
-
-func _on_weapon_attacked() -> void:
+func _on_tool_activated() -> void:
 	stunned = true
 	velocity = Vector2()
+
+
+func _on_tool_finished() -> void:
+	stunned = false
 
 
 func _on_shove_timer_timeout() -> void:

@@ -80,7 +80,9 @@ block={
 2d_physics/layer_6="Invisible"
 2d_physics/layer_7="Reflective"
 2d_physics/layer_8="Transparent"
+2d_physics/layer_9="shield"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

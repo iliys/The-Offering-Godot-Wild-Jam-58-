@@ -1,6 +1,3 @@
-# Adds beam to reflector when just hit
-# Removes beam from reflector when just exited
-# Simple!
 class_name LightBeam
 extends RayCast2D
 
@@ -20,7 +17,7 @@ var reflector: Area2D = null:
 
 
 func _ready() -> void:
-	collision_shape.shape = collision_shape.shape.duplicate()
+	collision_shape.set_deferred("shape", collision_shape.shape.duplicate())
 
 
 func _physics_process(_delta: float) -> void:
@@ -37,7 +34,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func set_reflector() -> void:
-	if get_collider().light_sources.keys().size() > 2:# If the reflector has more than two light sources
+	if get_collider().light_sources.keys().size() > 2:
 		return
 
 	reflector = get_collider()
@@ -52,12 +49,27 @@ func adjust_length(collision_point: Vector2) -> void:
 	sprite.scale.x = collision_point.length()
 
 
+func is_mirror_shield(what: Node2D) -> bool:
+	return what is StaticBody2D and what.get_collision_layer_value(9) and what != owner
+
+
+func find_child_light(from_list: Array[Node]) -> Node2D:
+	for node in from_list:
+		var node_origin: Node2D = instance_from_id(int(str(node.name)))
+		if node_origin == self:
+			return node
+
+	return null
+
+
 func _on_hit_zone_body_entered(body: Node2D) -> void:
-	pass
+	if is_mirror_shield(body):
+		body.in_light = true
 
 
 func _on_hit_zone_body_exited(body: Node2D) -> void:
-	pass
+	if is_mirror_shield(body):
+		body.in_light = false
 
 
 func _on_hit_zone_area_entered(area: Area2D) -> void:
@@ -68,3 +80,11 @@ func _on_hit_zone_area_entered(area: Area2D) -> void:
 func _on_hit_zone_area_exited(area: Area2D) -> void:
 	if area is Crystal:
 		area.on = false
+
+
+func _on_tree_exiting() -> void:
+	if reflector != null:
+		var child_light: Node2D = find_child_light(reflector.light_beams.get_children())
+
+		if child_light != null:
+			reflector.remove_beam(int(str(child_light.name)))
