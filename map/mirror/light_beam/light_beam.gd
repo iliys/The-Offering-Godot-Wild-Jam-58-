@@ -53,10 +53,18 @@ func adjust_length(collision_point: Vector2) -> void:
 
 
 func _on_hit_zone_body_entered(body: Node2D) -> void:
-	if body is Crystal:
-		body.on = true
+	pass
 
 
 func _on_hit_zone_body_exited(body: Node2D) -> void:
-	if body is Crystal:
-		body.on = false
+	pass
+
+
+func _on_hit_zone_area_entered(area: Area2D) -> void:
+	if area is Crystal:
+		area.on = true
+
+
+func _on_hit_zone_area_exited(area: Area2D) -> void:
+	if area is Crystal:
+		area.on = false

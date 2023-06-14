@@ -44,8 +44,7 @@ func remove_beam(id: int) -> void:
 	var light_beam: RayCast2D = light_beams.get_node(str(id))
 	# remove child beams
 	if light_beam.reflector != null:# If it's not even hiting anything, then it doesn't have any child beams.
-		# This line don't work!!!
-		var origin: Node2D = light_beam#instance_from_id(id)
+		var origin: Node2D = light_beam# Dont work: instance_from_id(id)
 		print("origin: ", origin)
 		origin.modulate = Color.RED
 		var child_light: Node2D = find_child_light(origin, light_beam.reflector.light_beams.get_children())
@@ -72,12 +71,12 @@ func find_child_light(of: Node2D, from_list: Array[Node]) -> Node2D:
 	return null
 
 
-func clear_beams() -> void:
-	light_sources.clear()
-	for light_beam in light_beams.get_children():
-		if light_beam.reflector != null and light_beam.reflector.light_sources.keys().size() > 0:
-			light_beam.reflector.clear_beams()
-		light_beam.queue_free()
+#func clear_beams() -> void:
+#	light_sources.clear()
+#	for light_beam in light_beams.get_children():
+#		if light_beam.reflector != null and light_beam.reflector.light_sources.keys().size() > 0:
+#			light_beam.reflector.clear_beams()
+#		light_beam.queue_free()
 
 
 static func bool2weight(value: bool) -> float:

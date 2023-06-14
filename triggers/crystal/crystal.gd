@@ -6,6 +6,7 @@ signal active_set(on: bool)
 
 var on := false:
 	set(value):
+		print("set")
 		if on == value:
 			return
 		on = value
