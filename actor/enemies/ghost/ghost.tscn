@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://76aygha0riwo"]
+
+[ext_resource type="PackedScene" uid="uid://v7g84bwm8xnk" path="res://actor/enemies/enemy.tscn" id="1_7bt61"]
+[ext_resource type="Script" path="res://actor/enemies/ghost/ghost.gd" id="2_wxnlp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_koqyd"]
+resource_local_to_scene = true
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y6nwg"]
+resource_local_to_scene = true
+radius = 128.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4o8tw"]
+resource_local_to_scene = true
+size = Vector2(17, 17)
+
+[node name="Ghost" instance=ExtResource("1_7bt61")]
+collision_mask = 267
+script = ExtResource("2_wxnlp")
+
+[node name="Sprite2D" parent="." index="0"]
+modulate = Color(0, 1, 1, 1)
+
+[node name="CollisionShape" parent="HitBox" index="0"]
+shape = SubResource("RectangleShape2D_koqyd")
+
+[node name="CollisionShape2D" parent="DetectionZone" index="0"]
+shape = SubResource("CircleShape2D_y6nwg")
+
+[node name="CollisionShape" parent="HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_4o8tw")
+
+[editable path="HitBox"]
+[editable path="DetectionZone"]
+[editable path="HurtBox"]

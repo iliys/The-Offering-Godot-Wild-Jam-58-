@@ -49,32 +49,19 @@ shape = SubResource("RectangleShape2D_criig")
 [node name="CollisionShape2D" parent="DetectionZone" index="0"]
 shape = SubResource("CircleShape2D_6f8xf")
 
-[node name="NavigationAgent" type="NavigationAgent2D" parent="." index="4"]
-avoidance_enabled = true
-radius = 6.0
-neighbor_distance = 128.0
-debug_use_custom = true
-debug_path_custom_point_size = 1.0
-
-[node name="WanderTimer" type="Timer" parent="." index="5"]
+[node name="WanderTimer" type="Timer" parent="." index="4"]
 wait_time = 10.0
 autostart = true
 
-[node name="AnimationTree" type="AnimationTree" parent="." index="6"]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
-editor_description = "Use AnimatedSprite2D or AnimationPlayer?"
-
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." index="9"]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." index="6"]
 rect = Rect2(-8, -8, 16, 16)
 
-[node name="HurtBox" parent="." index="10" instance=ExtResource("5_75g6e")]
+[node name="HurtBox" parent="." index="7" instance=ExtResource("5_75g6e")]
 
 [node name="CollisionShape" parent="HurtBox" index="0"]
 shape = SubResource("RectangleShape2D_54aqy")
 disabled = false
 
-[connection signal="velocity_computed" from="NavigationAgent" to="." method="_on_navigation_agent_velocity_computed"]
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
 
 [editable path="HitBox"]

@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://de6hrpjoxhg8d"]
+
+[ext_resource type="PackedScene" uid="uid://v7g84bwm8xnk" path="res://actor/enemies/enemy.tscn" id="1_6qcul"]
+[ext_resource type="Script" path="res://actor/enemies/ground_enemy.gd" id="2_irdsb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kiulq"]
+resource_local_to_scene = true
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kjwp2"]
+resource_local_to_scene = true
+radius = 128.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nktgb"]
+resource_local_to_scene = true
+size = Vector2(17, 17)
+
+[node name="GroundEnemy" instance=ExtResource("1_6qcul")]
+collision_mask = 907
+script = ExtResource("2_irdsb")
+
+[node name="CollisionShape" parent="HitBox" index="0"]
+shape = SubResource("RectangleShape2D_kiulq")
+
+[node name="CollisionShape2D" parent="DetectionZone" index="0"]
+shape = SubResource("CircleShape2D_kjwp2")
+
+[node name="CollisionShape" parent="HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_nktgb")
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="." index="8"]
+radius = 6.0
+neighbor_distance = 128.0
+debug_use_custom = true
+debug_path_custom_point_size = 1.0
+
+[editable path="HitBox"]
+[editable path="DetectionZone"]
+[editable path="HurtBox"]
