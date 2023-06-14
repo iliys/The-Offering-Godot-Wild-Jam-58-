@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://dwhag178pphjo" path="res://map/mirror/mirror.tscn" id="15_wpcqk"]
 [ext_resource type="PackedScene" uid="uid://csc8xxh2rx5at" path="res://map/mirror/bounce_mirror.tscn" id="16_3mowk"]
 [ext_resource type="PackedScene" uid="uid://bvxcacfvh13xx" path="res://map/gate/gate.tscn" id="16_lflmi"]
-[ext_resource type="PackedScene" path="res://actor/enemies/ground_enemy.tscn" id="18_tfjsn"]
+[ext_resource type="PackedScene" uid="uid://de6hrpjoxhg8d" path="res://actor/enemies/ground_enemy.tscn" id="18_tfjsn"]
 [ext_resource type="PackedScene" uid="uid://76aygha0riwo" path="res://actor/enemies/ghost/ghost.tscn" id="19_sox14"]
 [ext_resource type="PackedScene" uid="uid://bcdr284i7yy3s" path="res://items/mirror_shield_pickup/mirror_shield_pickup.tscn" id="28_a1op1"]
 
@@ -4068,7 +4068,7 @@ position = Vector2(-192, -24)
 y_sort_enabled = true
 
 [node name="Chest" parent="YSorted/Items" instance=ExtResource("10_fxbgc")]
-position = Vector2(-152, -24)
+position = Vector2(-104, -24)
 drops = Array[PackedScene]([ExtResource("11_ogjob"), ExtResource("12_mqaik")])
 
 [node name="Chest2" parent="YSorted/Items" instance=ExtResource("10_fxbgc")]
@@ -4080,7 +4080,7 @@ drops = Array[PackedScene]([ExtResource("15_d5h7c")])
 position = Vector2(-72, -40)
 
 [node name="Chest3" parent="YSorted/Items" instance=ExtResource("10_fxbgc")]
-position = Vector2(-119, 24)
+position = Vector2(-104, 24)
 drops = Array[PackedScene]([ExtResource("4_xlb21"), ExtResource("4_xlb21"), ExtResource("4_xlb21"), ExtResource("4_xlb21"), ExtResource("4_xlb21"), ExtResource("4_xlb21")])
 
 [node name="Boxes" type="Node2D" parent="YSorted"]
