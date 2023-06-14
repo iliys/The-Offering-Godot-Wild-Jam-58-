@@ -33,7 +33,7 @@ func add_beam(source: Vector2, id: int) -> void:
 
 	light_sources[id] = source
 	var light_beam: LightBeam = LIGHT_BEAM.instantiate()
-	light_beam.modulate.b = instance_from_id(id).modulate.b / 1.5
+	#light_beam.modulate.b = instance_from_id(id).modulate.b / 1.5
 	light_beam.name = str(id)
 	light_beams.add_child(light_beam, true)
 	rotate_beam(id)
@@ -45,13 +45,13 @@ func remove_beam(id: int) -> void:
 	# remove child beams
 	if light_beam.reflector != null:# If it's not even hiting anything, then it doesn't have any child beams.
 		var origin: Node2D = light_beam# Dont work: instance_from_id(id)
-		print("origin: ", origin)
-		origin.modulate = Color.RED
+		#print("origin: ", origin)
+		#origin.modulate = Color.RED
 		var child_light: Node2D = find_child_light(origin, light_beam.reflector.light_beams.get_children())
 
 		if child_light != null:
 			light_beam.reflector.remove_beam(int(str(child_light.name)))
-			print("removed nested beam.")
+			#print("removed nested beam.")
 
 	# Remove this beam
 	light_beam.queue_free()
@@ -61,11 +61,11 @@ func remove_beam(id: int) -> void:
 func find_child_light(of: Node2D, from_list: Array[Node]) -> Node2D:
 	for node in from_list:
 		var node_origin: Node2D = instance_from_id(int(str(node.name)))
-		node_origin.modulate = Color.BLUE
+		#node_origin.modulate = Color.BLUE
 		#get_tree().paused = true
-		print("Node origin: ", node_origin)
+		#print("Node origin: ", node_origin)
 		if node_origin == of:
-			print("success!")
+			#print("success!")
 			return node
 
 	return null
