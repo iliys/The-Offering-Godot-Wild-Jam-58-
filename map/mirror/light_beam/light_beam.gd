@@ -62,15 +62,19 @@ func find_child_light(from_list: Array[Node]) -> Node2D:
 	return null
 
 
-static func min_length(of: Vector2, min: float) -> Vector2:
-	return of if of.length() >= min else of.normalized() * min
+#static func min_length(of: Vector2, min: float) -> Vector2:
+#	return of if of.length() >= min else of.normalized() * min
 
 
 func _on_hit_zone_body_entered(body: Node2D) -> void:
 	if is_mirror_shield(body):
 		body.in_light = true
 	elif body is Ghost:
-		body.petrify()
+		var location := body.global_position.snapped((Vector2.ONE * 16.0)) + (Vector2.ONE * 8.0)
+		print(location, global_position)
+		if location.is_equal_approx(global_position):
+			location = global_position + Vector2.RIGHT.rotated(rotation) * 16.0
+		body.petrify(location)
 
 
 func _on_hit_zone_body_exited(body: Node2D) -> void:
