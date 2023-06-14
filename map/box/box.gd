@@ -4,9 +4,9 @@ extends StaticBody2D
 
 @export var slide_duration := 0.5
 
-var tile_map: TileMap = null
 var moving := false
 
+@onready var tile_map: TileMap = get_tree().get_first_node_in_group("tile_maps")
 @onready var grid_size := tile_map.tile_set.tile_size
 
 
@@ -26,6 +26,6 @@ func push(direction: Vector2) -> bool:
 	tween.tween_property(self, "position", final_pos, slide_duration)
 	tween.finished.connect(func(): moving = false, CONNECT_ONE_SHOT)
 	moving = true
-	tile_map.set_cell(1, tile_map.local_to_map(position), 1, Vector2i(1, 1))
-	tile_map.erase_cell(1, tile_map.local_to_map(final_pos))
+	#tile_map.set_cell(1, tile_map.local_to_map(position), 1, Vector2i(1, 1))
+	#tile_map.erase_cell(1, tile_map.local_to_map(final_pos))
 	return true

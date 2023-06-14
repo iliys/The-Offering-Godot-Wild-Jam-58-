@@ -28,7 +28,7 @@ func load_boxes() -> void:
 	# TileSetScenesCollectionSource might be able to do the instantiation.
 	for tile in tile_map.get_used_cells(LAYERS.BOXES):
 		var box: Box = BOX.instantiate()
-		box.tile_map = tile_map
+		#box.tile_map = tile_map
 		box.position = tile_map.map_to_local(tile)
 		boxes.add_child(box)
 		tile_map.erase_cell(LAYERS.NAVIGATION, tile)
