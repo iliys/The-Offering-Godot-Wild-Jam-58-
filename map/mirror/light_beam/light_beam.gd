@@ -1,3 +1,6 @@
+# Adds beam to reflector when just hit
+# Removes beam from reflector when just exited
+# Simple!
 class_name LightBeam
 extends RayCast2D
 
@@ -8,7 +11,7 @@ var reflector: Area2D = null:
 			reflector = value
 			return
 		if value == null or reflector != value:
-			reflector.clear_beams()
+			reflector.remove_beam(get_instance_id())
 			reflector = value
 
 @onready var sprite: Sprite2D = $Sprite
@@ -34,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func set_reflector() -> void:
-	if get_collider().light_sources.keys().size() > 2:
+	if get_collider().light_sources.keys().size() > 2:# If the reflector has more than two light sources
 		return
 
 	reflector = get_collider()
