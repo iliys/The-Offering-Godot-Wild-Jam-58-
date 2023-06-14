@@ -4296,6 +4296,7 @@ texture = ExtResource("29_b06kw")
 [connection signal="body_exited" from="Rooms/Room 1/StandingTrigger" to="Rooms/Room 1/Gate3" method="_on_standing_trigger_body_exited"]
 [connection signal="body_exited" from="Rooms/Room 1/StandingTrigger" to="Rooms/Room 1/Gate4" method="_on_standing_trigger_body_exited"]
 [connection signal="body_exited" from="Rooms/Room 1/StandingTrigger" to="Rooms/Room 1/Gate5" method="_on_standing_trigger_body_exited"]
+[connection signal="toggled" from="Rooms/Room 1/StandingTrigger" to="Rooms/Room 1/Gate" method="set_active"]
 [connection signal="toggled" from="Rooms/Room 1/StandingTrigger" to="Rooms/Room 1/Gate" method="_on_standing_trigger_toggled"]
 [connection signal="toggled" from="Rooms/Room 1/StandingTrigger" to="Rooms/Room 1/Gate2" method="_on_standing_trigger_toggled"]
 [connection signal="toggled" from="Rooms/Room 1/StandingTrigger" to="Rooms/Room 1/Gate3" method="_on_standing_trigger_toggled"]

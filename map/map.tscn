@@ -4117,6 +4117,7 @@ y_sort_enabled = true
 
 [node name="Gate" parent="YSorted/Gates" instance=ExtResource("16_lflmi")]
 position = Vector2(40, -56)
+active = false
 
 [node name="NavigationNote" type="Label" parent="."]
 offset_left = -427.0

@@ -4,6 +4,8 @@ extends StaticBody2D
 
 @export var active := true:
 	set(value):
+		if not is_ready:
+			await ready
 		if (not active) and value and (detector.get_overlapping_areas().size() > 0
 				or detector.get_overlapping_bodies().size() > 0):
 			return
@@ -11,20 +13,17 @@ extends StaticBody2D
 		collision_shape.set_deferred("disabled", not active)
 		sprite.frame = int(active)
 
+var is_ready := false
+
 @onready var sprite: Sprite2D = $Sprite
 @onready var collision_shape: CollisionShape2D = $CollisionShape
 @onready var detector: Area2D = $detector
 
 
+func _ready() -> void:
+	is_ready = true
+
+
 # Signal should be connected to this method.
-func set_active(value: int) -> void:
-	active = value
-
-
-func _on_standing_trigger_toggled(on):
-	set_active(0)
-
-
-func _on_standing_trigger_body_exited(body):
-	set_active(1)
-
+func set_active(_value: bool) -> void:
+	active = not active
