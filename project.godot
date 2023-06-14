@@ -82,6 +82,7 @@ block={
 2d_physics/layer_8="Transparent"
 2d_physics/layer_9="shield"
 2d_physics/layer_10="Obstacle"
+2d_physics/layer_11="Ghost"
 
 [rendering]
 

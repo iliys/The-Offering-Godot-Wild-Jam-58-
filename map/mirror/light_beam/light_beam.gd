@@ -44,7 +44,7 @@ func set_reflector() -> void:
 
 
 func adjust_length(collision_point: Vector2) -> void:
-	collision_shape.shape.b.x = collision_point.length() + 2
+	collision_shape.shape.b.x = collision_point.length() + collision_shape.shape.a.x + 2
 	end.position = collision_point
 	sprite.scale.x = collision_point.length()
 
@@ -62,9 +62,16 @@ func find_child_light(from_list: Array[Node]) -> Node2D:
 	return null
 
 
+static func min_length(of: Vector2, min: float) -> Vector2:
+	return of if of.length() >= min else of.normalized() * min
+
+
 func _on_hit_zone_body_entered(body: Node2D) -> void:
 	if is_mirror_shield(body):
 		body.in_light = true
+	elif body is Ghost and is_colliding() and get_collider() is Ghost:
+		var location := to_global(min_length(to_local(get_collision_point()), 16.0))
+		body.petrify(location)
 
 
 func _on_hit_zone_body_exited(body: Node2D) -> void:

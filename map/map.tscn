@@ -4062,7 +4062,7 @@ position = Vector2(-152, -72)
 position = Vector2(-248, -24)
 
 [node name="Ghost" parent="YSorted/Enemies" instance=ExtResource("19_sox14")]
-position = Vector2(-56, -56)
+position = Vector2(-192, -24)
 
 [node name="Items" type="Node2D" parent="YSorted"]
 y_sort_enabled = true
@@ -4093,7 +4093,7 @@ position = Vector2(-24, 24)
 y_sort_enabled = true
 
 [node name="BounceMirror" parent="YSorted/BounceMirrors" instance=ExtResource("16_3mowk")]
-position = Vector2(-24, -56)
+position = Vector2(-24, 8)
 
 [node name="BounceMirror2" parent="YSorted/BounceMirrors" instance=ExtResource("16_3mowk")]
 position = Vector2(56, 24)
