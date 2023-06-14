@@ -4054,10 +4054,10 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="Enemy" parent="YSorted/Enemies" instance=ExtResource("4_xlb21")]
-position = Vector2(-202, -147)
+position = Vector2(-144, -64)
 
 [node name="Enemy2" parent="YSorted/Enemies" instance=ExtResource("4_xlb21")]
-position = Vector2(-331, -81)
+position = Vector2(-248, -24)
 
 [node name="Items" type="Node2D" parent="YSorted"]
 y_sort_enabled = true
