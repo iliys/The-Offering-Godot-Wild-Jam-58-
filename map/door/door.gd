@@ -4,13 +4,14 @@ extends StaticBody2D
 
 @export var id := -1
 @export var open_by_interact := true
-@export var open := false
+@export var open := true
 
 var close_anim_name := "closed"
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite
 @onready var collision_shape: CollisionShape2D = $CollisionShape
 @onready var interation_zone: Area2D = $InteractionZone
+@onready var non_close_zone: Area2D = $NonCloseZone
 
 
 func _ready() -> void:
@@ -23,7 +24,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and interation_zone.get_overlapping_bodies().size() > 0:
 		if id >= 0:
 			open_w_key()
-		elif open_by_interact:
+		elif open_by_interact and non_close_zone.get_overlapping_bodies().size() <= 0:
 			set_open(not open)
 
 
