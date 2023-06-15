@@ -356,6 +356,9 @@ hurt_by = "Enemy"
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_kwwde")
 
+[node name="ImmunityTime" parent="HitBox" index="2"]
+wait_time = 1.0
+
 [node name="ShoveTimer" type="Timer" parent="." index="9"]
 one_shot = true
 
