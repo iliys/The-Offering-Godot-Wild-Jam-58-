@@ -20,16 +20,7 @@ func _ready() -> void:
 	set_open(open)
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("block") and interation_zone.get_overlapping_bodies().size() > 0:
-		if id >= 0:
-			open_w_key()
-		elif open_by_interact and non_close_zone.get_overlapping_bodies().size() <= 0:
-			set_open(not open)
-
-
-func open_w_key() -> void:
-	var player: Player = interation_zone.get_overlapping_bodies()[0]
+func open_w_key(player: Player) -> void:
 	if (not player.keys.has(id)) or player.keys[id] <= 0:
 		return
 
@@ -39,6 +30,17 @@ func open_w_key() -> void:
 
 @warning_ignore("shadowed_variable")
 func set_open(open := true) -> void:
+	if non_close_zone.get_overlapping_bodies().size() > 0:
+		return
 	self.open = open
 	animated_sprite.play("open" if open else close_anim_name)
 	collision_shape.set_deferred("disabled", open)
+
+
+func _on_interaction_zone_body_entered(body: Node2D) -> void:
+	if open or not open_by_interact:
+		return
+	if id >= 0:
+		open_w_key(body)
+	else:
+		set_open(true)

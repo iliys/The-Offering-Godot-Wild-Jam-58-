@@ -68,3 +68,5 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NonCloseZone"]
 shape = SubResource("RectangleShape2D_m2vli")
+
+[connection signal="body_entered" from="InteractionZone" to="." method="_on_interaction_zone_body_entered"]

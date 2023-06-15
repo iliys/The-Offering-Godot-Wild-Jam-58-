@@ -4034,11 +4034,13 @@ layer_3/tile_data = PackedInt32Array(65531, 2, 0, -131070, 2, 0, 131073, 2, 0)
 [node name="Door" parent="Doors" instance=ExtResource("9_g3rsh")]
 position = Vector2(72, -8)
 rotation = 3.14159
+open_by_interact = false
 
 [node name="Door2" parent="Doors" instance=ExtResource("9_g3rsh")]
 position = Vector2(-120, -88)
 rotation = 1.57079
 id = 1
+open = false
 
 [node name="ButtonTriggers" type="Node2D" parent="."]
 
@@ -4047,6 +4049,7 @@ position = Vector2(40, 56)
 
 [node name="StandingTrigger" parent="ButtonTriggers" instance=ExtResource("8_aefxk")]
 position = Vector2(24, -56)
+flip_bool = true
 
 [node name="YSorted" type="Node2D" parent="."]
 y_sort_enabled = true
