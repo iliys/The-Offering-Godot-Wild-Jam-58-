@@ -4140,19 +4140,16 @@ position = Vector2(-152, -56)
 position = Vector2(-104, -72)
 
 [node name="Gate2" parent="YSorted/Gates/ColoredSwitch/Red" index="1" instance=ExtResource("16_lflmi")]
-position = Vector2(-152, -24)
+position = Vector2(-88, -72)
 
 [node name="Gate3" parent="YSorted/Gates/ColoredSwitch/Red" index="2" instance=ExtResource("16_lflmi")]
+position = Vector2(-104, -56)
+
+[node name="Gate4" parent="YSorted/Gates/ColoredSwitch/Yellow" index="0" instance=ExtResource("16_lflmi")]
 position = Vector2(-168, -24)
 
-[node name="Gate4" parent="YSorted/Gates/ColoredSwitch/Blue" index="0" instance=ExtResource("16_lflmi")]
-position = Vector2(-72, -72)
-
-[node name="Gate5" parent="YSorted/Gates/ColoredSwitch/Blue" index="1" instance=ExtResource("16_lflmi")]
-position = Vector2(-72, -56)
-
-[node name="Gate6" parent="YSorted/Gates/ColoredSwitch/Blue" index="2" instance=ExtResource("16_lflmi")]
-position = Vector2(-88, -56)
+[node name="Gate5" parent="YSorted/Gates/ColoredSwitch/Yellow" index="1" instance=ExtResource("16_lflmi")]
+position = Vector2(-152, -24)
 
 [node name="NavigationNote" type="Label" parent="."]
 offset_left = -427.0

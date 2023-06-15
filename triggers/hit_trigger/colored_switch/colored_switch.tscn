@@ -1,17 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyhybv7r2jkmn"]
+[gd_scene load_steps=5 format=3 uid="uid://dyhybv7r2jkmn"]
 
 [ext_resource type="PackedScene" uid="uid://cxcnpeq02ux3c" path="res://triggers/hit_trigger/hit_trigger.tscn" id="1_4nova"]
 [ext_resource type="Script" path="res://triggers/hit_trigger/colored_switch/colored_switch.gd" id="1_uutda"]
+[ext_resource type="Texture2D" uid="uid://b6ulss4yumb7u" path="res://15.06 sprites/BlockRed.png" id="2_1tqxq"]
+[ext_resource type="Texture2D" uid="uid://dvgc0qgyxuv7x" path="res://15.06 sprites/BlockYellow.png" id="3_0yiq7"]
 
 [node name="ColoredSwitch" type="Node2D"]
 script = ExtResource("1_uutda")
+red_img = ExtResource("2_1tqxq")
+yellow_img = ExtResource("3_0yiq7")
 
 [node name="HitTrigger" parent="." instance=ExtResource("1_4nova")]
 
 [node name="Red" type="Node2D" parent="."]
 modulate = Color(1, 0.5, 0.5, 1)
 
-[node name="Blue" type="Node2D" parent="."]
-modulate = Color(0, 0, 1, 1)
+[node name="Yellow" type="Node2D" parent="."]
+modulate = Color(1, 1, 0, 1)
 
 [connection signal="toggled" from="HitTrigger" to="." method="_on_hit_trigger_toggled"]
