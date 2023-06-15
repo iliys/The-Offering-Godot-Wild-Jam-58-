@@ -31,7 +31,6 @@ wander_speed_factor = 0.5
 min_move_distance = 4.0
 speed = 32
 max_hp = 2
-is_enemy = true
 
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(1, 0, 1, 1)
