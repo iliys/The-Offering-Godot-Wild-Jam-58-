@@ -10,7 +10,7 @@ b = Vector2(10, 0)
 
 [node name="LightBeam" type="RayCast2D"]
 target_position = Vector2(1024, 0)
-collision_mask = 849
+collision_mask = 337
 collide_with_areas = true
 script = ExtResource("1_go6lc")
 

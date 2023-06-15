@@ -13,10 +13,7 @@ func _ready() -> void:
 	sprite.frame = int(on)
 
 
-func take_dmg(_dmg := 0, attacker: Actor = null) -> void:
-	if attacker is Enemy:
-		return
-
+func _on_dmg_taken(_amount: int, _attacker: Actor) -> void:
 	on = not on
 	sprite.frame = int(on)
 	toggled.emit(on)

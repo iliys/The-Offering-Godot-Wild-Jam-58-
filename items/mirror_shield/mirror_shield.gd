@@ -50,13 +50,14 @@ func _on_block_duration_timeout() -> void:
 	sprite.hide()
 	hit_box_shape.set_deferred("disabled", true)
 	collision_shape.set_deferred("disabled", true)
+	if light_beam != null:
+		light_beam.queue_free()
 	if got_hit:
 		cool_down.start()
 		got_hit = false
 	else:
+		await RenderingServer.frame_pre_draw
 		cooling = false
-	if light_beam != null:
-		light_beam.queue_free()
 
 	finished.emit()
 

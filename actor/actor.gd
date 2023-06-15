@@ -8,7 +8,6 @@ signal hp_changed(hp: int)
 @export var max_hp := 6
 #@export var dex := 300
 @export var knock_back_speed := 256
-@export var is_enemy := false
 
 var stunned := false
 
@@ -31,9 +30,6 @@ func _die() -> void:
 
 
 func _on_hit_box_dmg_taken(amount: int, attacker: Actor) -> void:
-	if is_enemy and attacker is Enemy:
-		return
-
 	hp -= amount
 	var knock_back_dir := attacker.global_position.direction_to(global_position)
 	velocity = knock_back_dir * knock_back_speed

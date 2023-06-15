@@ -4,11 +4,13 @@ extends Area2D
 
 signal toggled(on: bool)
 
+@export var flip_bool := false
+
 var on := false:
 	set(value):
 		on = value
 		sprite.frame = int(on)
-		toggled.emit(on)
+		toggled.emit(on != flip_bool)
 
 @onready var sprite: Sprite2D = $Sprite
 

@@ -70,10 +70,11 @@ func _on_hit_zone_body_entered(body: Node2D) -> void:
 	if is_mirror_shield(body):
 		body.in_light = true
 	elif body is Ghost:
-		var location := body.global_position.snapped((Vector2.ONE * 16.0)) + (Vector2.ONE * 8.0)
-		print(location, global_position)
-		if location.is_equal_approx(global_position):
-			location = global_position + Vector2.RIGHT.rotated(rotation) * 16.0
+		var distance := snappedf(global_position.distance_to(body.global_position), 16.0)
+		distance = max(16.0, distance)
+		var local_location := Vector2.RIGHT.rotated(global_rotation) * distance
+		var location := global_position + local_location
+
 		body.petrify(location)
 
 

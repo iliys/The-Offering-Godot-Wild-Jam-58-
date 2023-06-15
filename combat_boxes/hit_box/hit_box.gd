@@ -4,15 +4,18 @@ extends Area2D
 
 signal dmg_taken(amount: int, attacker: Actor)
 
+@export_enum("Player", "Enemy") var hurt_by := "Player"
+
 @onready var collision_shape: CollisionShape2D = $CollisionShape
 @onready var hurt_sound: AudioStreamPlayer2D = $HurtSound
 @onready var immunity_time: Timer = $ImmunityTime
 
 
 func take_dmg(dmg: int, attacker: Actor) -> void:
-	dmg_taken.emit(dmg, attacker)
-	hurt_sound.play()
-	start_immunity()
+	if (hurt_by == "Player" and attacker is Player) or (hurt_by == "Enemy" and attacker is Enemy):
+		dmg_taken.emit(dmg, attacker)
+		hurt_sound.play()
+		start_immunity()
 
 
 func start_immunity() -> void:
