@@ -1,14 +1,8 @@
-[gd_scene load_steps=34 format=3 uid="uid://trdy53vwdy7u"]
+[gd_scene load_steps=31 format=3 uid="uid://trdy53vwdy7u"]
 
 [ext_resource type="PackedScene" uid="uid://bx8pdba81ce1e" path="res://actor/actor.tscn" id="1_wimsm"]
 [ext_resource type="Script" path="res://actor/player/player.gd" id="2_eied7"]
-[ext_resource type="Texture2D" uid="uid://b166ubn4tmut1" path="res://icon.svg" id="2_l3cdn"]
 [ext_resource type="Texture2D" uid="uid://dn3axytproq30" path="res://actor/player/Player.png" id="3_aalpr"]
-[ext_resource type="PackedScene" uid="uid://c7tkgcmbnoj4u" path="res://combat_boxes/hurt_box/hurt_box.tscn" id="4_1jns1"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvcd4"]
-resource_local_to_scene = true
-size = Vector2(12, 16)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dkgj4"]
 animation = &"idle_down"
@@ -338,19 +332,6 @@ collision_mask = 128
 editor_description = "Rotate to change attack direction."
 position = Vector2(0, -4)
 
-[node name="Weapon" parent="Hand" index="0" instance=ExtResource("4_1jns1")]
-
-[node name="CollisionShape" parent="Hand/Weapon" index="0"]
-position = Vector2(12.032, 0)
-shape = SubResource("RectangleShape2D_vvcd4")
-
-[node name="Sprite2D" type="Sprite2D" parent="Hand/Weapon" index="3"]
-editor_description = "Will probably be deleted later."
-modulate = Color(1, 0, 0, 0.501961)
-position = Vector2(12.032, 0)
-scale = Vector2(0.09425, 0.125)
-texture = ExtResource("2_l3cdn")
-
 [node name="AnimationTree" type="AnimationTree" parent="." index="4"]
 tree_root = SubResource("AnimationNodeStateMachine_0se8w")
 anim_player = NodePath("../AnimationPlayer")
@@ -382,10 +363,7 @@ one_shot = true
 wait_time = 0.3
 one_shot = true
 
-[connection signal="activated" from="Hand/Weapon" to="." method="_on_tool_activated"]
-[connection signal="finished" from="Hand/Weapon" to="." method="_on_tool_finished"]
 [connection signal="timeout" from="ShoveTimer" to="." method="_on_shove_timer_timeout"]
 [connection signal="timeout" from="StartShoveTime" to="." method="_on_start_shove_time_timeout"]
 
-[editable path="Hand/Weapon"]
 [editable path="HitBox"]

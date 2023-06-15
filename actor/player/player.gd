@@ -17,7 +17,7 @@ var keys := {}# {id: amount}
 var shoving := false
 
 @onready var hand: Marker2D = $Hand
-@onready var tools := {R = hand.get_node("Weapon"), L = null}
+@onready var tools := {R = null, L = null}
 
 @onready var shove_ray: RayCast2D = $ShoveRay
 @onready var shove_timer: Timer = $ShoveTimer
@@ -35,7 +35,7 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if stunned:
 		return
-	if event.is_action_pressed("attack"):
+	if event.is_action_pressed("attack") and tools.R != null:
 		attack()
 	elif event.is_action_pressed("block") and tools.L != null:
 		block()

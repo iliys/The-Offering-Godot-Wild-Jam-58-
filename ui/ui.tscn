@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dlfoeec6n5mu"]
+[gd_scene load_steps=11 format=3 uid="uid://dlfoeec6n5mu"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_r22b8"]
 [ext_resource type="Texture2D" uid="uid://hgmyseb2mqrw" path="res://ui/icons/health_empty.png" id="2_bj5vg"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://6haj7wtgy5kp" path="res://ui/icons/key_1.png" id="5_wnudv"]
 [ext_resource type="Texture2D" uid="uid://b77ybbwta85hk" path="res://ui/icons/key_2.png" id="6_fqwdi"]
 [ext_resource type="Texture2D" uid="uid://dp40r2cg2ktb5" path="res://ui/icons/key_3.png" id="7_6mhp8"]
-[ext_resource type="Texture2D" uid="uid://cvcg7to7t10gq" path="res://ui/icons/sword.png" id="7_hvtuc"]
 [ext_resource type="Texture2D" uid="uid://bdqiovs6mgvwe" path="res://ui/icons/key_4.png" id="8_gue00"]
 [ext_resource type="Texture2D" uid="uid://c13rvib3elqd7" path="res://ui/icons/key_5.png" id="9_bvq3x"]
 [ext_resource type="Texture2D" uid="uid://cgfaa21onj0ee" path="res://ui/icons/key_6.png" id="10_hta5p"]
@@ -51,7 +50,6 @@ theme_override_constants/separation = 0
 [node name="RHand" type="TextureRect" parent="Items"]
 layout_mode = 2
 size_flags_horizontal = 8
-texture = ExtResource("7_hvtuc")
 stretch_mode = 2
 
 [node name="LHand" type="TextureRect" parent="Items"]
