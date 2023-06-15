@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cyfwbc73k031b"]
 
-[ext_resource type="Script" path="res://map/totems/room_zone.gd" id="1_7plbw"]
+[ext_resource type="Script" path="res://map/room_zone/room_zone.gd" id="1_7plbw"]
 [ext_resource type="Texture2D" uid="uid://bmxj5l3bd12a3" path="res://map/room_zone/black.png" id="2_ia411"]
 
 [node name="RoomZone" type="Area2D"]
