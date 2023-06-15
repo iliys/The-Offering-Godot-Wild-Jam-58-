@@ -7,7 +7,7 @@
 size = Vector2(16, 16)
 
 [node name="Box" type="AnimatableBody2D"]
-collision_layer = 512
+collision_layer = 128
 collision_mask = 907
 script = ExtResource("1_joou0")
 

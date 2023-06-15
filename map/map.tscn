@@ -4055,22 +4055,18 @@ flip_bool = true
 y_sort_enabled = true
 
 [node name="Player" parent="YSorted" instance=ExtResource("2_04bes")]
-is_enemy = null
 
 [node name="Enemies" type="Node2D" parent="YSorted"]
 y_sort_enabled = true
 
 [node name="GroundEnemy" parent="YSorted/Enemies" instance=ExtResource("18_tfjsn")]
 position = Vector2(-152, -72)
-is_enemy = true
 
 [node name="GroundEnemy2" parent="YSorted/Enemies" instance=ExtResource("18_tfjsn")]
 position = Vector2(-248, -24)
-is_enemy = true
 
 [node name="Ghost" parent="YSorted/Enemies" instance=ExtResource("19_sox14")]
 position = Vector2(-192, -24)
-is_enemy = true
 
 [node name="Items" type="Node2D" parent="YSorted"]
 y_sort_enabled = true
@@ -4096,7 +4092,6 @@ y_sort_enabled = true
 
 [node name="MoveableMirror" parent="YSorted/Boxes" instance=ExtResource("25_m684i")]
 position = Vector2(-40, -8)
-collision_mask = 395
 
 [node name="Mirror" parent="YSorted" instance=ExtResource("15_wpcqk")]
 position = Vector2(-24, 24)

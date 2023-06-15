@@ -38,7 +38,7 @@ size = Vector2(14, 9)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7cve"]
 
 [node name="Chest" type="StaticBody2D"]
-collision_layer = 512
+collision_layer = 128
 collision_mask = 11
 script = ExtResource("1_1ohf4")
 
