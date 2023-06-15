@@ -2,9 +2,10 @@ class_name Door
 extends StaticBody2D
 
 
-@export var id := -1
 @export var open_by_interact := true
-@export var open := true
+@export var id := -1
+@export var open_count := 1
+@export var needed_to_trigger := 1
 
 var close_anim_name := "closed"
 
@@ -17,7 +18,7 @@ var close_anim_name := "closed"
 func _ready() -> void:
 	if id >= 0:
 		close_anim_name = "closed_locked"
-	set_open(open)
+	test_open()
 
 
 func open_w_key(player: Player) -> void:
@@ -32,13 +33,21 @@ func open_w_key(player: Player) -> void:
 func set_open(open := true) -> void:
 	if non_close_zone.get_overlapping_bodies().size() > 0:
 		return
-	self.open = open
-	animated_sprite.play("open" if open else close_anim_name)
-	collision_shape.set_deferred("disabled", open)
+	open_count += int(open) * 2 - 1
+	test_open()
+
+
+func test_open() -> void:
+	if open_count <= 0:
+		animated_sprite.play(close_anim_name)
+		collision_shape.set_deferred("disabled", false)
+	elif open_count >= needed_to_trigger:
+		animated_sprite.play("open")
+		collision_shape.set_deferred("disabled", true)
 
 
 func _on_interaction_zone_body_entered(body: Node2D) -> void:
-	if open or not open_by_interact:
+	if open_count >= needed_to_trigger or not open_by_interact:
 		return
 	if id >= 0:
 		open_w_key(body)

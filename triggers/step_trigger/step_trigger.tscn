@@ -9,7 +9,7 @@ height = 12.0
 
 [node name="StepTrigger" type="Area2D"]
 collision_layer = 0
-collision_mask = 523
+collision_mask = 651
 monitorable = false
 script = ExtResource("1_oehn6")
 
