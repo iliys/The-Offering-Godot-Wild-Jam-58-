@@ -42,3 +42,7 @@ func set_open(open := true) -> void:
 	self.open = open
 	animated_sprite.play("open" if open else close_anim_name)
 	collision_shape.set_deferred("disabled", open)
+
+
+func _on_interaction_zone_area_entered(area):
+	pass # Replace with function body.
