@@ -14,15 +14,17 @@ signal hand_updated(hand: String, icon: Texture2D)
 var attacking := false
 var sword_dir := Vector2.RIGHT
 var keys := {}# {id: amount}
+var shoving := false
 
 @onready var hand: Marker2D = $Hand
 @onready var tools := {R = hand.get_node("Weapon"), L = null}
 
-@onready var shove_zone: Area2D = $ShoveZone
+@onready var shove_ray: RayCast2D = $ShoveRay
 @onready var shove_timer: Timer = $ShoveTimer
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
+@onready var start_shove_time: Timer = $StartShoveTime
 
 
 func _ready() -> void:
@@ -41,8 +43,18 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(_delta: float) -> void:
 	move()
-	if Input.is_action_pressed("interact") and not stunned:
-		shove_boxes()
+	
+	if not stunned:
+		shove_ray.force_raycast_update()# Heavy
+		if shove_ray.is_colliding() and shove_ray.get_collider() is Box and velocity.length() > 0:
+			if not stunned:
+				if shoving:
+					shove_box(shove_ray.get_collider())
+				elif start_shove_time.is_stopped():
+					start_shove_time.start()
+		else:
+			start_shove_time.stop()
+			shoving = false
 
 
 func _die() -> void:
@@ -70,12 +82,11 @@ func move() -> void:
 			sword_dir.x *= 2
 			sword_dir = sword_dir.normalized().snapped(Vector2(1, 1))
 		var speed_mod := attack_speed_factor if attacking else 1.0
-		#smooth_set_vel(direction * speed * speed_mod, delta)
 		velocity = direction * speed * speed_mod
 
 	#hand.rotation = lerp_angle(hand.rotation, sword_dir.angle(), swing_speed * delta)
 	hand.rotation = sword_dir.angle()
-	shove_zone.rotation = sword_dir.angle()
+	shove_ray.rotation = sword_dir.angle()
 	if velocity.length() > 0.0:
 		playback.travel("Run")
 	else:
@@ -95,14 +106,11 @@ func block() -> void:
 	tools.L.block()
 
 
-func shove_boxes() -> void:
-	for collider in shove_zone.get_overlapping_bodies():
-		if collider is Box:
-			#(collider as RigidBody2D).apply_impulse(-collision.get_normal() * inertia)# * delta)
-			if collider.push(sword_dir):
-				stunned = true
-				velocity = sword_dir * speed
-				shove_timer.start(collider.slide_duration)
+func shove_box(box: Box) -> void:
+	if box.push(sword_dir):
+		stunned = true
+		velocity = sword_dir * speed
+		shove_timer.start(box.slide_duration)
 
 
 func modify_key_count(id: int, modifer: int) -> void:
@@ -126,3 +134,8 @@ func _on_tool_finished() -> void:
 
 func _on_shove_timer_timeout() -> void:
 	stunned = false
+
+
+func _on_start_shove_time_timeout() -> void:
+	shoving = true
+	shove_box(shove_ray.get_collider())

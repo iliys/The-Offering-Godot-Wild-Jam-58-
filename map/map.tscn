@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://cvhe7ib0rey8m"]
+[gd_scene load_steps=92 format=3 uid="uid://cvhe7ib0rey8m"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_7fgs2"]
 [ext_resource type="Texture2D" uid="uid://nat2nsqdq0rh" path="res://prototyping_tiles_from_kenney.png" id="1_pk2fv"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bqrykudf6rf7s" path="res://map/navigation_visualizer.png" id="2_h7p0f"]
 [ext_resource type="Texture2D" uid="uid://bg06w8rsuyqa3" path="res://map/box/Block.png" id="3_jlbfc"]
 [ext_resource type="Texture2D" uid="uid://b361iysspdqum" path="res://map/Wall.png" id="4_ujwk5"]
-[ext_resource type="PackedScene" uid="uid://v7g84bwm8xnk" path="res://actor/enemies/enemy.tscn" id="4_xlb21"]
 [ext_resource type="Texture2D" uid="uid://c0db3ovaeehxw" path="res://map/BigWall1x3.png" id="6_gmh8w"]
 [ext_resource type="PackedScene" uid="uid://cxcnpeq02ux3c" path="res://triggers/hit_trigger/hit_trigger.tscn" id="6_s2kpy"]
 [ext_resource type="Texture2D" uid="uid://c5ul38snhstcq" path="res://map/BigWall2x2.png" id="7_ejqgp"]
@@ -4083,13 +4082,14 @@ position = Vector2(-72, -40)
 
 [node name="Chest3" parent="YSorted/Items" instance=ExtResource("10_fxbgc")]
 position = Vector2(-104, 24)
-drops = Array[PackedScene]([ExtResource("4_xlb21"), ExtResource("4_xlb21"), ExtResource("4_xlb21"), ExtResource("4_xlb21"), ExtResource("4_xlb21"), ExtResource("4_xlb21")])
+drops = Array[PackedScene]([ExtResource("18_tfjsn"), ExtResource("18_tfjsn"), ExtResource("18_tfjsn"), ExtResource("18_tfjsn"), ExtResource("18_tfjsn"), ExtResource("18_tfjsn")])
 
 [node name="Boxes" type="Node2D" parent="YSorted"]
 y_sort_enabled = true
 
 [node name="MoveableMirror" parent="YSorted/Boxes" instance=ExtResource("25_m684i")]
 position = Vector2(-40, -8)
+collision_mask = 395
 
 [node name="Mirror" parent="YSorted" instance=ExtResource("15_wpcqk")]
 position = Vector2(-24, 24)

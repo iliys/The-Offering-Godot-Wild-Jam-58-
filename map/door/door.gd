@@ -21,7 +21,7 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") and interation_zone.get_overlapping_bodies().size() > 0:
+	if event.is_action_pressed("block") and interation_zone.get_overlapping_bodies().size() > 0:
 		if id >= 0:
 			open_w_key()
 		elif open_by_interact and non_close_zone.get_overlapping_bodies().size() <= 0:
