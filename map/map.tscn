@@ -36,7 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://bcdr284i7yy3s" path="res://items/mirror_shield_pickup/mirror_shield_pickup.tscn" id="28_a1op1"]
 [ext_resource type="PackedScene" uid="uid://dyhybv7r2jkmn" path="res://triggers/hit_trigger/colored_switch/colored_switch.tscn" id="31_hdk7a"]
 [ext_resource type="PackedScene" uid="uid://bxyuchn26w83s" path="res://map/totems/totem.tscn" id="35_hw5rs"]
-[ext_resource type="PackedScene" uid="uid://cyfwbc73k031b" path="res://map/totems/room_zone.tscn" id="37_lfoqk"]
+[ext_resource type="PackedScene" uid="uid://cyfwbc73k031b" path="res://map/room_zone/room_zone.tscn" id="37_lfoqk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ebfpu"]
 texture = ExtResource("2_fuclc")
@@ -4073,13 +4073,13 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="GroundEnemy" parent="YSorted/Enemies" instance=ExtResource("18_tfjsn")]
-position = Vector2(-248, 32)
+position = Vector2(-152, -72)
 
 [node name="GroundEnemy2" parent="YSorted/Enemies" instance=ExtResource("18_tfjsn")]
-position = Vector2(-248, -24)
+position = Vector2(-248, 24)
 
 [node name="Ghost" parent="YSorted/Enemies" instance=ExtResource("19_sox14")]
-position = Vector2(-192, -24)
+position = Vector2(-248, 56)
 
 [node name="Items" type="Node2D" parent="YSorted"]
 y_sort_enabled = true
@@ -4097,7 +4097,7 @@ drops = Array[PackedScene]([ExtResource("15_d5h7c")])
 position = Vector2(-72, -40)
 
 [node name="Chest3" parent="YSorted/Items" instance=ExtResource("10_fxbgc")]
-position = Vector2(-248, 56)
+position = Vector2(-104, 24)
 drops = Array[PackedScene]([ExtResource("18_tfjsn"), ExtResource("18_tfjsn"), ExtResource("18_tfjsn"), ExtResource("18_tfjsn"), ExtResource("18_tfjsn"), ExtResource("18_tfjsn")])
 
 [node name="Key3" parent="YSorted/Items" instance=ExtResource("24_a4qqj")]
