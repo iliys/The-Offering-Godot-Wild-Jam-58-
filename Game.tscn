@@ -1,0 +1,212 @@
+[gd_scene load_steps=12 format=3 uid="uid://c8w1b32inerso"]
+
+[ext_resource type="Script" path="res://Game.gd" id="1_4d0q4"]
+[ext_resource type="Texture2D" uid="uid://nat2nsqdq0rh" path="res://prototyping_tiles_from_kenney.png" id="1_y3axc"]
+[ext_resource type="Texture2D" uid="uid://b44hv8a75qcik" path="res://ui/logos/GWJ-Full-Logo-noBG-4k.png" id="2_3rj8k"]
+[ext_resource type="Texture2D" uid="uid://dw1lsll66kb0d" path="res://ui/logos/58-Theme-Rain_or_Shrine.png" id="3_ixor0"]
+[ext_resource type="Texture2D" uid="uid://ctt32tg2ly5qh" path="res://ui/logos/Textless.png" id="4_jat0q"]
+[ext_resource type="Texture2D" uid="uid://ck3x00rhesm41" path="res://ui/logos/Windy.png" id="5_ct3oh"]
+[ext_resource type="Texture2D" uid="uid://qg0efha4g543" path="res://ui/logos/Mythical-mashup.png" id="6_pehn8"]
+
+[sub_resource type="Animation" id="Animation_pisrd"]
+resource_name = "logo"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gwj_logo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.8),
+"transitions": PackedFloat32Array(1, 1.8025, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("gwj_theme:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.9, 2.5, 5.2, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("gwj_card 1:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2, 2.5, 3.6, 4.5, 5.2, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.235294), Color(1, 1, 1, 0.235294), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("gwj_card 2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.1, 2.5, 3.6, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.235294), Color(1, 1, 1, 0.235294), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("gwj_card 3:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.2, 2.5, 3.6, 4.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.235294), Color(1, 1, 1, 0.235294), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("background:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(6.1, 8),
+"transitions": PackedFloat32Array(1, 2.73208),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pjv3i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gwj_logo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gxeea"]
+resource_name = "end"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2e0cj"]
+_data = {
+"RESET": SubResource("Animation_pjv3i"),
+"end": SubResource("Animation_gxeea"),
+"logo": SubResource("Animation_pisrd")
+}
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4d0q4")
+
+[node name="Timer 1" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Timer 2" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Timer 3" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="gwj_logo" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -90.0
+offset_right = 3840.0
+offset_bottom = 2160.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_3rj8k")
+
+[node name="gwj_theme" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.666667)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -85.0
+offset_right = 2592.0
+offset_bottom = 685.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("3_ixor0")
+
+[node name="gwj_card 1" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.141176)
+layout_mode = 0
+offset_left = 52.0
+offset_top = 72.0
+offset_right = 932.0
+offset_bottom = 1272.0
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("4_jat0q")
+
+[node name="gwj_card 2" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.117647)
+layout_mode = 0
+offset_left = 125.0
+offset_top = 72.0
+offset_right = 1005.0
+offset_bottom = 1272.0
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("5_ct3oh")
+
+[node name="gwj_card 3" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.0784313)
+layout_mode = 0
+offset_left = 198.0
+offset_top = 72.0
+offset_right = 1078.0
+offset_bottom = 1272.0
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("6_pehn8")
+
+[node name="background" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_y3axc")
+
+[node name="text" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2e0cj")
+}
