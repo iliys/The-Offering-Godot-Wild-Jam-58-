@@ -15,6 +15,7 @@ var in_light := false:
 			light_beam.position.x += 4
 		in_light = value
 var cooling := false
+var blocking := false
 var got_hit := false
 var light_beam: RayCast2D = null
 
@@ -31,6 +32,7 @@ func block() -> void:
 		return
 
 	cooling = true
+	blocking = true
 	draw_time.start()
 	activated.emit()
 
@@ -47,6 +49,7 @@ func _on_draw_time_timeout() -> void:
 
 
 func _on_block_duration_timeout() -> void:
+	blocking = false
 	sprite.hide()
 	hit_box_shape.set_deferred("disabled", true)
 	collision_shape.set_deferred("disabled", true)

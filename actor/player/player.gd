@@ -57,6 +57,12 @@ func _physics_process(_delta: float) -> void:
 			shoving = false
 
 
+func _on_hit_box_dmg_taken(dmg: int, attacker: Actor) -> void:
+	super(dmg, attacker)
+	if tools.L != null and tools.L is MirrorShield and tools.L.blocking:
+		tools.L.got_hit = true
+
+
 func _die() -> void:
 	get_tree().reload_current_scene()
 
@@ -70,6 +76,8 @@ func set_tool(hand: String, to: PackedScene, icon: Texture2D) -> void:
 	tools[hand] = tool
 	tool.activated.connect(_on_tool_activated)
 	tool.finished.connect(_on_tool_finished)
+	if tool is HurtBox:
+		tool.actor = self
 
 	hand_updated.emit(hand, icon)
 

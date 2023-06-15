@@ -4049,7 +4049,7 @@ position = Vector2(72, -8)
 rotation = 3.14159
 open_by_interact = false
 open_count = 0
-needed_to_trigger = 2
+needed_to_trigger = 4
 
 [node name="Door2" parent="Doors" instance=ExtResource("9_g3rsh")]
 position = Vector2(-120, -88)
@@ -4241,7 +4241,10 @@ shape = SubResource("RectangleShape2D_npmvw")
 [connection signal="max_hp_initialized" from="YSorted/Player" to="UI" method="init_max_hp"]
 [connection signal="toggled" from="YSorted/TallTriggers/HitTrigger" to="YSorted/Gates/Gate" method="set_active"]
 [connection signal="activated" from="YSorted/TallTriggers/Crystal" to="YSorted/Gates/Gate" method="set_active"]
-[connection signal="toggled" from="YSorted/TallTriggers/HitTrigger2" to="Doors/Door2" method="set_open"]
+[connection signal="activated" from="YSorted/Totem" to="Doors/Door" method="set_open"]
+[connection signal="activated" from="YSorted/Totem2" to="Doors/Door" method="set_open"]
+[connection signal="activated" from="YSorted/Totem3" to="Doors/Door" method="set_open"]
+[connection signal="activated" from="YSorted/Totem4" to="Doors/Door" method="set_open"]
 
 [editable path="YSorted/Gates/ColoredSwitch"]
 [editable path="RoomZone"]

@@ -9,6 +9,7 @@ signal activated
 @export var dmg := 1
 
 var cooling := false
+var actor: Actor = null
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape
 @onready var attack_sound: AudioStreamPlayer2D = $AttackSound
@@ -27,10 +28,14 @@ func attack() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.owner == owner:# Prevents the user from hitting itself.
+	@warning_ignore("shadowed_variable")
+	var actor: Actor = self.actor if self.actor != null else owner
+
+	if area.owner == actor:# Prevents the user from hitting itself.
+		print(actor)
 		return
 
-	area.take_dmg(dmg, owner)
+	area.take_dmg(dmg, actor)
 	attack_sound.play()
 
 
