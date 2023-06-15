@@ -85,12 +85,12 @@ func _on_hit_zone_body_exited(body: Node2D) -> void:
 
 func _on_hit_zone_area_entered(area: Area2D) -> void:
 	if area is Crystal:
-		area.on = true
+		area.activate()
 
 
 func _on_hit_zone_area_exited(area: Area2D) -> void:
 	if area is Crystal:
-		area.on = false
+		pass#area.on = false
 
 
 func _on_tree_exiting() -> void:

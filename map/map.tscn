@@ -4180,6 +4180,6 @@ position = Vector2(-56, 40)
 [connection signal="key_count_changed" from="YSorted/Player" to="UI" method="set_key_count"]
 [connection signal="max_hp_initialized" from="YSorted/Player" to="UI" method="init_max_hp"]
 [connection signal="toggled" from="YSorted/TallTriggers/HitTrigger" to="YSorted/Gates/Gate" method="set_active"]
-[connection signal="active_set" from="YSorted/TallTriggers/Crystal" to="YSorted/TallTriggers/HitTrigger" method="take_dmg"]
+[connection signal="activated" from="YSorted/TallTriggers/Crystal" to="YSorted/Gates/Gate" method="set_active"]
 
 [editable path="YSorted/Gates/ColoredSwitch"]

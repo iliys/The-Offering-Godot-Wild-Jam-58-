@@ -23,6 +23,5 @@ var is_ready := false
 func _ready() -> void:
 	is_ready = true
 
-func set_active(_value: bool) -> void:
+func set_active(_value := not active) -> void:
 	active = not active
-
