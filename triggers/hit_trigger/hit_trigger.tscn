@@ -20,3 +20,5 @@ texture = ExtResource("3_yesv3")
 hframes = 2
 region_enabled = true
 region_rect = Rect2(48, 160, 32, 16)
+
+[connection signal="dmg_taken" from="." to="." method="_on_dmg_taken"]
