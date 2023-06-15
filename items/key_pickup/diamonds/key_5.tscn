@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2jmsadceakdv"]
+
+[ext_resource type="PackedScene" uid="uid://dgtris6xifv56" path="res://items/key_pickup/key_pickup.tscn" id="1_rl5wj"]
+[ext_resource type="Texture2D" uid="uid://dsbux2oq3u5h0" path="res://15.06 sprites/GuardGems.png" id="2_icdq7"]
+
+[node name="Key5" instance=ExtResource("1_rl5wj")]
+id = 5
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_icdq7")
+region_rect = Rect2(32, 0, 16, 16)

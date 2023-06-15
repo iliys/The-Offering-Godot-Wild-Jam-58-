@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://cvhe7ib0rey8m"]
+[gd_scene load_steps=96 format=3 uid="uid://cvhe7ib0rey8m"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_7fgs2"]
 [ext_resource type="Texture2D" uid="uid://nat2nsqdq0rh" path="res://prototyping_tiles_from_kenney.png" id="1_pk2fv"]
@@ -28,7 +28,11 @@
 [ext_resource type="PackedScene" uid="uid://bvxcacfvh13xx" path="res://map/gate/gate.tscn" id="16_lflmi"]
 [ext_resource type="PackedScene" uid="uid://de6hrpjoxhg8d" path="res://actor/enemies/ground_enemy.tscn" id="18_tfjsn"]
 [ext_resource type="PackedScene" uid="uid://76aygha0riwo" path="res://actor/enemies/ghost/ghost.tscn" id="19_sox14"]
+[ext_resource type="PackedScene" uid="uid://bhj4f4uls53ym" path="res://items/key_pickup/diamonds/key_3.tscn" id="24_a4qqj"]
+[ext_resource type="PackedScene" uid="uid://sjjcmktm3mhw" path="res://items/key_pickup/diamonds/key_4.tscn" id="25_hwlda"]
 [ext_resource type="PackedScene" uid="uid://v3x40textpy8" path="res://map/box/moveable_mirror/moveable_mirror.tscn" id="25_m684i"]
+[ext_resource type="PackedScene" uid="uid://c2jmsadceakdv" path="res://items/key_pickup/diamonds/key_5.tscn" id="26_axbit"]
+[ext_resource type="PackedScene" uid="uid://c6qct4rji41l" path="res://items/key_pickup/diamonds/key_6.tscn" id="27_ip8e2"]
 [ext_resource type="PackedScene" uid="uid://bcdr284i7yy3s" path="res://items/mirror_shield_pickup/mirror_shield_pickup.tscn" id="28_a1op1"]
 [ext_resource type="PackedScene" uid="uid://dyhybv7r2jkmn" path="res://triggers/hit_trigger/colored_switch/colored_switch.tscn" id="31_hdk7a"]
 
@@ -4086,6 +4090,18 @@ position = Vector2(-72, -40)
 [node name="Chest3" parent="YSorted/Items" instance=ExtResource("10_fxbgc")]
 position = Vector2(-104, 24)
 drops = Array[PackedScene]([ExtResource("18_tfjsn"), ExtResource("18_tfjsn"), ExtResource("18_tfjsn"), ExtResource("18_tfjsn"), ExtResource("18_tfjsn"), ExtResource("18_tfjsn")])
+
+[node name="Key3" parent="YSorted/Items" instance=ExtResource("24_a4qqj")]
+position = Vector2(-40, -56)
+
+[node name="Key4" parent="YSorted/Items" instance=ExtResource("25_hwlda")]
+position = Vector2(-56, -56)
+
+[node name="Key5" parent="YSorted/Items" instance=ExtResource("26_axbit")]
+position = Vector2(-72, -56)
+
+[node name="Key6" parent="YSorted/Items" instance=ExtResource("27_ip8e2")]
+position = Vector2(-88, -56)
 
 [node name="Boxes" type="Node2D" parent="YSorted"]
 y_sort_enabled = true
