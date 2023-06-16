@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://ctr3wgtqwu6el"]
+[gd_scene load_steps=11 format=3 uid="uid://ctr3wgtqwu6el"]
 
 [ext_resource type="Texture2D" uid="uid://byaafye7vlcge" path="res://ui/lose_screen/Story.png" id="1_f5ftq"]
+[ext_resource type="Script" path="res://ui/lose_screen/lose_screen.gd" id="2_3c4qr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lqkpm"]
 atlas = ExtResource("1_f5ftq")
@@ -65,3 +66,6 @@ scale = Vector2(1.875, 1.875)
 sprite_frames = SubResource("SpriteFrames_1ycm2")
 animation = &"animation"
 autoplay = "animation"
+script = ExtResource("2_3c4qr")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

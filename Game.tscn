@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1i6ofxbgqbmd"]
+[gd_scene load_steps=15 format=3 uid="uid://b1i6ofxbgqbmd"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_4d0q4"]
 [ext_resource type="Texture2D" uid="uid://b44hv8a75qcik" path="res://ui/logos/GWJ-Full-Logo-noBG-4k.png" id="2_3rj8k"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://ctt32tg2ly5qh" path="res://ui/logos/Textless.png" id="4_jat0q"]
 [ext_resource type="Texture2D" uid="uid://ck3x00rhesm41" path="res://ui/logos/Windy.png" id="5_ct3oh"]
 [ext_resource type="Texture2D" uid="uid://qg0efha4g543" path="res://ui/logos/Mythical-mashup.png" id="6_pehn8"]
-[ext_resource type="Texture2D" uid="uid://cudmpnxn8l60u" path="res://New sprites/BGTest.png" id="7_bijj1"]
+[ext_resource type="Texture2D" uid="uid://e1h3uyfkxb1w" path="res://New sprites/Menu.png" id="7_u0edm"]
+[ext_resource type="PackedScene" uid="uid://bhxd4jlo3vpq5" path="res://ui/audible_button.tscn" id="8_dxsbk"]
+[ext_resource type="Texture2D" uid="uid://bpsdcvg4ecamh" path="res://ui/icons/play.png" id="8_ul3va"]
 
 [sub_resource type="Animation" id="Animation_pjv3i"]
 length = 0.001
@@ -22,27 +24,70 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 1)]
 }
-
-[sub_resource type="Animation" id="Animation_gxeea"]
-resource_name = "end"
-
-[sub_resource type="Animation" id="Animation_pjv3i"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("gwj_logo:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 1)]
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("background:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_gxeea"]
 resource_name = "end"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayButton:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_pisrd"]
 resource_name = "logo"
@@ -119,9 +164,51 @@ tracks/5/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayButton:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PlayButton:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(7, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PlayButton")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"grab_focus"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_w2lqa"]
+resource_name = "IDLE"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2e0cj"]
 _data = {
+"IDLE": SubResource("Animation_w2lqa"),
 "RESET": SubResource("Animation_pjv3i"),
 "end": SubResource("Animation_gxeea"),
 "logo": SubResource("Animation_pisrd")
@@ -166,7 +253,7 @@ scale = Vector2(0.08, 0.08)
 texture = ExtResource("2_3rj8k")
 
 [node name="gwj_theme" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.666667)
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -183,7 +270,7 @@ scale = Vector2(0.08, 0.08)
 texture = ExtResource("3_ixor0")
 
 [node name="gwj_card 1" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.141176)
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 52.0
 offset_top = 72.0
@@ -193,7 +280,7 @@ scale = Vector2(0.08, 0.08)
 texture = ExtResource("4_jat0q")
 
 [node name="gwj_card 2" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.117647)
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 125.0
 offset_top = 72.0
@@ -203,7 +290,7 @@ scale = Vector2(0.08, 0.08)
 texture = ExtResource("5_ct3oh")
 
 [node name="gwj_card 3" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.0784313)
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 198.0
 offset_top = 72.0
@@ -213,18 +300,32 @@ scale = Vector2(0.08, 0.08)
 texture = ExtResource("6_pehn8")
 
 [node name="background" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("7_bijj1")
+texture = ExtResource("7_u0edm")
 
-[node name="text" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="PlayButton" parent="." instance=ExtResource("8_dxsbk")]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("8_ul3va")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_2e0cj")
 }
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

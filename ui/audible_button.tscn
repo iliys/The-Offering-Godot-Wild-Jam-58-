@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhxd4jlo3vpq5"]
+
+[ext_resource type="Script" path="res://ui/audible_button.gd" id="1_n7r2d"]
+
+[node name="AudibleButton" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_n7r2d")
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
