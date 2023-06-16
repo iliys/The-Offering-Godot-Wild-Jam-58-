@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://cvhe7ib0rey8m"]
+[gd_scene load_steps=102 format=3 uid="uid://cvhe7ib0rey8m"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_7fgs2"]
 [ext_resource type="Texture2D" uid="uid://nat2nsqdq0rh" path="res://prototyping_tiles_from_kenney.png" id="1_pk2fv"]
@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://c6qct4rji41l" path="res://items/key_pickup/diamonds/key_6.tscn" id="27_ip8e2"]
 [ext_resource type="PackedScene" uid="uid://bcdr284i7yy3s" path="res://items/mirror_shield_pickup/mirror_shield_pickup.tscn" id="28_a1op1"]
 [ext_resource type="PackedScene" uid="uid://cxcqc2u4kst2b" path="res://items/sword_pickup/sword_pickup.tscn" id="28_yq0hk"]
+[ext_resource type="PackedScene" uid="uid://bgnmflu1lbrxe" path="res://map/box/box.tscn" id="30_ytnup"]
 [ext_resource type="PackedScene" uid="uid://dyhybv7r2jkmn" path="res://triggers/hit_trigger/colored_switch/colored_switch.tscn" id="31_hdk7a"]
 [ext_resource type="PackedScene" uid="uid://bxyuchn26w83s" path="res://map/totems/totem.tscn" id="35_hw5rs"]
 [ext_resource type="PackedScene" uid="uid://cyfwbc73k031b" path="res://map/room_zone/room_zone.tscn" id="37_lfoqk"]
@@ -4065,6 +4066,10 @@ position = Vector2(40, 56)
 [node name="StandingTrigger" parent="ButtonTriggers" instance=ExtResource("8_aefxk")]
 position = Vector2(24, -56)
 
+[node name="StandingTrigger2" parent="ButtonTriggers" instance=ExtResource("8_aefxk")]
+position = Vector2(-232, 72)
+flip_bool = true
+
 [node name="YSorted" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -4121,6 +4126,12 @@ y_sort_enabled = true
 
 [node name="MoveableMirror" parent="YSorted/Boxes" instance=ExtResource("25_m684i")]
 position = Vector2(-40, -8)
+
+[node name="Box" parent="YSorted/Boxes" instance=ExtResource("30_ytnup")]
+position = Vector2(-232, 40)
+
+[node name="Box2" parent="YSorted/Boxes" instance=ExtResource("30_ytnup")]
+position = Vector2(-232, 8)
 
 [node name="Mirror" parent="YSorted" instance=ExtResource("15_wpcqk")]
 position = Vector2(-24, 24)
@@ -4235,6 +4246,8 @@ shape = SubResource("RectangleShape2D_npmvw")
 
 [connection signal="triggered" from="ButtonTriggers/StepTrigger" to="Doors/Door" method="set_open"]
 [connection signal="toggled" from="ButtonTriggers/StandingTrigger" to="Doors/Door" method="set_open"]
+[connection signal="toggled" from="ButtonTriggers/StandingTrigger2" to="YSorted/Boxes/Box" method="set_active"]
+[connection signal="toggled" from="ButtonTriggers/StandingTrigger2" to="YSorted/Boxes/Box2" method="set_active"]
 [connection signal="hand_updated" from="YSorted/Player" to="UI" method="set_hand"]
 [connection signal="hp_changed" from="YSorted/Player" to="UI" method="display_hp"]
 [connection signal="key_count_changed" from="YSorted/Player" to="UI" method="set_key_count"]

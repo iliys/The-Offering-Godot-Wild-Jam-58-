@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://v3x40textpy8"]
+[gd_scene load_steps=5 format=3 uid="uid://v3x40textpy8"]
 
 [ext_resource type="PackedScene" uid="uid://bgnmflu1lbrxe" path="res://map/box/box.tscn" id="1_p8ur0"]
 [ext_resource type="PackedScene" uid="uid://dharx1d438le5" path="res://map/mirror/bounce_mirror_base.tscn" id="3_qug0e"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nahve"]
-size = Vector2(15, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oug6l"]
 resource_local_to_scene = true
@@ -15,11 +12,8 @@ size = Vector2(16, 16)
 
 [node name="MoveableMirror" instance=ExtResource("1_p8ur0")]
 
-[node name="Sprite2D" parent="." index="0"]
-visible = false
-
-[node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("RectangleShape2D_nahve")
+[node name="Sprite" parent="." index="0"]
+texture = null
 
 [node name="BounceMirrorBase" parent="." index="2" instance=ExtResource("3_qug0e")]
 

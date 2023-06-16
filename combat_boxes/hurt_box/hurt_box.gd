@@ -30,9 +30,7 @@ func attack() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	@warning_ignore("shadowed_variable")
 	var actor: Actor = self.actor if self.actor != null else owner
-
 	if area.owner == actor:# Prevents the user from hitting itself.
-		print(actor)
 		return
 
 	area.take_dmg(dmg, actor)

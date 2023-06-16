@@ -8,6 +8,13 @@ var moving := false
 
 @onready var tile_map: TileMap = get_tree().get_first_node_in_group("tile_maps")
 @onready var grid_size := tile_map.tile_set.tile_size
+@onready var sprite: Sprite2D = $Sprite
+@onready var collision_shape: CollisionShape2D = $CollisionShape
+
+
+func set_active(active := false) -> void:
+	sprite.visible = active
+	collision_shape.set_deferred("disabled", not active)
 
 
 func push(direction: Vector2) -> bool:
