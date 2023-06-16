@@ -4010,7 +4010,7 @@ sources/10 = SubResource("TileSetAtlasSource_ygdgg")
 size = Vector2(240, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_npmvw"]
-size = Vector2(128, 192)
+size = Vector2(96, 192)
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_7fgs2")
@@ -4059,6 +4059,17 @@ open_by_interact = false
 open_count = 0
 needed_to_trigger = 2
 
+[node name="Door3" parent="Doors" instance=ExtResource("9_g3rsh")]
+position = Vector2(-168, -24)
+
+[node name="Door4" parent="Doors" instance=ExtResource("9_g3rsh")]
+position = Vector2(-184, -24)
+rotation = 3.14159
+open_by_interact = false
+open_count = 3
+needed_to_trigger = 3
+lock_on_enter = true
+
 [node name="ButtonTriggers" type="Node2D" parent="."]
 
 [node name="StepTrigger" parent="ButtonTriggers" instance=ExtResource("7_lku5s")]
@@ -4080,10 +4091,26 @@ position = Vector2(8, -72)
 [node name="YSorted" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Player" parent="YSorted" instance=ExtResource("2_04bes")]
+[node name="RoomLeft" type="Node2D" parent="YSorted"]
 
-[node name="Enemies" type="Node2D" parent="YSorted"]
-y_sort_enabled = true
+[node name="GroundEnemy2" parent="YSorted/RoomLeft" instance=ExtResource("18_tfjsn")]
+position = Vector2(-248, 24)
+
+[node name="GroundEnemy3" parent="YSorted/RoomLeft" instance=ExtResource("18_tfjsn")]
+position = Vector2(-264, 72)
+
+[node name="GroundEnemy4" parent="YSorted/RoomLeft" instance=ExtResource("18_tfjsn")]
+position = Vector2(-232, 56)
+
+[node name="RoomRight" type="Node2D" parent="YSorted"]
+
+[node name="GroundEnemy" parent="YSorted/RoomRight" instance=ExtResource("18_tfjsn")]
+position = Vector2(-152, -72)
+
+[node name="Ghost" parent="YSorted/RoomRight" instance=ExtResource("19_sox14")]
+position = Vector2(56, -72)
+
+[node name="Player" parent="YSorted" instance=ExtResource("2_04bes")]
 
 [node name="Items" type="Node2D" parent="YSorted"]
 y_sort_enabled = true
@@ -4188,10 +4215,10 @@ position = Vector2(-88, -72)
 position = Vector2(-104, -56)
 
 [node name="Gate4" parent="YSorted/Gates/ColoredSwitch/Yellow" index="0" instance=ExtResource("16_lflmi")]
-position = Vector2(-168, -24)
+position = Vector2(-56, -72)
 
 [node name="Gate5" parent="YSorted/Gates/ColoredSwitch/Yellow" index="1" instance=ExtResource("16_lflmi")]
-position = Vector2(-152, -24)
+position = Vector2(-40, -72)
 
 [node name="Totem" parent="YSorted" instance=ExtResource("35_hw5rs")]
 position = Vector2(56, -40)
@@ -4232,25 +4259,20 @@ Enemies placed by TileMap? Triggers should probably remain manualy added because
 position = Vector2(-56, 40)
 
 [node name="RoomZone" parent="." instance=ExtResource("37_lfoqk")]
+enemies = NodePath("../YSorted/RoomRight")
 
 [node name="CollisionShape" parent="RoomZone" index="0"]
 position = Vector2(-40, 0)
 shape = SubResource("RectangleShape2D_5fxqc")
 
-[node name="GroundEnemy" parent="RoomZone/Enemies" index="0" instance=ExtResource("18_tfjsn")]
-position = Vector2(-152, -72)
-
-[node name="Ghost" parent="RoomZone/Enemies" index="1" instance=ExtResource("19_sox14")]
-position = Vector2(56, -72)
-
 [node name="RoomZone2" parent="." instance=ExtResource("37_lfoqk")]
+enemies = NodePath("../YSorted/RoomLeft")
 
 [node name="CollisionShape" parent="RoomZone2" index="0"]
-position = Vector2(-224, 0)
+position = Vector2(-240, 0)
 shape = SubResource("RectangleShape2D_npmvw")
 
-[node name="GroundEnemy2" parent="RoomZone2/Enemies" index="0" instance=ExtResource("18_tfjsn")]
-position = Vector2(-248, 24)
+[node name="Node2D" type="Node2D" parent="."]
 
 [connection signal="triggered" from="ButtonTriggers/StepTrigger" to="Doors/Door" method="set_open"]
 [connection signal="toggled" from="ButtonTriggers/StandingTrigger" to="Doors/Door" method="set_open"]
@@ -4258,6 +4280,9 @@ position = Vector2(-248, 24)
 [connection signal="toggled" from="ButtonTriggers/StandingTrigger2" to="YSorted/Boxes/Box2" method="set_active"]
 [connection signal="toggled" from="ButtonTriggers/HitTrigger" to="Doors/Door2" method="set_open"]
 [connection signal="toggled" from="ButtonTriggers/StandingTrigger3" to="Doors/Door2" method="set_open"]
+[connection signal="died" from="YSorted/RoomLeft/GroundEnemy2" to="Doors/Door4" method="set_open"]
+[connection signal="died" from="YSorted/RoomLeft/GroundEnemy3" to="Doors/Door4" method="set_open"]
+[connection signal="died" from="YSorted/RoomLeft/GroundEnemy4" to="Doors/Door4" method="set_open"]
 [connection signal="hand_updated" from="YSorted/Player" to="UI" method="set_hand"]
 [connection signal="hp_changed" from="YSorted/Player" to="UI" method="display_hp"]
 [connection signal="key_count_changed" from="YSorted/Player" to="UI" method="set_key_count"]

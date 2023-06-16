@@ -2,6 +2,7 @@ class_name Actor
 extends CharacterBody2D
 
 
+signal died
 signal hp_changed(hp: int)
 
 @export var speed := 64
@@ -16,6 +17,7 @@ var stunned := false
 		hp = min(value, max_hp)
 		if hp <= 0:
 			_die()
+			died.emit()
 
 		hp_changed.emit(hp)
 @onready var knock_back_duration: Timer = $KnockBackDuration

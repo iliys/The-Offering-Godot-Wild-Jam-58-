@@ -6,6 +6,7 @@ extends StaticBody2D
 @export var id := -1
 @export var open_count := 1
 @export var needed_to_trigger := 1
+@export var lock_on_enter := false
 
 var close_anim_name := "closed"
 
@@ -13,6 +14,7 @@ var close_anim_name := "closed"
 @onready var collision_shape: CollisionShape2D = $CollisionShape
 @onready var interation_zone: Area2D = $InteractionZone
 @onready var non_close_zone: Area2D = $NonCloseZone
+@onready var one_way: Area2D = $OneWay
 
 
 func _ready() -> void:
@@ -53,3 +55,10 @@ func _on_interaction_zone_body_entered(body: Node2D) -> void:
 		open_w_key(body)
 	else:
 		set_open(true)
+
+
+func _on_lock_zone_body_exited(body: Node2D) -> void:
+	if one_way.get_overlapping_bodies().size() <= 0 or not lock_on_enter:
+		return
+	open_count = 0
+	test_open()
