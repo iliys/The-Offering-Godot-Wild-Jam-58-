@@ -4049,18 +4049,6 @@ radius = 128.0
 resource_local_to_scene = true
 size = Vector2(17, 17)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xi36q"]
-resource_local_to_scene = true
-size = Vector2(16, 16)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_rgdwr"]
-resource_local_to_scene = true
-radius = 128.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_38edh"]
-resource_local_to_scene = true
-size = Vector2(17, 17)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8dphu"]
 resource_local_to_scene = true
 size = Vector2(16, 16)
@@ -4070,6 +4058,18 @@ resource_local_to_scene = true
 radius = 128.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wyyvb"]
+resource_local_to_scene = true
+size = Vector2(17, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xi36q"]
+resource_local_to_scene = true
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rgdwr"]
+resource_local_to_scene = true
+radius = 128.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38edh"]
 resource_local_to_scene = true
 size = Vector2(17, 17)
 
@@ -4151,9 +4151,12 @@ y_sort_enabled = true
 
 [node name="Room 0" type="Node" parent="Rooms"]
 
+[node name="Enemies" type="Node2D" parent="Rooms/Room 0"]
+
 [node name="RoomZone" parent="Rooms/Room 0" instance=ExtResource("18_l5f7m")]
 z_index = 1
 position = Vector2(245, 63)
+enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room 0/RoomZone" index="0"]
 visible = false
@@ -4202,43 +4205,46 @@ id = 6
 
 [node name="Room E" type="Node" parent="Rooms"]
 
+[node name="Enemies" type="Node2D" parent="Rooms/Room E"]
+
+[node name="GroundEnemy" parent="Rooms/Room E/Enemies" instance=ExtResource("33_avf1h")]
+position = Vector2(248, -56)
+
+[node name="CollisionShape" parent="Rooms/Room E/Enemies/GroundEnemy/HitBox" index="0"]
+shape = SubResource("RectangleShape2D_hjumm")
+
+[node name="DetectionZone" parent="Rooms/Room E/Enemies/GroundEnemy" index="3"]
+visible = false
+
+[node name="CollisionShape2D" parent="Rooms/Room E/Enemies/GroundEnemy/DetectionZone" index="0"]
+shape = SubResource("CircleShape2D_j01qh")
+
+[node name="CollisionShape" parent="Rooms/Room E/Enemies/GroundEnemy/HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_7nc65")
+
+[node name="GroundEnemy2" parent="Rooms/Room E/Enemies" instance=ExtResource("33_avf1h")]
+position = Vector2(249, 40)
+
+[node name="CollisionShape" parent="Rooms/Room E/Enemies/GroundEnemy2/HitBox" index="0"]
+shape = SubResource("RectangleShape2D_kixda")
+
+[node name="DetectionZone" parent="Rooms/Room E/Enemies/GroundEnemy2" index="3"]
+visible = false
+
+[node name="CollisionShape2D" parent="Rooms/Room E/Enemies/GroundEnemy2/DetectionZone" index="0"]
+shape = SubResource("CircleShape2D_j7ec7")
+
+[node name="CollisionShape" parent="Rooms/Room E/Enemies/GroundEnemy2/HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_40p3v")
+
 [node name="RoomZone" parent="Rooms/Room E" instance=ExtResource("18_l5f7m")]
 z_index = 1
 position = Vector2(437, 63)
+enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room E/RoomZone" index="0"]
 position = Vector2(-236, -71)
 shape = SubResource("RectangleShape2D_ymvjy")
-
-[node name="GroundEnemy" parent="Rooms/Room E/RoomZone/Enemies" index="0" instance=ExtResource("33_avf1h")]
-position = Vector2(-189, -119)
-
-[node name="CollisionShape" parent="Rooms/Room E/RoomZone/Enemies/GroundEnemy/HitBox" index="0"]
-shape = SubResource("RectangleShape2D_hjumm")
-
-[node name="DetectionZone" parent="Rooms/Room E/RoomZone/Enemies/GroundEnemy" index="3"]
-visible = false
-
-[node name="CollisionShape2D" parent="Rooms/Room E/RoomZone/Enemies/GroundEnemy/DetectionZone" index="0"]
-shape = SubResource("CircleShape2D_j01qh")
-
-[node name="CollisionShape" parent="Rooms/Room E/RoomZone/Enemies/GroundEnemy/HurtBox" index="0"]
-shape = SubResource("RectangleShape2D_7nc65")
-
-[node name="GroundEnemy2" parent="Rooms/Room E/RoomZone/Enemies" index="1" instance=ExtResource("33_avf1h")]
-position = Vector2(-188, -23)
-
-[node name="CollisionShape" parent="Rooms/Room E/RoomZone/Enemies/GroundEnemy2/HitBox" index="0"]
-shape = SubResource("RectangleShape2D_kixda")
-
-[node name="DetectionZone" parent="Rooms/Room E/RoomZone/Enemies/GroundEnemy2" index="3"]
-visible = false
-
-[node name="CollisionShape2D" parent="Rooms/Room E/RoomZone/Enemies/GroundEnemy2/DetectionZone" index="0"]
-shape = SubResource("CircleShape2D_j7ec7")
-
-[node name="CollisionShape" parent="Rooms/Room E/RoomZone/Enemies/GroundEnemy2/HurtBox" index="0"]
-shape = SubResource("RectangleShape2D_40p3v")
 
 [node name="Enemies" type="Node2D" parent="Rooms/Room E/RoomZone"]
 
@@ -4278,9 +4284,27 @@ open_count = 0
 
 [node name="Room EN" type="Node" parent="Rooms"]
 
+[node name="Enemies" type="Node2D" parent="Rooms/Room EN"]
+
+[node name="Enemy" parent="Rooms/Room EN/Enemies" instance=ExtResource("18_wakf7")]
+position = Vector2(153, -184)
+
+[node name="CollisionShape" parent="Rooms/Room EN/Enemies/Enemy/HitBox" index="0"]
+shape = SubResource("RectangleShape2D_wwxgt")
+
+[node name="DetectionZone" parent="Rooms/Room EN/Enemies/Enemy" index="3"]
+visible = false
+
+[node name="CollisionShape2D" parent="Rooms/Room EN/Enemies/Enemy/DetectionZone" index="0"]
+shape = SubResource("CircleShape2D_3pycv")
+
+[node name="CollisionShape" parent="Rooms/Room EN/Enemies/Enemy/HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_168si")
+
 [node name="RoomZone" parent="Rooms/Room EN" instance=ExtResource("18_l5f7m")]
 z_index = 1
 position = Vector2(437, -129)
+enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room EN/RoomZone" index="0"]
 visible = false
@@ -4299,21 +4323,6 @@ drops = Array[PackedScene]([ExtResource("34_ccpr6")])
 
 [node name="Crystal2" parent="Rooms/Room EN" instance=ExtResource("26_m6471")]
 position = Vector2(249, -248)
-
-[node name="Enemy" parent="Rooms/Room EN" instance=ExtResource("18_wakf7")]
-position = Vector2(153, -184)
-
-[node name="CollisionShape" parent="Rooms/Room EN/Enemy/HitBox" index="0"]
-shape = SubResource("RectangleShape2D_wwxgt")
-
-[node name="DetectionZone" parent="Rooms/Room EN/Enemy" index="3"]
-visible = false
-
-[node name="CollisionShape2D" parent="Rooms/Room EN/Enemy/DetectionZone" index="0"]
-shape = SubResource("CircleShape2D_3pycv")
-
-[node name="CollisionShape" parent="Rooms/Room EN/Enemy/HurtBox" index="0"]
-shape = SubResource("RectangleShape2D_168si")
 
 [node name="Door" parent="Rooms/Room EN" instance=ExtResource("27_hoipk")]
 position = Vector2(169, -216)
@@ -4340,44 +4349,47 @@ active = false
 
 [node name="Room ES" type="Node" parent="Rooms"]
 
+[node name="Enemies" type="Node2D" parent="Rooms/Room ES"]
+
+[node name="Ghost2" parent="Rooms/Room ES/Enemies" instance=ExtResource("31_q8g2t")]
+position = Vector2(153, 232)
+
+[node name="CollisionShape" parent="Rooms/Room ES/Enemies/Ghost2/HitBox" index="0"]
+shape = SubResource("RectangleShape2D_8dphu")
+
+[node name="DetectionZone" parent="Rooms/Room ES/Enemies/Ghost2" index="3"]
+visible = false
+
+[node name="CollisionShape2D" parent="Rooms/Room ES/Enemies/Ghost2/DetectionZone" index="0"]
+shape = SubResource("CircleShape2D_vwl23")
+
+[node name="CollisionShape" parent="Rooms/Room ES/Enemies/Ghost2/HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_wyyvb")
+
+[node name="Ghost" parent="Rooms/Room ES/Enemies" instance=ExtResource("31_q8g2t")]
+position = Vector2(185, 184)
+
+[node name="CollisionShape" parent="Rooms/Room ES/Enemies/Ghost/HitBox" index="0"]
+shape = SubResource("RectangleShape2D_xi36q")
+
+[node name="DetectionZone" parent="Rooms/Room ES/Enemies/Ghost" index="3"]
+visible = false
+
+[node name="CollisionShape2D" parent="Rooms/Room ES/Enemies/Ghost/DetectionZone" index="0"]
+shape = SubResource("CircleShape2D_rgdwr")
+
+[node name="CollisionShape" parent="Rooms/Room ES/Enemies/Ghost/HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_38edh")
+
 [node name="RoomZone" parent="Rooms/Room ES" instance=ExtResource("18_l5f7m")]
 z_index = 1
 position = Vector2(437, 255)
+enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room ES/RoomZone" index="0"]
 visible = false
 position = Vector2(-236, -71)
 shape = SubResource("RectangleShape2D_ymvjy")
-
-[node name="Ghost" parent="Rooms/Room ES/RoomZone/Enemies" index="0" instance=ExtResource("31_q8g2t")]
-position = Vector2(-252, -71)
-
-[node name="CollisionShape" parent="Rooms/Room ES/RoomZone/Enemies/Ghost/HitBox" index="0"]
-shape = SubResource("RectangleShape2D_xi36q")
-
-[node name="DetectionZone" parent="Rooms/Room ES/RoomZone/Enemies/Ghost" index="3"]
-visible = false
-
-[node name="CollisionShape2D" parent="Rooms/Room ES/RoomZone/Enemies/Ghost/DetectionZone" index="0"]
-shape = SubResource("CircleShape2D_rgdwr")
-
-[node name="CollisionShape" parent="Rooms/Room ES/RoomZone/Enemies/Ghost/HurtBox" index="0"]
-shape = SubResource("RectangleShape2D_38edh")
-
-[node name="Ghost2" parent="Rooms/Room ES/RoomZone/Enemies" index="1" instance=ExtResource("31_q8g2t")]
-position = Vector2(-284, -23)
-
-[node name="CollisionShape" parent="Rooms/Room ES/RoomZone/Enemies/Ghost2/HitBox" index="0"]
-shape = SubResource("RectangleShape2D_8dphu")
-
-[node name="DetectionZone" parent="Rooms/Room ES/RoomZone/Enemies/Ghost2" index="3"]
-visible = false
-
-[node name="CollisionShape2D" parent="Rooms/Room ES/RoomZone/Enemies/Ghost2/DetectionZone" index="0"]
-shape = SubResource("CircleShape2D_vwl23")
-
-[node name="CollisionShape" parent="Rooms/Room ES/RoomZone/Enemies/Ghost2/HurtBox" index="0"]
-shape = SubResource("RectangleShape2D_wyyvb")
 
 [node name="BounceMirror" parent="Rooms/Room ES" instance=ExtResource("24_bwca5")]
 position = Vector2(169, 236)
@@ -4436,9 +4448,12 @@ active = false
 
 [node name="Room N" type="Node" parent="Rooms"]
 
+[node name="Enemies" type="Node2D" parent="Rooms/Room N"]
+
 [node name="RoomZone" parent="Rooms/Room N" instance=ExtResource("18_l5f7m")]
 z_index = 1
 position = Vector2(245, -129)
+enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room N/RoomZone" index="0"]
 visible = false
@@ -4484,9 +4499,13 @@ position = Vector2(-71, -168)
 
 [node name="Room WN" type="Node" parent="Rooms"]
 
+[node name="Enemies" type="Node2D" parent="Rooms/Room WN"]
+position = Vector2(53, -129)
+
 [node name="RoomZone" parent="Rooms/Room WN" instance=ExtResource("18_l5f7m")]
 z_index = 1
 position = Vector2(53, -129)
+enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room WN/RoomZone" index="0"]
 visible = false
@@ -4524,9 +4543,12 @@ open_count = 0
 
 [node name="Room W" type="Node" parent="Rooms"]
 
+[node name="Enemies2" type="Node2D" parent="Rooms/Room W"]
+
 [node name="RoomZone" parent="Rooms/Room W" instance=ExtResource("18_l5f7m")]
 z_index = 1
 position = Vector2(53, 63)
+enemies = NodePath("../Enemies2")
 
 [node name="CollisionShape" parent="Rooms/Room W/RoomZone" index="0"]
 visible = false
@@ -4570,9 +4592,13 @@ open_count = 0
 
 [node name="Room WS" type="Node" parent="Rooms"]
 
+[node name="Enemies" type="Node2D" parent="Rooms/Room WS"]
+position = Vector2(53, 255)
+
 [node name="RoomZone" parent="Rooms/Room WS" instance=ExtResource("18_l5f7m")]
 z_index = 1
 position = Vector2(53, 255)
+enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room WS/RoomZone" index="0"]
 visible = false
@@ -4604,9 +4630,13 @@ open_count = 0
 
 [node name="Room S" type="Node" parent="Rooms"]
 
+[node name="Enemies" type="Node2D" parent="Rooms/Room S"]
+position = Vector2(245, 255)
+
 [node name="RoomZone" parent="Rooms/Room S" instance=ExtResource("18_l5f7m")]
 z_index = 1
 position = Vector2(245, 255)
+enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room S/RoomZone" index="0"]
 visible = false
@@ -4646,29 +4676,29 @@ position = Vector2(34, 17)
 [connection signal="activated" from="Rooms/Room ES/Crystal" to="Rooms/Room ES/Key4" method="set_active"]
 
 [editable path="Rooms/Room 0/RoomZone"]
+[editable path="Rooms/Room E/Enemies/GroundEnemy"]
+[editable path="Rooms/Room E/Enemies/GroundEnemy/HitBox"]
+[editable path="Rooms/Room E/Enemies/GroundEnemy/DetectionZone"]
+[editable path="Rooms/Room E/Enemies/GroundEnemy/HurtBox"]
+[editable path="Rooms/Room E/Enemies/GroundEnemy2"]
+[editable path="Rooms/Room E/Enemies/GroundEnemy2/HitBox"]
+[editable path="Rooms/Room E/Enemies/GroundEnemy2/DetectionZone"]
+[editable path="Rooms/Room E/Enemies/GroundEnemy2/HurtBox"]
 [editable path="Rooms/Room E/RoomZone"]
-[editable path="Rooms/Room E/RoomZone/Enemies/GroundEnemy"]
-[editable path="Rooms/Room E/RoomZone/Enemies/GroundEnemy/HitBox"]
-[editable path="Rooms/Room E/RoomZone/Enemies/GroundEnemy/DetectionZone"]
-[editable path="Rooms/Room E/RoomZone/Enemies/GroundEnemy/HurtBox"]
-[editable path="Rooms/Room E/RoomZone/Enemies/GroundEnemy2"]
-[editable path="Rooms/Room E/RoomZone/Enemies/GroundEnemy2/HitBox"]
-[editable path="Rooms/Room E/RoomZone/Enemies/GroundEnemy2/DetectionZone"]
-[editable path="Rooms/Room E/RoomZone/Enemies/GroundEnemy2/HurtBox"]
+[editable path="Rooms/Room EN/Enemies/Enemy"]
+[editable path="Rooms/Room EN/Enemies/Enemy/HitBox"]
+[editable path="Rooms/Room EN/Enemies/Enemy/DetectionZone"]
+[editable path="Rooms/Room EN/Enemies/Enemy/HurtBox"]
 [editable path="Rooms/Room EN/RoomZone"]
-[editable path="Rooms/Room EN/Enemy"]
-[editable path="Rooms/Room EN/Enemy/HitBox"]
-[editable path="Rooms/Room EN/Enemy/DetectionZone"]
-[editable path="Rooms/Room EN/Enemy/HurtBox"]
+[editable path="Rooms/Room ES/Enemies/Ghost2"]
+[editable path="Rooms/Room ES/Enemies/Ghost2/HitBox"]
+[editable path="Rooms/Room ES/Enemies/Ghost2/DetectionZone"]
+[editable path="Rooms/Room ES/Enemies/Ghost2/HurtBox"]
+[editable path="Rooms/Room ES/Enemies/Ghost"]
+[editable path="Rooms/Room ES/Enemies/Ghost/HitBox"]
+[editable path="Rooms/Room ES/Enemies/Ghost/DetectionZone"]
+[editable path="Rooms/Room ES/Enemies/Ghost/HurtBox"]
 [editable path="Rooms/Room ES/RoomZone"]
-[editable path="Rooms/Room ES/RoomZone/Enemies/Ghost"]
-[editable path="Rooms/Room ES/RoomZone/Enemies/Ghost/HitBox"]
-[editable path="Rooms/Room ES/RoomZone/Enemies/Ghost/DetectionZone"]
-[editable path="Rooms/Room ES/RoomZone/Enemies/Ghost/HurtBox"]
-[editable path="Rooms/Room ES/RoomZone/Enemies/Ghost2"]
-[editable path="Rooms/Room ES/RoomZone/Enemies/Ghost2/HitBox"]
-[editable path="Rooms/Room ES/RoomZone/Enemies/Ghost2/DetectionZone"]
-[editable path="Rooms/Room ES/RoomZone/Enemies/Ghost2/HurtBox"]
 [editable path="Rooms/Room ES/ColoredSwitch"]
 [editable path="Rooms/Room N/RoomZone"]
 [editable path="Rooms/Room WN/RoomZone"]

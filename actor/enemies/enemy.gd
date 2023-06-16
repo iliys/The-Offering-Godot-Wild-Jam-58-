@@ -12,10 +12,6 @@ extends Actor
 @onready var wander_timer: Timer = $WanderTimer
 
 
-func _ready() -> void:
-	set_physics_process(false)
-
-
 func _physics_process(_delta: float) -> void:
 	if not stunned:
 		if detection_zone.player == null:

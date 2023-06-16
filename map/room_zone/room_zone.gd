@@ -2,13 +2,18 @@ class_name RoomZone
 extends Area2D
 
 
-@onready var enemies: Node2D = $Enemies
+@export_node_path var enemies
+
 @onready var start_enemies: Array[Node] = []
 @onready var sprite: Sprite2D = $Sprite
 @onready var collision_shape: CollisionShape2D = $CollisionShape
 
 
 func _ready() -> void:
+	enemies = get_node(enemies)
+	
+	enemies.process_mode = Node.PROCESS_MODE_DISABLED
+
 	for e in enemies.get_children():
 		var enemy := dupllicate_node(e)
 		start_enemies.append(enemy)
@@ -49,8 +54,9 @@ func dupllicate_node(node: Node) -> Node:
 
 func _on_body_entered(_body: Node2D) -> void:
 	sprite.hide()
-	for enemy in enemies.get_children():
-		enemy.set_physics_process(true)
+	enemies.process_mode = Node.PROCESS_MODE_INHERIT
+#	for enemy in enemies.get_children():
+#		enemy.set_physics_process(true)
 #	if body is Player:
 #		sprite.hide()
 #		set_enabled(true)
