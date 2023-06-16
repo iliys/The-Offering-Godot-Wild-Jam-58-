@@ -2,42 +2,68 @@ class_name RoomZone
 extends Area2D
 
 
+@onready var enemies: Node2D = $Enemies
+@onready var start_enemies: Array[Node] = []
 @onready var sprite: Sprite2D = $Sprite
 @onready var collision_shape: CollisionShape2D = $CollisionShape
 
 
 func _ready() -> void:
+	for e in enemies.get_children():
+		var enemy := dupllicate_node(e)
+		start_enemies.append(enemy)
+
 	sprite.position = collision_shape.position
 	sprite.scale = (collision_shape.shape as RectangleShape2D).size
 
 
-func set_enabled(enabled: bool) -> void:
-	for body in get_overlapping_bodies():
-		if body is Enemy:
-			body.set_physics_process(enabled)
+func reset() -> void:
+	for enemy in enemies.get_children():
+		enemy.queue_free()
+
+	for e in start_enemies:
+		var enemy := dupllicate_node(e)
+		#enemy.reparent(enemies)
+		enemies.add_child(enemy)
 
 
-func is_player_in_room() -> bool:
-	for body in get_overlapping_bodies():
-		if body is Player:
-			return true
-	return false
+func dupllicate_node(node: Node) -> Node:
+	var new_node := node.duplicate()
+	new_node.owner = null
+
+	return new_node
 
 
-func _on_body_entered(body: Node2D) -> void:
-	if body is Player:
-		sprite.hide()
-		set_enabled(true)
-	elif body is Enemy:
-		if is_player_in_room():
-			body.set_physics_process(true)
-		else:
-			body.set_physics_process(false)
-		#await get_tree().create_timer(1.0).timeout
-		#set_enabled(true)
+#func set_enabled(enabled: bool) -> void:
+#	for body in get_overlapping_bodies():
+#		if body is Enemy:
+#			body.set_physics_process(enabled)
 
 
-func _on_body_exited(body: Node2D) -> void:
-	if body is Player:
-		sprite.show()
-		set_enabled(false)
+#func is_player_in_room() -> bool:
+#	for body in get_overlapping_bodies():
+#		if body is Player:
+#			return true
+#	return false
+
+
+func _on_body_entered(_body: Node2D) -> void:
+	sprite.hide()
+	for enemy in enemies.get_children():
+		enemy.set_physics_process(true)
+#	if body is Player:
+#		sprite.hide()
+#		set_enabled(true)
+#	elif body is Enemy:
+#		if is_player_in_room():
+#			body.set_physics_process(true)
+#		else:
+#			body.set_physics_process(false)
+
+
+func _on_body_exited(_body: Node2D) -> void:
+	sprite.show()
+	reset()
+#	if body is Player:
+#		sprite.show()
+#		set_enabled(false)

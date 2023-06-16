@@ -4046,7 +4046,7 @@ layer_3/tile_data = PackedInt32Array(65531, 2, 0, -131070, 2, 0, 131073, 2, 0)
 [node name="Doors" type="Node2D" parent="."]
 
 [node name="Door" parent="Doors" instance=ExtResource("9_g3rsh")]
-position = Vector2(72, -8)
+position = Vector2(72, -12)
 rotation = 3.14159
 open_by_interact = false
 open_count = 0
@@ -4085,15 +4085,6 @@ y_sort_enabled = true
 [node name="Enemies" type="Node2D" parent="YSorted"]
 y_sort_enabled = true
 
-[node name="GroundEnemy" parent="YSorted/Enemies" instance=ExtResource("18_tfjsn")]
-position = Vector2(-152, -72)
-
-[node name="GroundEnemy2" parent="YSorted/Enemies" instance=ExtResource("18_tfjsn")]
-position = Vector2(-248, 24)
-
-[node name="Ghost" parent="YSorted/Enemies" instance=ExtResource("19_sox14")]
-position = Vector2(-152, -40)
-
 [node name="Items" type="Node2D" parent="YSorted"]
 y_sort_enabled = true
 
@@ -4124,6 +4115,7 @@ position = Vector2(-72, -56)
 
 [node name="Key6" parent="YSorted/Items" instance=ExtResource("27_ip8e2")]
 position = Vector2(-88, -56)
+active = false
 
 [node name="SwordPickup" parent="YSorted/Items" instance=ExtResource("28_yq0hk")]
 position = Vector2(-112, 64)
@@ -4241,15 +4233,24 @@ position = Vector2(-56, 40)
 
 [node name="RoomZone" parent="." instance=ExtResource("37_lfoqk")]
 
-[node name="CollisionShape" parent="RoomZone" index="1"]
+[node name="CollisionShape" parent="RoomZone" index="0"]
 position = Vector2(-40, 0)
 shape = SubResource("RectangleShape2D_5fxqc")
 
+[node name="GroundEnemy" parent="RoomZone/Enemies" index="0" instance=ExtResource("18_tfjsn")]
+position = Vector2(-152, -72)
+
+[node name="Ghost" parent="RoomZone/Enemies" index="1" instance=ExtResource("19_sox14")]
+position = Vector2(56, -72)
+
 [node name="RoomZone2" parent="." instance=ExtResource("37_lfoqk")]
 
-[node name="CollisionShape" parent="RoomZone2" index="1"]
+[node name="CollisionShape" parent="RoomZone2" index="0"]
 position = Vector2(-224, 0)
 shape = SubResource("RectangleShape2D_npmvw")
+
+[node name="GroundEnemy2" parent="RoomZone2/Enemies" index="0" instance=ExtResource("18_tfjsn")]
+position = Vector2(-248, 24)
 
 [connection signal="triggered" from="ButtonTriggers/StepTrigger" to="Doors/Door" method="set_open"]
 [connection signal="toggled" from="ButtonTriggers/StandingTrigger" to="Doors/Door" method="set_open"]
@@ -4262,6 +4263,7 @@ shape = SubResource("RectangleShape2D_npmvw")
 [connection signal="key_count_changed" from="YSorted/Player" to="UI" method="set_key_count"]
 [connection signal="max_hp_initialized" from="YSorted/Player" to="UI" method="init_max_hp"]
 [connection signal="toggled" from="YSorted/TallTriggers/HitTrigger" to="YSorted/Gates/Gate" method="set_active"]
+[connection signal="activated" from="YSorted/TallTriggers/Crystal" to="YSorted/Items/Key6" method="set_active"]
 [connection signal="activated" from="YSorted/TallTriggers/Crystal" to="YSorted/Gates/Gate" method="set_active"]
 [connection signal="activated" from="YSorted/Totem" to="Doors/Door" method="set_open"]
 [connection signal="activated" from="YSorted/Totem2" to="Doors/Door" method="set_open"]
