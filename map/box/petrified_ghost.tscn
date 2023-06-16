@@ -7,6 +7,6 @@
 [node name="PetrifiedGhost" instance=ExtResource("1_fgmdp")]
 script = ExtResource("2_gjk13")
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite" parent="." index="0"]
 texture = ExtResource("2_ellec")
 vframes = 3
