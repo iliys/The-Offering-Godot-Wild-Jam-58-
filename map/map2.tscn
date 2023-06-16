@@ -4246,8 +4246,6 @@ enemies = NodePath("../Enemies")
 position = Vector2(-236, -71)
 shape = SubResource("RectangleShape2D_ymvjy")
 
-[node name="Enemies" type="Node2D" parent="Rooms/Room E/RoomZone"]
-
 [node name="BounceMirror" parent="Rooms/Room E" instance=ExtResource("24_bwca5")]
 position = Vector2(169, -4)
 
