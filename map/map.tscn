@@ -4125,7 +4125,6 @@ y_sort_enabled = true
 
 [node name="MoveableMirror" parent="YSorted/Boxes" instance=ExtResource("25_m684i")]
 position = Vector2(-40, -8)
-collision_layer = 128
 
 [node name="Box" parent="YSorted/Boxes" instance=ExtResource("30_ytnup")]
 position = Vector2(-232, 40)

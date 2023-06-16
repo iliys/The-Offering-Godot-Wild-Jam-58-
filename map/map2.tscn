@@ -32,7 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://c2jmsadceakdv" path="res://items/key_pickup/diamonds/key_5.tscn" id="30_ldrho"]
 [ext_resource type="PackedScene" uid="uid://76aygha0riwo" path="res://actor/enemies/ghost/ghost.tscn" id="31_q8g2t"]
 [ext_resource type="PackedScene" uid="uid://sjjcmktm3mhw" path="res://items/key_pickup/diamonds/key_4.tscn" id="32_co2i1"]
-[ext_resource type="PackedScene" path="res://actor/enemies/ground_enemy.tscn" id="33_avf1h"]
+[ext_resource type="PackedScene" uid="uid://de6hrpjoxhg8d" path="res://actor/enemies/ground_enemy.tscn" id="33_avf1h"]
 [ext_resource type="PackedScene" uid="uid://b4watgg4up0rc" path="res://items/key_pickup/key_2.tscn" id="34_ccpr6"]
 [ext_resource type="Texture2D" uid="uid://cxh5f5nklsmir" path="res://New sprites/Altar.png" id="35_vvxqh"]
 
