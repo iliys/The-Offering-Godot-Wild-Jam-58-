@@ -16,6 +16,6 @@ func petrify(location: Vector2) -> void:
 	queue_free()
 
 
-static func flr(value: float, step: float) -> float:
-	@warning_ignore("integer_division")
-	return float(int(value) / int(step)) * step
+#static func flr(value: float, step: float) -> float:
+#	@warning_ignore("integer_division")
+#	return float(int(value) / int(step)) * step

@@ -16,7 +16,7 @@ texture = ExtResource("2_xjljh")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_nanl4")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
