@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxyuchn26w83s"]
+[gd_scene load_steps=5 format=3 uid="uid://bxyuchn26w83s"]
 
 [ext_resource type="Script" path="res://map/totems/totem.gd" id="1_tn5k0"]
 [ext_resource type="Texture2D" uid="uid://cywq1m4cll4um" path="res://New sprites/GuardStatues.png" id="2_uuhd8"]
-[ext_resource type="Texture2D" uid="uid://dsbux2oq3u5h0" path="res://New sprites/GuardGems.png" id="3_204nk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_78jy3"]
 size = Vector2(16, 12)
@@ -18,12 +17,6 @@ script = ExtResource("1_tn5k0")
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -10)
 texture = ExtResource("2_uuhd8")
-hframes = 4
-
-[node name="DiamondSprite" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0, -14)
-texture = ExtResource("3_204nk")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

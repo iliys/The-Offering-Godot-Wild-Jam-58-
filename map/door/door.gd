@@ -57,7 +57,7 @@ func _on_interaction_zone_body_entered(body: Node2D) -> void:
 		set_open(true)
 
 
-func _on_lock_zone_body_exited(body: Node2D) -> void:
+func _on_lock_zone_body_exited(_body: Node2D) -> void:
 	if one_way.get_overlapping_bodies().size() <= 0 or not lock_on_enter:
 		return
 	open_count = 0

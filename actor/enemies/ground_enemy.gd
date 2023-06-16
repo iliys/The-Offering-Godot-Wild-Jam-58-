@@ -3,6 +3,8 @@ extends Enemy
 
 
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 
 
 func _go_to_location(location: Vector2, speed_mod := 1.0) -> void:
@@ -13,3 +15,11 @@ func _go_to_location(location: Vector2, speed_mod := 1.0) -> void:
 		velocity = direction * speed * speed_mod
 	else:
 		velocity = Vector2()
+
+	animate()
+
+
+func animate() -> void:
+	animation_tree.set("parameters/Run/blend_position", velocity)
+	if velocity.length() > 0:
+		playback.travel("Run")

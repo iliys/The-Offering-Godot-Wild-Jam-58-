@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bx8pdba81ce1e" path="res://actor/actor.tscn" id="1_wimsm"]
 [ext_resource type="Script" path="res://actor/player/player.gd" id="2_eied7"]
-[ext_resource type="Texture2D" uid="uid://dn3axytproq30" path="res://actor/player/Player.png" id="3_aalpr"]
+[ext_resource type="Texture2D" uid="uid://bvcvrvxtrkgcc" path="res://New sprites/Player.png" id="3_vygrq"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dkgj4"]
 animation = &"idle_down"
@@ -314,7 +314,7 @@ script = ExtResource("2_eied7")
 attack_speed_factor = 0.0
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("3_aalpr")
+texture = ExtResource("3_vygrq")
 offset = Vector2(0, -6)
 hframes = 2
 vframes = 3

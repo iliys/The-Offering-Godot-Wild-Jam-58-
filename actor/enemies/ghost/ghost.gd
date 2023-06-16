@@ -4,9 +4,12 @@ extends Enemy
 
 const PETRIFIED_GHOST := preload("res://map/box/petrified_ghost.tscn")
 
+@onready var animation_tree: AnimationTree = $AnimationTree
+
 
 func _go_to_location(location: Vector2, speed_mod := 1.0) -> void:
 	velocity = global_position.direction_to(location) * speed * speed_mod
+	animation_tree.set("parameters/Move/blend_position", velocity)
 
 
 func petrify(location: Vector2) -> void:

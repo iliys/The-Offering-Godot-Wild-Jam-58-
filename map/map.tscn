@@ -4184,7 +4184,7 @@ position = Vector2(8, 72)
 y_sort_enabled = true
 
 [node name="HitTrigger" parent="YSorted/TallTriggers" instance=ExtResource("6_s2kpy")]
-position = Vector2(-96, 54)
+position = Vector2(-88, 56)
 on = true
 
 [node name="Crystal" parent="YSorted/TallTriggers" instance=ExtResource("10_rwe7k")]
@@ -4262,6 +4262,7 @@ position = Vector2(-56, 40)
 enemies = NodePath("../YSorted/RoomRight")
 
 [node name="CollisionShape" parent="RoomZone" index="0"]
+visible = false
 position = Vector2(-40, 0)
 shape = SubResource("RectangleShape2D_5fxqc")
 
