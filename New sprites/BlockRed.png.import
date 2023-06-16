@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvgc0qgyxuv7x"
-path="res://.godot/imported/BlockYellow.png-9973c81c539acab25951acc61ee0bbda.ctex"
+uid="uid://b6ulss4yumb7u"
+path="res://.godot/imported/BlockRed.png-94f8559549ed16f46261fc58ed80dc09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://15.06 sprites/BlockYellow.png"
-dest_files=["res://.godot/imported/BlockYellow.png-9973c81c539acab25951acc61ee0bbda.ctex"]
+source_file="res://New sprites/BlockRed.png"
+dest_files=["res://.godot/imported/BlockRed.png-94f8559549ed16f46261fc58ed80dc09.ctex"]
 
 [params]
 

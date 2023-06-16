@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7ebpy6rgpann"
-path="res://.godot/imported/Snakeman.png-aef8f17384895396c6119535a455fea7.ctex"
+uid="uid://bjoccpi73icbx"
+path="res://.godot/imported/BigMirror.png-c2bc323a33c4ea1f9b385eacd701fd91.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://15.06 sprites/Snakeman.png"
-dest_files=["res://.godot/imported/Snakeman.png-aef8f17384895396c6119535a455fea7.ctex"]
+source_file="res://New sprites/BigMirror.png"
+dest_files=["res://.godot/imported/BigMirror.png-c2bc323a33c4ea1f9b385eacd701fd91.ctex"]
 
 [params]
 

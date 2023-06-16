@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjoccpi73icbx"
-path="res://.godot/imported/BigMirror.png-fcffe616bc6964d1336b8becb5da4c77.ctex"
+uid="uid://cyqf7okya5lnq"
+path="res://.godot/imported/Switch.png-59732b30d68b89d065226fc40d4fe684.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://15.06 sprites/BigMirror.png"
-dest_files=["res://.godot/imported/BigMirror.png-fcffe616bc6964d1336b8becb5da4c77.ctex"]
+source_file="res://New sprites/Switch.png"
+dest_files=["res://.godot/imported/Switch.png-59732b30d68b89d065226fc40d4fe684.ctex"]
 
 [params]
 

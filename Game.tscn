@@ -1,12 +1,30 @@
 [gd_scene load_steps=12 format=3 uid="uid://b1i6ofxbgqbmd"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_4d0q4"]
-[ext_resource type="Texture2D" uid="uid://nat2nsqdq0rh" path="res://prototyping_tiles_from_kenney.png" id="1_y3axc"]
 [ext_resource type="Texture2D" uid="uid://b44hv8a75qcik" path="res://ui/logos/GWJ-Full-Logo-noBG-4k.png" id="2_3rj8k"]
 [ext_resource type="Texture2D" uid="uid://dw1lsll66kb0d" path="res://ui/logos/58-Theme-Rain_or_Shrine.png" id="3_ixor0"]
 [ext_resource type="Texture2D" uid="uid://ctt32tg2ly5qh" path="res://ui/logos/Textless.png" id="4_jat0q"]
 [ext_resource type="Texture2D" uid="uid://ck3x00rhesm41" path="res://ui/logos/Windy.png" id="5_ct3oh"]
 [ext_resource type="Texture2D" uid="uid://qg0efha4g543" path="res://ui/logos/Mythical-mashup.png" id="6_pehn8"]
+[ext_resource type="Texture2D" uid="uid://cudmpnxn8l60u" path="res://New sprites/BGTest.png" id="7_bijj1"]
+
+[sub_resource type="Animation" id="Animation_pjv3i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gwj_logo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gxeea"]
+resource_name = "end"
 
 [sub_resource type="Animation" id="Animation_pjv3i"]
 length = 0.001
@@ -199,7 +217,7 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_y3axc")
+texture = ExtResource("7_bijj1")
 
 [node name="text" type="Label" parent="."]
 layout_mode = 0

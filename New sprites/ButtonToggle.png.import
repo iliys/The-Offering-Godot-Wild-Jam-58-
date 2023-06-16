@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cywq1m4cll4um"
-path="res://.godot/imported/GuardStatues.png-690882d68425ff80c5a63b169b30103f.ctex"
+uid="uid://db640i10q7cdo"
+path="res://.godot/imported/ButtonToggle.png-318b3c6175004fed620c8484c7f5fd89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://15.06 sprites/GuardStatues.png"
-dest_files=["res://.godot/imported/GuardStatues.png-690882d68425ff80c5a63b169b30103f.ctex"]
+source_file="res://New sprites/ButtonToggle.png"
+dest_files=["res://.godot/imported/ButtonToggle.png-318b3c6175004fed620c8484c7f5fd89.ctex"]
 
 [params]
 
