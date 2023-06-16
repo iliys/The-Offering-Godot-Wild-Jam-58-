@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsbux2oq3u5h0"
-path="res://.godot/imported/GuardGems.png-5e65bcf056ec0b46e5d280e437927b05.ctex"
+uid="uid://cywq1m4cll4um"
+path="res://.godot/imported/GuardStatues.png-521621f08002a51430d2fe6a9bf93db1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://15.06 sprites/GuardGems.png"
-dest_files=["res://.godot/imported/GuardGems.png-5e65bcf056ec0b46e5d280e437927b05.ctex"]
+source_file="res://New sprites/GuardStatues.png"
+dest_files=["res://.godot/imported/GuardStatues.png-521621f08002a51430d2fe6a9bf93db1.ctex"]
 
 [params]
 

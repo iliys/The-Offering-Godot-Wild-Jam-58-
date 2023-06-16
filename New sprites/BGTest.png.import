@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db640i10q7cdo"
-path="res://.godot/imported/ButtonToggle.png-65eb8ced2804c3cf3509f8b6d5504bbc.ctex"
+uid="uid://cudmpnxn8l60u"
+path="res://.godot/imported/BGTest.png-267b922eb9da62e7be612879ccab8ae6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://15.06 sprites/ButtonToggle.png"
-dest_files=["res://.godot/imported/ButtonToggle.png-65eb8ced2804c3cf3509f8b6d5504bbc.ctex"]
+source_file="res://New sprites/BGTest.png"
+dest_files=["res://.godot/imported/BGTest.png-267b922eb9da62e7be612879ccab8ae6.ctex"]
 
 [params]
 

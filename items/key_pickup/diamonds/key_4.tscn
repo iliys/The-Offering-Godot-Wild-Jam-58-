@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://sjjcmktm3mhw"]
 
 [ext_resource type="PackedScene" uid="uid://dgtris6xifv56" path="res://items/key_pickup/key_pickup.tscn" id="1_ljfpk"]
-[ext_resource type="Texture2D" uid="uid://dsbux2oq3u5h0" path="res://15.06 sprites/GuardGems.png" id="2_wokgd"]
+[ext_resource type="Texture2D" uid="uid://dsbux2oq3u5h0" path="res://New sprites/GuardGems.png" id="2_wokgd"]
 
 [node name="Key4" instance=ExtResource("1_ljfpk")]
 id = 4

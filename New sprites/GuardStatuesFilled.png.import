@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxh5f5nklsmir"
-path="res://.godot/imported/Altar.png-48892e544d9bc8b905dd5a80e06fcf51.ctex"
+uid="uid://b7v7kxwu1qsw6"
+path="res://.godot/imported/GuardStatuesFilled.png-90b0bdb717f24274cd523b47d8feb710.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://15.06 sprites/Altar.png"
-dest_files=["res://.godot/imported/Altar.png-48892e544d9bc8b905dd5a80e06fcf51.ctex"]
+source_file="res://New sprites/GuardStatuesFilled.png"
+dest_files=["res://.godot/imported/GuardStatuesFilled.png-90b0bdb717f24274cd523b47d8feb710.ctex"]
 
 [params]
 
