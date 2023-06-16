@@ -38,12 +38,12 @@ func set_open(open := true) -> void:
 
 
 func test_open() -> void:
-	if open_count <= 0:
-		animated_sprite.play(close_anim_name)
-		collision_shape.set_deferred("disabled", false)
-	elif open_count >= needed_to_trigger:
+	if open_count >= needed_to_trigger:
 		animated_sprite.play("open")
 		collision_shape.set_deferred("disabled", true)
+	else:
+		animated_sprite.play(close_anim_name)
+		collision_shape.set_deferred("disabled", false)
 
 
 func _on_interaction_zone_body_entered(body: Node2D) -> void:

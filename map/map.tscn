@@ -4055,8 +4055,9 @@ needed_to_trigger = 4
 [node name="Door2" parent="Doors" instance=ExtResource("9_g3rsh")]
 position = Vector2(-120, -88)
 rotation = 1.57079
-id = 1
+open_by_interact = false
 open_count = 0
+needed_to_trigger = 2
 
 [node name="ButtonTriggers" type="Node2D" parent="."]
 
@@ -4069,6 +4070,12 @@ position = Vector2(24, -56)
 [node name="StandingTrigger2" parent="ButtonTriggers" instance=ExtResource("8_aefxk")]
 position = Vector2(-232, 72)
 flip_bool = true
+
+[node name="HitTrigger" parent="ButtonTriggers" instance=ExtResource("6_s2kpy")]
+position = Vector2(-8, -72)
+
+[node name="StandingTrigger3" parent="ButtonTriggers" instance=ExtResource("8_aefxk")]
+position = Vector2(8, -72)
 
 [node name="YSorted" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -4085,7 +4092,7 @@ position = Vector2(-152, -72)
 position = Vector2(-248, 24)
 
 [node name="Ghost" parent="YSorted/Enemies" instance=ExtResource("19_sox14")]
-position = Vector2(-248, 56)
+position = Vector2(-152, -40)
 
 [node name="Items" type="Node2D" parent="YSorted"]
 y_sort_enabled = true
@@ -4248,6 +4255,8 @@ shape = SubResource("RectangleShape2D_npmvw")
 [connection signal="toggled" from="ButtonTriggers/StandingTrigger" to="Doors/Door" method="set_open"]
 [connection signal="toggled" from="ButtonTriggers/StandingTrigger2" to="YSorted/Boxes/Box" method="set_active"]
 [connection signal="toggled" from="ButtonTriggers/StandingTrigger2" to="YSorted/Boxes/Box2" method="set_active"]
+[connection signal="toggled" from="ButtonTriggers/HitTrigger" to="Doors/Door2" method="set_open"]
+[connection signal="toggled" from="ButtonTriggers/StandingTrigger3" to="Doors/Door2" method="set_open"]
 [connection signal="hand_updated" from="YSorted/Player" to="UI" method="set_hand"]
 [connection signal="hp_changed" from="YSorted/Player" to="UI" method="display_hp"]
 [connection signal="key_count_changed" from="YSorted/Player" to="UI" method="set_key_count"]
