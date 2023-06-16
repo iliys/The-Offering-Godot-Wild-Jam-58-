@@ -4264,6 +4264,7 @@ shape = SubResource("RectangleShape2D_40p3v")
 
 [node name="MoveableMirror" parent="Rooms/Room EN" instance=ExtResource("24_jgmxb")]
 position = Vector2(185, -168)
+collision_layer = 128
 
 [node name="BounceMirror2" parent="Rooms/Room EN" instance=ExtResource("24_bwca5")]
 position = Vector2(168, -244)
