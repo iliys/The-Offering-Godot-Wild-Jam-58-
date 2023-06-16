@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://ctr3wgtqwu6el"]
+
+[ext_resource type="Texture2D" uid="uid://byaafye7vlcge" path="res://ui/lose_screen/Story.png" id="1_f5ftq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqkpm"]
+atlas = ExtResource("1_f5ftq")
+region = Rect2(0, 0, 160, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y62br"]
+atlas = ExtResource("1_f5ftq")
+region = Rect2(160, 0, 160, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eysd6"]
+atlas = ExtResource("1_f5ftq")
+region = Rect2(320, 0, 160, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojm40"]
+atlas = ExtResource("1_f5ftq")
+region = Rect2(480, 0, 160, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mgka"]
+atlas = ExtResource("1_f5ftq")
+region = Rect2(640, 0, 160, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj4v2"]
+atlas = ExtResource("1_f5ftq")
+region = Rect2(800, 0, 160, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5byw"]
+atlas = ExtResource("1_f5ftq")
+region = Rect2(960, 0, 160, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ycm2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqkpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y62br")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eysd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojm40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mgka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mj4v2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5byw")
+}],
+"loop": false,
+"name": &"animation",
+"speed": 0.5
+}]
+
+[node name="LoseScreen" type="AnimatedSprite2D"]
+position = Vector2(160, 90)
+scale = Vector2(1.875, 1.875)
+sprite_frames = SubResource("SpriteFrames_1ycm2")
+animation = &"animation"
+autoplay = "animation"
