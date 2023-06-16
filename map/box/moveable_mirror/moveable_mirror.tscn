@@ -11,6 +11,7 @@ size = Vector2(16, 16)
 size = Vector2(16, 16)
 
 [node name="MoveableMirror" instance=ExtResource("1_p8ur0")]
+collision_layer = 128
 
 [node name="Sprite" parent="." index="0"]
 texture = null
