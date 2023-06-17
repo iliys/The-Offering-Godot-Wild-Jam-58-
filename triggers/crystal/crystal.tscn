@@ -22,10 +22,10 @@ hframes = 2
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_oh5q2")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["obstacles"]]
 collision_layer = 128
 collision_mask = 139
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_0n6uy")

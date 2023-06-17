@@ -66,14 +66,44 @@ func find_child_light(from_list: Array[Node]) -> Node2D:
 #	return of if of.length() >= min else of.normalized() * min
 
 
+func snap_to_tile(location: Vector2) -> Vector2:
+	return (location + Vector2.ONE * 8.0).snapped(Vector2.ONE * 16.0) - Vector2.ONE * 8.0
+
+
 func _on_hit_zone_body_entered(body: Node2D) -> void:
 	if is_mirror_shield(body):
 		body.in_light = true
 	elif body is Ghost:
-		var distance := snappedf(global_position.distance_to(body.global_position), 16.0)
-		distance = max(16.0, distance)
+		var distance := global_position.distance_to(body.global_position)
+		var ray_distance := to_local(get_collision_point()).x - 8.0
+		distance = snappedf(clampf(distance, 16.0, ray_distance), 16.0)
 		var local_location := Vector2.RIGHT.rotated(global_rotation) * distance
 		var location := global_position + local_location
+		location = snap_to_tile(location)
+		
+		var obstacles := []
+		var hit_obstacle := false
+		for obstacle in get_tree().get_nodes_in_group("obstacles"):
+			if obstacle.get_node("CollisionShape").disabled == true:
+				continue
+			obstacles.append(obstacle)
+			if (obstacle.global_position as Vector2).is_equal_approx(location):
+				hit_obstacle = true
+				print(hit_obstacle)
+		if hit_obstacle:
+			var obstacles_in_line: PackedVector2Array = []
+			for obstacle in obstacles:
+				var is_pointing_at_obstacle := is_equal_approx(
+						global_position.angle_to_point(obstacle.global_position), global_rotation)
+				var within_ray_distance := global_position.distance_to(obstacle.global_position) <= ray_distance
+				if (is_pointing_at_obstacle and within_ray_distance):
+					obstacles_in_line.append(obstacle.global_position)
+					obstacle.modulate.b /= 1.5
+					print(obstacle)
+			for dist in range(distance, 16, int(ray_distance)):
+				if global_position + (Vector2.RIGHT * dist).rotated(global_rotation) in obstacles_in_line:
+			for dist in range(distance, -16, 0):
+				pass
 
 		body.petrify(location)
 

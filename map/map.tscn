@@ -4108,7 +4108,7 @@ position = Vector2(-232, 56)
 position = Vector2(-152, -72)
 
 [node name="Ghost" parent="YSorted/RoomRight" instance=ExtResource("19_sox14")]
-position = Vector2(56, -72)
+position = Vector2(-136, -72)
 
 [node name="Player" parent="YSorted" instance=ExtResource("2_04bes")]
 
