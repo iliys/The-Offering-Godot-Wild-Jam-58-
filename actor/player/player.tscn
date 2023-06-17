@@ -320,7 +320,6 @@ hframes = 2
 vframes = 3
 
 [node name="Camera2D" type="Camera2D" parent="." index="1"]
-position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 
 [node name="ShoveRay" type="RayCast2D" parent="." index="2"]

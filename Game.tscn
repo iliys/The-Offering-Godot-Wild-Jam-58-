@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ck3x00rhesm41" path="res://ui/logos/Windy.png" id="5_ct3oh"]
 [ext_resource type="Texture2D" uid="uid://qg0efha4g543" path="res://ui/logos/Mythical-mashup.png" id="6_pehn8"]
 [ext_resource type="Texture2D" uid="uid://e1h3uyfkxb1w" path="res://New sprites/Menu.png" id="7_u0edm"]
-[ext_resource type="PackedScene" uid="uid://bhxd4jlo3vpq5" path="res://ui/audible_button.tscn" id="8_dxsbk"]
+[ext_resource type="PackedScene" path="res://ui/audible_button.tscn" id="8_dxsbk"]
 [ext_resource type="Texture2D" uid="uid://bpsdcvg4ecamh" path="res://ui/icons/play.png" id="8_ul3va"]
 
 [sub_resource type="Animation" id="Animation_pjv3i"]

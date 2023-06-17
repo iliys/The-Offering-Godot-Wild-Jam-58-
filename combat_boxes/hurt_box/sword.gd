@@ -6,6 +6,6 @@ extends HurtBox
 
 
 func attack() -> void:
-	if not cooling:
+	if not animation_player.is_playing() and not cooling:
 		animation_player.play("attack")
 	super()
