@@ -186,6 +186,10 @@ script = ExtResource("2_wxnlp")
 texture = ExtResource("3_r4faj")
 vframes = 3
 
+[node name="HitBox" parent="." index="2"]
+collision_layer = 0
+monitorable = false
+
 [node name="CollisionShape" parent="HitBox" index="0"]
 shape = SubResource("RectangleShape2D_koqyd")
 
