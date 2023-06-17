@@ -18,8 +18,9 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_play_button_pressed() -> void:
-	animation_player.play("end")
 	play_button.disabled = true
+	animation_player.play("end")
+	
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
