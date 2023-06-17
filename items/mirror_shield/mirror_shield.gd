@@ -43,6 +43,7 @@ func _on_cooldown_timeout() -> void:
 
 func _on_draw_time_timeout() -> void:
 	sprite.show()
+	sprite.global_rotation = 0.0
 	hit_box_shape.set_deferred("disabled", false)
 	collision_shape.set_deferred("disabled", false)
 	block_duration.start()
