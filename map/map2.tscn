@@ -31,7 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://76aygha0riwo" path="res://actor/enemies/ghost/ghost.tscn" id="31_q8g2t"]
 [ext_resource type="PackedScene" uid="uid://bhj4f4uls53ym" path="res://items/key_pickup/diamonds/key_3.tscn" id="32_7mqy4"]
 [ext_resource type="PackedScene" uid="uid://sjjcmktm3mhw" path="res://items/key_pickup/diamonds/key_4.tscn" id="32_co2i1"]
-[ext_resource type="PackedScene" path="res://actor/enemies/ground_enemy.tscn" id="33_avf1h"]
+[ext_resource type="PackedScene" uid="uid://de6hrpjoxhg8d" path="res://actor/enemies/ground_enemy.tscn" id="33_avf1h"]
 [ext_resource type="PackedScene" uid="uid://c6qct4rji41l" path="res://items/key_pickup/diamonds/key_6.tscn" id="33_um07l"]
 [ext_resource type="PackedScene" uid="uid://b4watgg4up0rc" path="res://items/key_pickup/key_2.tscn" id="34_ccpr6"]
 [ext_resource type="PackedScene" uid="uid://bowhpy5tyctnm" path="res://map/gate/static_box/static_box.tscn" id="34_m4y15"]
