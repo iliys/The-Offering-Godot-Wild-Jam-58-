@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvna2fnigqljb"]
+[gd_scene load_steps=9 format=3 uid="uid://cvna2fnigqljb"]
 
 [ext_resource type="PackedScene" uid="uid://c7tkgcmbnoj4u" path="res://combat_boxes/hurt_box/hurt_box.tscn" id="1_1alm0"]
 [ext_resource type="Texture2D" uid="uid://csji453xk2a0c" path="res://stuff.png" id="2_li35c"]
 [ext_resource type="Script" path="res://combat_boxes/hurt_box/sword.gd" id="2_xbwtb"]
+[ext_resource type="Texture2D" uid="uid://gah8cg24rxic" path="res://New sprites/Sword swing.png" id="4_hb5ru"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mfbqn"]
 resource_local_to_scene = true
@@ -46,6 +47,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [-1.0472]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Swing:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Swing:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_o0vh8"]
 resource_name = "attack"
@@ -87,6 +112,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [-1.0472, 0.0, 1.0472]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Swing:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Swing:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rx80f"]
 _data = {
@@ -113,3 +162,9 @@ region_rect = Rect2(32, 0, 16, 16)
 libraries = {
 "": SubResource("AnimationLibrary_rx80f")
 }
+
+[node name="Swing" type="Sprite2D" parent="." index="6"]
+visible = false
+position = Vector2(10, 0)
+texture = ExtResource("4_hb5ru")
+hframes = 2

@@ -102,6 +102,7 @@ func _on_hit_zone_body_entered(body: Node2D) -> void:
 					print(obstacle)
 			for dist in range(distance, 16, int(ray_distance)):
 				if global_position + (Vector2.RIGHT * dist).rotated(global_rotation) in obstacles_in_line:
+					pass
 			for dist in range(distance, -16, 0):
 				pass
 
