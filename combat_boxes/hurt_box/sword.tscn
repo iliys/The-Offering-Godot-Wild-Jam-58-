@@ -151,7 +151,7 @@ position = Vector2(12, 0)
 shape = SubResource("RectangleShape2D_mfbqn")
 
 [node name="CoolDown" parent="." index="2"]
-wait_time = 0.1
+wait_time = 0.5
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="4"]
 visible = false
