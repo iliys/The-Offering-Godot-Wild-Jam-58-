@@ -152,6 +152,7 @@ blend_point_3/pos = Vector2(0.9, 0)
 blend_mode = 1
 
 [node name="PetrifiedGhost" instance=ExtResource("1_fgmdp")]
+collision_mask = 1931
 script = ExtResource("2_gjk13")
 
 [node name="Sprite" parent="." index="0"]
