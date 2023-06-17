@@ -6,7 +6,7 @@ extends Control
 @onready var gwj_cards: TextureRect = $gwj_cards
 @onready var background: TextureRect = $background
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var play_button: TextureButton = $PlayButton
+@onready var play_button: AudibleButton = $PlayButton
 
 
 func _ready() -> void:
