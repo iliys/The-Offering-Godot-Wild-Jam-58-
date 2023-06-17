@@ -3,7 +3,15 @@ extends StaticBody2D
 
 
 @export var slide_duration := 0.5
+@export var active := true:
+	set(value):
+		active = value
+		if not is_ready:
+			await ready
+		sprite.visible = active
+		collision_shape.set_deferred("disabled", not active)
 
+var is_ready := false
 var moving := false
 
 @onready var tile_map: TileMap = get_tree().get_first_node_in_group("tile_maps")
@@ -12,9 +20,13 @@ var moving := false
 @onready var collision_shape: CollisionShape2D = $CollisionShape
 
 
+func _ready() -> void:
+	is_ready = true
+
+
+@warning_ignore("shadowed_variable")
 func set_active(active := false) -> void:
-	sprite.visible = active
-	collision_shape.set_deferred("disabled", not active)
+	self.active = active
 
 
 func push(direction: Vector2) -> bool:

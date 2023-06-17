@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bowhpy5tyctnm"]
+
+[ext_resource type="PackedScene" uid="uid://bvxcacfvh13xx" path="res://map/gate/gate.tscn" id="1_pe3jb"]
+[ext_resource type="Texture2D" uid="uid://bj20lxqjlpys0" path="res://map/box/block_spritesheet.png" id="2_qr2xm"]
+
+[node name="StaticBox" instance=ExtResource("1_pe3jb")]
+collision_layer = 512
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_qr2xm")

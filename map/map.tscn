@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://cvhe7ib0rey8m"]
+[gd_scene load_steps=103 format=3 uid="uid://cvhe7ib0rey8m"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_7fgs2"]
 [ext_resource type="Texture2D" uid="uid://nat2nsqdq0rh" path="res://prototyping_tiles_from_kenney.png" id="1_pk2fv"]
@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://cxcqc2u4kst2b" path="res://items/sword_pickup/sword_pickup.tscn" id="28_yq0hk"]
 [ext_resource type="PackedScene" uid="uid://bgnmflu1lbrxe" path="res://map/box/box.tscn" id="30_ytnup"]
 [ext_resource type="PackedScene" uid="uid://dyhybv7r2jkmn" path="res://triggers/hit_trigger/colored_switch/colored_switch.tscn" id="31_hdk7a"]
+[ext_resource type="PackedScene" uid="uid://bowhpy5tyctnm" path="res://map/gate/static_box/static_box.tscn" id="32_no14k"]
 [ext_resource type="PackedScene" uid="uid://bxyuchn26w83s" path="res://map/totems/totem.tscn" id="35_hw5rs"]
 [ext_resource type="PackedScene" uid="uid://cyfwbc73k031b" path="res://map/room_zone/room_zone.tscn" id="37_lfoqk"]
 
@@ -4155,9 +4156,13 @@ position = Vector2(-40, -8)
 
 [node name="Box" parent="YSorted/Boxes" instance=ExtResource("30_ytnup")]
 position = Vector2(-232, 40)
+active = false
 
 [node name="Box2" parent="YSorted/Boxes" instance=ExtResource("30_ytnup")]
 position = Vector2(-232, 8)
+
+[node name="StaticBox" parent="YSorted/Boxes" instance=ExtResource("32_no14k")]
+position = Vector2(-264, 25)
 
 [node name="Mirror" parent="YSorted" instance=ExtResource("15_wpcqk")]
 position = Vector2(-24, 24)
@@ -4279,6 +4284,7 @@ shape = SubResource("RectangleShape2D_npmvw")
 [connection signal="toggled" from="ButtonTriggers/StandingTrigger" to="Doors/Door" method="set_open"]
 [connection signal="toggled" from="ButtonTriggers/StandingTrigger2" to="YSorted/Boxes/Box" method="set_active"]
 [connection signal="toggled" from="ButtonTriggers/StandingTrigger2" to="YSorted/Boxes/Box2" method="set_active"]
+[connection signal="toggled" from="ButtonTriggers/StandingTrigger2" to="YSorted/Boxes/StaticBox" method="set_active"]
 [connection signal="toggled" from="ButtonTriggers/HitTrigger" to="Doors/Door2" method="set_open"]
 [connection signal="toggled" from="ButtonTriggers/StandingTrigger3" to="Doors/Door2" method="set_open"]
 [connection signal="died" from="YSorted/RoomLeft/GroundEnemy2" to="Doors/Door4" method="set_open"]
