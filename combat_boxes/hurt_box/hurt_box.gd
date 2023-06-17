@@ -5,6 +5,7 @@ extends Area2D
 signal cool_down_finished
 signal finished
 signal activated
+signal attacked
 
 @export var dmg := 1
 
@@ -33,8 +34,9 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.owner == actor:# Prevents the user from hitting itself.
 		return
 
-	area.take_dmg(dmg, actor)
-	attack_sound.play()
+	if area.take_dmg(dmg, actor):
+		attack_sound.play()
+		attacked.emit()
 
 
 func _on_cool_down_timeout() -> void:

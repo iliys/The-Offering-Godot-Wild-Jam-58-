@@ -21,5 +21,14 @@ func _go_to_location(location: Vector2, speed_mod := 1.0) -> void:
 
 func animate() -> void:
 	animation_tree.set("parameters/Run/blend_position", velocity)
+	animation_tree.set("parameters/Idle/blend_position", velocity)
+	animation_tree.set("parameters/Attack/blend_position", velocity)
 	if velocity.length() > 0:
 		playback.travel("Run")
+	else:
+		playback.travel("Idle")
+
+
+func _on_hurt_box_attacked() -> void:
+	# Won't play.
+	playback.travel("Attack")

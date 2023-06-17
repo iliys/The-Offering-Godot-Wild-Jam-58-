@@ -2,5 +2,10 @@ class_name PetrifiedGhost
 extends Box
 
 
-func _ready() -> void:
-	pass # Wil have to do somthing to make the ghost point in the last direction it was facing.
+var vel := Vector2():
+	set(value):
+		vel = value
+		await ready
+		animation_tree.set("parameters/blend_position", vel)
+
+@onready var animation_tree: AnimationTree = $AnimationTree
