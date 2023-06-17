@@ -31,7 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://76aygha0riwo" path="res://actor/enemies/ghost/ghost.tscn" id="31_q8g2t"]
 [ext_resource type="PackedScene" uid="uid://bhj4f4uls53ym" path="res://items/key_pickup/diamonds/key_3.tscn" id="32_7mqy4"]
 [ext_resource type="PackedScene" uid="uid://sjjcmktm3mhw" path="res://items/key_pickup/diamonds/key_4.tscn" id="32_co2i1"]
-[ext_resource type="PackedScene" uid="uid://de6hrpjoxhg8d" path="res://actor/enemies/ground_enemy.tscn" id="33_avf1h"]
+[ext_resource type="PackedScene" path="res://actor/enemies/ground_enemy.tscn" id="33_avf1h"]
 [ext_resource type="PackedScene" uid="uid://c6qct4rji41l" path="res://items/key_pickup/diamonds/key_6.tscn" id="33_um07l"]
 [ext_resource type="PackedScene" uid="uid://b4watgg4up0rc" path="res://items/key_pickup/key_2.tscn" id="34_ccpr6"]
 [ext_resource type="PackedScene" uid="uid://bowhpy5tyctnm" path="res://map/gate/static_box/static_box.tscn" id="34_m4y15"]
@@ -4120,15 +4120,11 @@ layer_5/tile_data = PackedInt32Array(-458752, 11, 0, -655366, 11, 0, -65530, 11,
 
 [node name="UI" parent="." instance=ExtResource("13_045nt")]
 
-[node name="Doors" type="Node2D" parent="."]
-
-[node name="ButtonTriggers" type="Node2D" parent="."]
-
 [node name="YSorted" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="Player" parent="YSorted" instance=ExtResource("17_g6ok7")]
-position = Vector2(2, 151)
+position = Vector2(9, -48)
 
 [node name="Enemies" type="Node2D" parent="YSorted"]
 y_sort_enabled = true
@@ -4154,12 +4150,12 @@ y_sort_enabled = true
 
 [node name="RoomZone" parent="Rooms/Room 0" instance=ExtResource("18_l5f7m")]
 z_index = 1
-position = Vector2(245, 63)
+position = Vector2(244, 63)
 enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room 0/RoomZone" index="0"]
 visible = false
-position = Vector2(-236, -71)
+position = Vector2(-235, -71)
 shape = SubResource("RectangleShape2D_ymvjy")
 
 [node name="Enemies" type="Node2D" parent="Rooms/Room 0"]
@@ -4246,11 +4242,12 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_hdcd0")
 
 [node name="RoomZone" parent="Rooms/Room E" instance=ExtResource("18_l5f7m")]
 z_index = 1
-position = Vector2(437, 63)
+position = Vector2(436, 63)
 enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room E/RoomZone" index="0"]
-position = Vector2(-236, -71)
+visible = false
+position = Vector2(-235, -71)
 shape = SubResource("RectangleShape2D_ymvjy")
 
 [node name="BounceMirror" parent="Rooms/Room E" instance=ExtResource("24_bwca5")]
@@ -4329,11 +4326,12 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_yw756")
 
 [node name="RoomZone" parent="Rooms/Room EN" instance=ExtResource("18_l5f7m")]
 z_index = 1
-position = Vector2(437, -129)
+position = Vector2(436, -129)
 enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room EN/RoomZone" index="0"]
-position = Vector2(-236, -71)
+visible = false
+position = Vector2(-235, -71)
 shape = SubResource("RectangleShape2D_ymvjy")
 
 [node name="MoveableMirror" parent="Rooms/Room EN" instance=ExtResource("24_jgmxb")]
@@ -4415,12 +4413,12 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_kho1h")
 
 [node name="RoomZone" parent="Rooms/Room ES" instance=ExtResource("18_l5f7m")]
 z_index = 1
-position = Vector2(437, 255)
+position = Vector2(436, 255)
 enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room ES/RoomZone" index="0"]
 visible = false
-position = Vector2(-236, -71)
+position = Vector2(-235, -71)
 shape = SubResource("RectangleShape2D_ymvjy")
 
 [node name="BounceMirror" parent="Rooms/Room ES" instance=ExtResource("24_bwca5")]
@@ -4457,12 +4455,12 @@ active = false
 
 [node name="RoomZone" parent="Rooms/Room N" instance=ExtResource("18_l5f7m")]
 z_index = 1
-position = Vector2(245, -129)
+position = Vector2(244, -129)
 enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room N/RoomZone" index="0"]
 visible = false
-position = Vector2(-236, -71)
+position = Vector2(-235, -71)
 shape = SubResource("RectangleShape2D_ymvjy")
 
 [node name="Crystal" parent="Rooms/Room N" instance=ExtResource("26_m6471")]
@@ -4511,12 +4509,12 @@ position = Vector2(-300, -135)
 
 [node name="RoomZone" parent="Rooms/Room WN" instance=ExtResource("18_l5f7m")]
 z_index = 1
-position = Vector2(53, -129)
+position = Vector2(52, -129)
 enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room WN/RoomZone" index="0"]
 visible = false
-position = Vector2(-236, -71)
+position = Vector2(-235, -71)
 shape = SubResource("RectangleShape2D_ymvjy")
 
 [node name="Gate" parent="Rooms/Room WN" instance=ExtResource("27_37bcs")]
@@ -4560,12 +4558,12 @@ active = false
 
 [node name="RoomZone" parent="Rooms/Room W" instance=ExtResource("18_l5f7m")]
 z_index = 1
-position = Vector2(53, 63)
+position = Vector2(52, 63)
 enemies = NodePath("../Enemies2")
 
 [node name="CollisionShape" parent="Rooms/Room W/RoomZone" index="0"]
 visible = false
-position = Vector2(-236, -71)
+position = Vector2(-235, -71)
 shape = SubResource("RectangleShape2D_ymvjy")
 
 [node name="Crystal2" parent="Rooms/Room W" instance=ExtResource("26_m6471")]
@@ -4611,12 +4609,12 @@ position = Vector2(53, 255)
 
 [node name="RoomZone" parent="Rooms/Room WS" instance=ExtResource("18_l5f7m")]
 z_index = 1
-position = Vector2(53, 255)
+position = Vector2(52, 255)
 enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room WS/RoomZone" index="0"]
 visible = false
-position = Vector2(-236, -71)
+position = Vector2(-235, -71)
 shape = SubResource("RectangleShape2D_ymvjy")
 
 [node name="Chest" parent="Rooms/Room WS" instance=ExtResource("19_ebxk7")]
@@ -4662,12 +4660,12 @@ position = Vector2(245, 255)
 
 [node name="RoomZone" parent="Rooms/Room S" instance=ExtResource("18_l5f7m")]
 z_index = 1
-position = Vector2(245, 255)
+position = Vector2(244, 255)
 enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room S/RoomZone" index="0"]
 visible = false
-position = Vector2(-236, -71)
+position = Vector2(-235, -71)
 shape = SubResource("RectangleShape2D_ymvjy")
 
 [node name="Door" parent="Rooms/Room S" instance=ExtResource("27_hoipk")]
