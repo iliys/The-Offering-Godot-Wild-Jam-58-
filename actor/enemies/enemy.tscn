@@ -29,6 +29,8 @@ wander_time_randomization = 5.0
 wander_range = 128.0
 wander_speed_factor = 0.5
 min_move_distance = 4.0
+drops = Array[PackedScene]([])
+drop_distance = 16.0
 speed = 32
 max_hp = 2
 

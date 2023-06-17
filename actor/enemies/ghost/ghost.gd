@@ -17,7 +17,7 @@ func petrify(location: Vector2) -> void:
 	petrified_ghost.global_position = location
 	petrified_ghost.vel = velocity
 	call_deferred("add_sibling", petrified_ghost)
-	queue_free()
+	_die()
 
 
 #static func flr(value: float, step: float) -> float:

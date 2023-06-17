@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://cvhe7ib0rey8m"]
+[gd_scene load_steps=104 format=3 uid="uid://cvhe7ib0rey8m"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_7fgs2"]
 [ext_resource type="Texture2D" uid="uid://nat2nsqdq0rh" path="res://prototyping_tiles_from_kenney.png" id="1_pk2fv"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://bvxcacfvh13xx" path="res://map/gate/gate.tscn" id="16_lflmi"]
 [ext_resource type="PackedScene" uid="uid://de6hrpjoxhg8d" path="res://actor/enemies/ground_enemy.tscn" id="18_tfjsn"]
 [ext_resource type="PackedScene" uid="uid://76aygha0riwo" path="res://actor/enemies/ghost/ghost.tscn" id="19_sox14"]
+[ext_resource type="PackedScene" uid="uid://b4watgg4up0rc" path="res://items/key_pickup/key_2.tscn" id="22_dohe3"]
 [ext_resource type="PackedScene" uid="uid://bhj4f4uls53ym" path="res://items/key_pickup/diamonds/key_3.tscn" id="24_a4qqj"]
 [ext_resource type="PackedScene" uid="uid://sjjcmktm3mhw" path="res://items/key_pickup/diamonds/key_4.tscn" id="25_hwlda"]
 [ext_resource type="PackedScene" uid="uid://v3x40textpy8" path="res://map/box/moveable_mirror/moveable_mirror.tscn" id="25_m684i"]
@@ -4123,9 +4124,11 @@ position = Vector2(-232, 56)
 
 [node name="GroundEnemy" parent="YSorted/RoomRight" instance=ExtResource("18_tfjsn")]
 position = Vector2(-152, -72)
+drops = Array[PackedScene]([ExtResource("22_dohe3"), ExtResource("22_dohe3"), ExtResource("22_dohe3")])
 
 [node name="Ghost" parent="YSorted/RoomRight" instance=ExtResource("19_sox14")]
 position = Vector2(-136, -72)
+drops = Array[PackedScene]([ExtResource("15_d5h7c"), ExtResource("15_d5h7c")])
 
 [node name="Player" parent="YSorted" instance=ExtResource("2_04bes")]
 
