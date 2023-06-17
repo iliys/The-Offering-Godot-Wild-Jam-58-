@@ -35,7 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://c6qct4rji41l" path="res://items/key_pickup/diamonds/key_6.tscn" id="33_um07l"]
 [ext_resource type="PackedScene" uid="uid://b4watgg4up0rc" path="res://items/key_pickup/key_2.tscn" id="34_ccpr6"]
 [ext_resource type="PackedScene" uid="uid://bowhpy5tyctnm" path="res://map/gate/static_box/static_box.tscn" id="34_m4y15"]
-[ext_resource type="Texture2D" uid="uid://cxh5f5nklsmir" path="res://New sprites/Altar.png" id="35_vvxqh"]
+[ext_resource type="PackedScene" uid="uid://bcom0mxmdyx04" path="res://map/altar/altar.tscn" id="36_8kbsv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ebfpu"]
 texture = ExtResource("2_exp6a")
@@ -4128,7 +4128,7 @@ layer_5/tile_data = PackedInt32Array(-458752, 11, 0, -655366, 11, 0, -65530, 11,
 y_sort_enabled = true
 
 [node name="Player" parent="YSorted" instance=ExtResource("17_g6ok7")]
-position = Vector2(9, -48)
+position = Vector2(2, 151)
 
 [node name="Enemies" type="Node2D" parent="YSorted"]
 y_sort_enabled = true
@@ -4675,10 +4675,6 @@ position = Vector2(9, 104)
 rotation = 1.5708
 open_count = 0
 
-[node name="Altar" type="Sprite2D" parent="Rooms/Room S"]
-position = Vector2(9, 192)
-texture = ExtResource("35_vvxqh")
-
 [node name="ColoredSwitch" parent="." instance=ExtResource("25_77f4b")]
 position = Vector2(-135, -137)
 
@@ -4723,6 +4719,9 @@ position = Vector2(367, 305)
 
 [node name="Gate11" parent="ColoredSwitch/Yellow" index="3" instance=ExtResource("27_37bcs")]
 position = Vector2(96, -31)
+
+[node name="Altar" parent="." instance=ExtResource("36_8kbsv")]
+position = Vector2(9, 208)
 
 [connection signal="hand_updated" from="YSorted/Player" to="UI" method="set_hand"]
 [connection signal="hp_changed" from="YSorted/Player" to="UI" method="display_hp"]
