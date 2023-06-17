@@ -70,41 +70,60 @@ func snap_to_tile(location: Vector2) -> Vector2:
 	return (location + Vector2.ONE * 8.0).snapped(Vector2.ONE * 16.0) - Vector2.ONE * 8.0
 
 
+func distance_to_tile(distance: float) -> Vector2:
+	return snap_to_tile(global_position + (Vector2.RIGHT * distance).rotated(global_rotation))
+
+
 func _on_hit_zone_body_entered(body: Node2D) -> void:
 	if is_mirror_shield(body):
 		body.in_light = true
 	elif body is Ghost:
-		var distance := global_position.distance_to(body.global_position)
 		var ray_distance := to_local(get_collision_point()).x - 8.0
-		distance = snappedf(clampf(distance, 16.0, ray_distance), 16.0)
-		var local_location := Vector2.RIGHT.rotated(global_rotation) * distance
-		var location := global_position + local_location
-		location = snap_to_tile(location)
+		print("ray_distance: ", ray_distance)
+		var distance := global_position.distance_to(body.global_position)
+		distance = clampf(distance, 16.0, ray_distance)
+		var location := distance_to_tile(distance)
 		
-		var obstacles := []
-		var hit_obstacle := false
-		for obstacle in get_tree().get_nodes_in_group("obstacles"):
-			if obstacle.get_node("CollisionShape").disabled == true:
-				continue
-			obstacles.append(obstacle)
-			if (obstacle.global_position as Vector2).is_equal_approx(location):
-				hit_obstacle = true
-				print(hit_obstacle)
-		if hit_obstacle:
-			var obstacles_in_line: PackedVector2Array = []
-			for obstacle in obstacles:
-				var is_pointing_at_obstacle := is_equal_approx(
-						global_position.angle_to_point(obstacle.global_position), global_rotation)
-				var within_ray_distance := global_position.distance_to(obstacle.global_position) <= ray_distance
-				if (is_pointing_at_obstacle and within_ray_distance):
-					obstacles_in_line.append(obstacle.global_position)
-					obstacle.modulate.b /= 1.5
-					print(obstacle)
-			for dist in range(distance, 16, int(ray_distance)):
-				if global_position + (Vector2.RIGHT * dist).rotated(global_rotation) in obstacles_in_line:
-					pass
-			for dist in range(distance, -16, 0):
-				pass
+
+		# The following is horrific code, and don't work.
+#		var obstacles := []
+#		var hit_obstacle := false
+#		for obstacle in get_tree().get_nodes_in_group("obstacles"):
+#			if obstacle.get_node("CollisionShape").disabled == true:
+#				continue
+#			obstacles.append(obstacle)
+#			if (obstacle.global_position as Vector2).is_equal_approx(location):
+#				hit_obstacle = true
+#		if hit_obstacle:
+#			var obstacles_in_line := []
+#			for obstacle in obstacles:
+#				var is_pointing_at_obstacle := is_equal_approx(
+#						global_position.angle_to_point(obstacle.global_position), global_rotation)
+#				var within_ray_distance := global_position.distance_to(obstacle.global_position) <= ray_distance
+#				if (is_pointing_at_obstacle and within_ray_distance):
+#					obstacles_in_line.append(obstacle.global_position)
+#					obstacle.modulate.b /= 1.5
+#			print(obstacles_in_line)
+#
+#			var foward_pos := location
+#			for dist in range(distance, int(ray_distance), 16):
+#				if not snap_to_tile(global_position + (Vector2.RIGHT * dist).rotated(global_rotation)) in obstacles_in_line:
+#					foward_pos = snap_to_tile(global_position + (Vector2.RIGHT * dist).rotated(global_rotation))
+#					print("foward_pos: ", foward_pos)
+#					break
+#			var backward_pos := location
+#			for dist in range(distance, 0, -16):
+#				print("dist: ", dist)
+#				print(distance)
+#				if not snap_to_tile(global_position + (Vector2.RIGHT * dist).rotated(global_rotation)) in obstacles_in_line:
+#					backward_pos = snap_to_tile(global_position + (Vector2.RIGHT * dist).rotated(global_rotation))
+#					print("backward_pos: ", backward_pos)
+#					break
+#
+#			if location.distance_squared_to(backward_pos) <= location.distance_squared_to(foward_pos):
+#				location = backward_pos
+#			else:
+#				location = foward_pos
 
 		body.petrify(location)
 

@@ -4077,14 +4077,14 @@ lock_on_enter = true
 position = Vector2(40, 56)
 
 [node name="StandingTrigger" parent="ButtonTriggers" instance=ExtResource("8_aefxk")]
-position = Vector2(24, -56)
+position = Vector2(40, -56)
 
 [node name="StandingTrigger2" parent="ButtonTriggers" instance=ExtResource("8_aefxk")]
 position = Vector2(-232, 72)
 flip_bool = true
 
 [node name="HitTrigger" parent="ButtonTriggers" instance=ExtResource("6_s2kpy")]
-position = Vector2(-8, -72)
+position = Vector2(24, -56)
 
 [node name="StandingTrigger3" parent="ButtonTriggers" instance=ExtResource("8_aefxk")]
 position = Vector2(8, -72)
@@ -4121,7 +4121,7 @@ position = Vector2(-104, -24)
 drops = Array[PackedScene]([ExtResource("11_ogjob"), ExtResource("12_mqaik")])
 
 [node name="Chest2" parent="YSorted/Items" instance=ExtResource("10_fxbgc")]
-position = Vector2(8, -40)
+position = Vector2(-8, -56)
 id = 0
 drops = Array[PackedScene]([ExtResource("15_d5h7c")])
 
@@ -4198,12 +4198,14 @@ position = Vector2(-56, 72)
 [node name="HitTrigger2" parent="YSorted/TallTriggers" instance=ExtResource("6_s2kpy")]
 position = Vector2(-72, -72)
 
+[node name="HitTrigger3" parent="YSorted/TallTriggers" instance=ExtResource("6_s2kpy")]
+position = Vector2(56, -56)
+
 [node name="Gates" type="Node2D" parent="YSorted"]
 y_sort_enabled = true
 
 [node name="Gate" parent="YSorted/Gates" instance=ExtResource("16_lflmi")]
-position = Vector2(40, -56)
-active = false
+position = Vector2(8, -56)
 
 [node name="ColoredSwitch" parent="YSorted/Gates" instance=ExtResource("31_hdk7a")]
 

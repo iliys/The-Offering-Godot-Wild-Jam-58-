@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://ctr3wgtqwu6el"]
 
-[ext_resource type="Texture2D" uid="uid://byaafye7vlcge" path="res://ui/lose_screen/Story.png" id="1_f5ftq"]
-[ext_resource type="Script" path="res://ui/lose_screen/end_screen.gd" id="2_3c4qr"]
-[ext_resource type="PackedScene" uid="uid://bhxd4jlo3vpq5" path="res://ui/audible_button.tscn" id="3_rarlj"]
-[ext_resource type="Texture2D" uid="uid://bi1atgo7qtr4h" path="res://ui/icons/restart.png" id="4_1auw6"]
+[ext_resource type="Script" path="res://ui/end_screen/end_screen.gd" id="1_wlruu"]
+[ext_resource type="Texture2D" uid="uid://byaafye7vlcge" path="res://ui/end_screen/Story.png" id="2_22wfi"]
+[ext_resource type="PackedScene" uid="uid://bhxd4jlo3vpq5" path="res://ui/audible_button.tscn" id="3_shf32"]
+[ext_resource type="Texture2D" uid="uid://bi1atgo7qtr4h" path="res://ui/icons/restart.png" id="4_v0ebu"]
 
 [sub_resource type="Animation" id="Animation_5mnf0"]
 length = 0.001
@@ -153,7 +153,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_3c4qr")
+script = ExtResource("1_wlruu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite")
@@ -165,10 +165,10 @@ libraries = {
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(160, 90)
 scale = Vector2(1.875, 1.875)
-texture = ExtResource("1_f5ftq")
+texture = ExtResource("2_22wfi")
 hframes = 7
 
-[node name="RestartButton" parent="." instance=ExtResource("3_rarlj")]
+[node name="RestartButton" parent="." instance=ExtResource("3_shf32")]
 visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -179,7 +179,7 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("4_1auw6")
+texture_normal = ExtResource("4_v0ebu")
 stretch_mode = 3
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
