@@ -14,8 +14,7 @@ enum LAYERS {
 const BOX := preload("res://map/box/box.tscn")
 
 @onready var tile_map: TileMap = $TileMap
-@onready var y_sorted: Node2D = $YSorted
-@onready var boxes: Node2D = y_sorted.get_node("Boxes")
+@onready var boxes: Node2D = $Boxes
 
 
 func _ready() -> void:

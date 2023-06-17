@@ -12,6 +12,7 @@ size = Vector2(16, 16)
 size = Vector2(10, 10)
 
 [node name="HitTrigger" instance=ExtResource("1_osnqt")]
+z_index = 1
 script = ExtResource("2_f42nt")
 on = false
 

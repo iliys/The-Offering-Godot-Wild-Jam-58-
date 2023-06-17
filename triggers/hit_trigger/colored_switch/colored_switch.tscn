@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dvgc0qgyxuv7x" path="res://New sprites/BlockYellow.png" id="3_0yiq7"]
 
 [node name="ColoredSwitch" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_uutda")
 red_img = ExtResource("2_1tqxq")
 yellow_img = ExtResource("3_0yiq7")
@@ -14,8 +15,10 @@ yellow_img = ExtResource("3_0yiq7")
 
 [node name="Red" type="Node2D" parent="."]
 modulate = Color(1, 0.5, 0.5, 1)
+y_sort_enabled = true
 
 [node name="Yellow" type="Node2D" parent="."]
 modulate = Color(1, 1, 0, 1)
+y_sort_enabled = true
 
 [connection signal="toggled" from="HitTrigger" to="." method="_on_hit_trigger_toggled"]

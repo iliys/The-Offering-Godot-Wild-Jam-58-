@@ -74,6 +74,16 @@ func distance_to_tile(distance: float) -> Vector2:
 	return snap_to_tile(global_position + (Vector2.RIGHT * distance).rotated(global_rotation))
 
 
+func find_opening(obstacles: PackedVector2Array, start: int, end: int, increment: int) -> Vector2:
+	var pos := Vector2.INF
+	for distance in range(start, end, increment):
+		var location := distance_to_tile(distance)
+		if not location in obstacles:
+			pos = location
+			return pos
+	return pos
+
+
 func _on_hit_zone_body_entered(body: Node2D) -> void:
 	if is_mirror_shield(body):
 		body.in_light = true
@@ -83,7 +93,6 @@ func _on_hit_zone_body_entered(body: Node2D) -> void:
 		var distance := global_position.distance_to(body.global_position)
 		distance = clampf(distance, 16.0, ray_distance)
 		var location := distance_to_tile(distance)
-		
 
 		# The following is horrific code, and don't work.
 #		var obstacles := []
@@ -100,30 +109,22 @@ func _on_hit_zone_body_entered(body: Node2D) -> void:
 #				var is_pointing_at_obstacle := is_equal_approx(
 #						global_position.angle_to_point(obstacle.global_position), global_rotation)
 #				var within_ray_distance := global_position.distance_to(obstacle.global_position) <= ray_distance
-#				if (is_pointing_at_obstacle and within_ray_distance):
+#				if is_pointing_at_obstacle and within_ray_distance:
 #					obstacles_in_line.append(obstacle.global_position)
-#					obstacle.modulate.b /= 1.5
-#			print(obstacles_in_line)
+#					obstacle.modulate.b /= 2.0
+#			print("obstacles: ", obstacles_in_line)
 #
-#			var foward_pos := location
-#			for dist in range(distance, int(ray_distance), 16):
-#				if not snap_to_tile(global_position + (Vector2.RIGHT * dist).rotated(global_rotation)) in obstacles_in_line:
-#					foward_pos = snap_to_tile(global_position + (Vector2.RIGHT * dist).rotated(global_rotation))
-#					print("foward_pos: ", foward_pos)
-#					break
-#			var backward_pos := location
-#			for dist in range(distance, 0, -16):
-#				print("dist: ", dist)
-#				print(distance)
-#				if not snap_to_tile(global_position + (Vector2.RIGHT * dist).rotated(global_rotation)) in obstacles_in_line:
-#					backward_pos = snap_to_tile(global_position + (Vector2.RIGHT * dist).rotated(global_rotation))
-#					print("backward_pos: ", backward_pos)
-#					break
+#			var foward := find_opening(obstacles_in_line, distance, ray_distance, 16)
+#			var backward := find_opening(obstacles_in_line, distance, 0, -16)
+#			var pos := location
+#			var directions: PackedVector2Array = []
+#			if backward.is_finite():
+#				directions.append(backward)
+#				pos = backward
+#			if foward.is_finite():
+#				directions.append(foward)
 #
-#			if location.distance_squared_to(backward_pos) <= location.distance_squared_to(foward_pos):
-#				location = backward_pos
-#			else:
-#				location = foward_pos
+#			location = pos
 
 		body.petrify(location)
 

@@ -4042,6 +4042,22 @@ layer_3/y_sort_origin = 0
 layer_3/z_index = 0
 layer_3/tile_data = PackedInt32Array(65531, 2, 0, -131070, 2, 0, 131073, 2, 0)
 
+[node name="Boxes" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="MoveableMirror" parent="Boxes" instance=ExtResource("25_m684i")]
+position = Vector2(-40, -8)
+
+[node name="Box" parent="Boxes" instance=ExtResource("30_ytnup")]
+position = Vector2(-232, 40)
+active = false
+
+[node name="Box2" parent="Boxes" instance=ExtResource("30_ytnup")]
+position = Vector2(-232, 8)
+
+[node name="StaticBox" parent="Boxes" instance=ExtResource("32_no14k")]
+position = Vector2(-264, 25)
+
 [node name="UI" parent="." instance=ExtResource("10_dvrgg")]
 
 [node name="Doors" type="Node2D" parent="."]
@@ -4147,22 +4163,6 @@ active = false
 
 [node name="SwordPickup" parent="YSorted/Items" instance=ExtResource("28_yq0hk")]
 position = Vector2(-112, 64)
-
-[node name="Boxes" type="Node2D" parent="YSorted"]
-y_sort_enabled = true
-
-[node name="MoveableMirror" parent="YSorted/Boxes" instance=ExtResource("25_m684i")]
-position = Vector2(-40, -8)
-
-[node name="Box" parent="YSorted/Boxes" instance=ExtResource("30_ytnup")]
-position = Vector2(-232, 40)
-active = false
-
-[node name="Box2" parent="YSorted/Boxes" instance=ExtResource("30_ytnup")]
-position = Vector2(-232, 8)
-
-[node name="StaticBox" parent="YSorted/Boxes" instance=ExtResource("32_no14k")]
-position = Vector2(-264, 25)
 
 [node name="Mirror" parent="YSorted" instance=ExtResource("15_wpcqk")]
 position = Vector2(-24, 24)
@@ -4284,9 +4284,9 @@ shape = SubResource("RectangleShape2D_npmvw")
 
 [connection signal="triggered" from="ButtonTriggers/StepTrigger" to="Doors/Door" method="set_open"]
 [connection signal="toggled" from="ButtonTriggers/StandingTrigger" to="Doors/Door" method="set_open"]
-[connection signal="toggled" from="ButtonTriggers/StandingTrigger2" to="YSorted/Boxes/Box" method="set_active"]
-[connection signal="toggled" from="ButtonTriggers/StandingTrigger2" to="YSorted/Boxes/Box2" method="set_active"]
-[connection signal="toggled" from="ButtonTriggers/StandingTrigger2" to="YSorted/Boxes/StaticBox" method="set_active"]
+[connection signal="toggled" from="ButtonTriggers/StandingTrigger2" to="Boxes/Box" method="set_active"]
+[connection signal="toggled" from="ButtonTriggers/StandingTrigger2" to="Boxes/Box2" method="set_active"]
+[connection signal="toggled" from="ButtonTriggers/StandingTrigger2" to="Boxes/StaticBox" method="set_active"]
 [connection signal="toggled" from="ButtonTriggers/HitTrigger" to="Doors/Door2" method="set_open"]
 [connection signal="toggled" from="ButtonTriggers/StandingTrigger3" to="Doors/Door2" method="set_open"]
 [connection signal="died" from="YSorted/RoomLeft/GroundEnemy2" to="Doors/Door4" method="set_open"]

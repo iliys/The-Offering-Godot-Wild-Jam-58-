@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://bkvv6pmyu0yly" path="res://combat_boxes/hit_box/hit_box.tscn" id="2_jnjt3"]
 [ext_resource type="PackedScene" uid="uid://cjwq17evldhg4" path="res://map/mirror/light_beam/light_beam.tscn" id="4_rorsb"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_i627r"]
-radius = 22.0227
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hl4o"]
+size = Vector2(16, 18)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0w34f"]
-radius = 24.0208
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0lfad"]
+size = Vector2(20, 22)
 
 [node name="Mirror" type="StaticBody2D"]
 collision_layer = 128
@@ -22,14 +22,14 @@ offset = Vector2(0, -4)
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
-shape = SubResource("CircleShape2D_i627r")
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_0hl4o")
 
 [node name="HitBox" parent="." instance=ExtResource("2_jnjt3")]
 
 [node name="CollisionShape" parent="HitBox" index="0"]
-position = Vector2(0, -4)
-shape = SubResource("CircleShape2D_0w34f")
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_0lfad")
 
 [node name="LightBeam" parent="." instance=ExtResource("4_rorsb")]
 position = Vector2(0, -4)

@@ -115,6 +115,8 @@ func block() -> void:
 
 
 func shove_box(box: Box) -> void:
+	if box == null:
+		return
 	if box.push(sword_dir):
 		stunned = true
 		velocity = sword_dir * speed
