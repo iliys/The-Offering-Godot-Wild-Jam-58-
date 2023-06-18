@@ -7,6 +7,7 @@ extends StaticBody2D
 @export var open_count := 1
 @export var needed_to_trigger := 1
 @export var lock_on_enter := false
+@export var gem_door := false
 
 var close_anim_name := "closed"
 
@@ -18,7 +19,9 @@ var close_anim_name := "closed"
 @onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
-	if id >= 0:
+	if gem_door:
+		close_anim_name = "closed_gem"
+	elif id >= 0:
 		close_anim_name = "closed_locked"
 	test_open()
 
@@ -42,7 +45,7 @@ func set_open(open := true) -> void:
 func test_open() -> void:
 	if open_count >= needed_to_trigger:
 		audio_player.play()
-		animated_sprite.play("open")
+		animated_sprite.play("open_gem" if gem_door else "open")
 		collision_shape.set_deferred("disabled", true)
 	else:
 		animated_sprite.play(close_anim_name)
