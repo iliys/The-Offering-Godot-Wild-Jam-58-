@@ -2,6 +2,8 @@ class_name Enemy
 extends Actor
 
 
+signal dropped(index: int)
+
 @export var wander_time_randomization := 5.0
 @export var wander_range := 128.0
 @export var wander_speed_factor := 0.5
@@ -10,6 +12,7 @@ extends Actor
 @export var drop_distance := 16.0
 
 var first_spawn := true
+var id := get_instance_id()
 
 @onready var wander_position := global_position
 @onready var detection_zone: DetectionZone = $DetectionZone
@@ -27,12 +30,15 @@ func _physics_process(_delta: float) -> void:
 
 
 func _die() -> void:
-	var start_rot := randf_range(-PI, PI)
-	for i in drops.size():
-		var drop: Node2D = drops[i].instantiate()
-		call_deferred("add_sibling", drop)
-		drop.global_position = global_position + (Vector2(drop_distance, 0.0).rotated(
-				start_rot + TAU / drops.size() * i))
+	if first_spawn:
+		var start_rot := randf_range(-PI, PI)
+		for i in drops.size():
+			var drop: Node2D = drops[i].instantiate()
+			get_parent().call_deferred("add_sibling", drop)
+			drop.global_position = global_position + (Vector2(drop_distance, 0.0).rotated(
+					start_rot + TAU / drops.size() * i))
+		dropped.emit(id)
+
 	queue_free()
 
 

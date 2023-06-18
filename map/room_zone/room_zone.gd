@@ -4,6 +4,8 @@ extends Area2D
 
 @export_node_path var enemies
 
+var dropded: PackedInt64Array = []
+
 @onready var start_enemies: Array[Node] = []
 @onready var sprite: Sprite2D = $Sprite
 @onready var collision_shape: CollisionShape2D = $CollisionShape
@@ -11,11 +13,12 @@ extends Area2D
 
 func _ready() -> void:
 	enemies = get_node(enemies)
-	
 	enemies.process_mode = Node.PROCESS_MODE_DISABLED
 
 	for e in enemies.get_children():
+		e.dropped.connect(_on_enemy_dropped)
 		var enemy := dupllicate_node(e)
+		enemy.id = e.id
 		start_enemies.append(enemy)
 
 	sprite.position = collision_shape.position
@@ -26,10 +29,17 @@ func reset() -> void:
 	for enemy in enemies.get_children():
 		enemy.queue_free()
 
+	await RenderingServer.frame_pre_draw
+	print(enemies.get_child_count())
+
 	for e in start_enemies:
 		var enemy := dupllicate_node(e)
 		#enemy.reparent(enemies)
+		enemy.id = e.id
 		enemies.add_child(enemy)
+		enemy.dropped.connect(_on_enemy_dropped)
+		if dropded.has(enemy.id):
+			enemy.first_spawn = false
 
 
 func dupllicate_node(node: Node) -> Node:
@@ -50,6 +60,11 @@ func dupllicate_node(node: Node) -> Node:
 #		if body is Player:
 #			return true
 #	return false
+
+
+func _on_enemy_dropped(index: int) -> void:
+	dropded.append(index)
+	print("dropped")
 
 
 func _on_body_entered(_body: Node2D) -> void:
