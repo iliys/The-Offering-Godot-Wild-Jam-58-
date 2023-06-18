@@ -6,13 +6,14 @@
 [ext_resource type="AudioStream" uid="uid://cyfivymopc5km" path="res://sounds/lizardmen hit.wav" id="4_wlqq2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gwl36"]
+radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kjwp2"]
 resource_local_to_scene = true
 radius = 128.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u2ac3"]
-radius = 4.0
+radius = 6.0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ea8ag"]
 animation = &"attack_down"
@@ -429,7 +430,7 @@ _data = {
 }
 
 [node name="GroundEnemy" instance=ExtResource("1_6qcul")]
-collision_mask = 907
+collision_mask = 905
 script = ExtResource("2_irdsb")
 
 [node name="Sprite2D" parent="." index="0"]
@@ -439,12 +440,13 @@ hframes = 2
 vframes = 6
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, -4)
+position = Vector2(0, -5)
 
 [node name="HitBox" parent="." index="2"]
 position = Vector2(0, -4)
 
 [node name="CollisionShape" parent="HitBox" index="0"]
+position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_gwl36")
 
 [node name="HurtSound" parent="HitBox" index="1"]
@@ -461,7 +463,6 @@ position = Vector2(0, -5)
 position = Vector2(0, -5)
 
 [node name="CollisionShape" parent="HurtBox" index="0"]
-position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_u2ac3")
 
 [node name="AttackSound" parent="HurtBox" index="1"]

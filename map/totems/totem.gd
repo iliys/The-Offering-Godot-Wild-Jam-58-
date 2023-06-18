@@ -7,6 +7,7 @@ signal activated
 @export var id := 3
 
 @onready var sprite: Sprite2D = $Sprite
+@onready var activate_sound: AudioStreamPlayer2D = $ActivateSound
 
 
 func _ready() -> void:
@@ -21,4 +22,5 @@ func _on_interaction_zone_body_entered(body: Node2D) -> void:
 	var interaction_zone: Area2D = $InteractionZone
 	interaction_zone.queue_free()
 	sprite.texture = preload("res://New sprites/GuardStatuesFilled.png")
+	activate_sound.play()
 	activated.emit()

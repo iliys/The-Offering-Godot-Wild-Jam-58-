@@ -5,12 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://4dq0rnjpubd0" path="res://actor/enemies/ghost/Ghost.png" id="3_r4faj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ihcpj"]
+radius = 8.06226
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y6nwg"]
 resource_local_to_scene = true
 radius = 128.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iauu1"]
+radius = 7.0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xrvih"]
 animation = &"left"
@@ -187,12 +189,14 @@ collision_layer = 0
 monitorable = false
 
 [node name="CollisionShape" parent="HitBox" index="0"]
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_ihcpj")
 
 [node name="CollisionShape2D" parent="DetectionZone" index="0"]
 shape = SubResource("CircleShape2D_y6nwg")
 
 [node name="CollisionShape" parent="HurtBox" index="0"]
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_iauu1")
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="8"]

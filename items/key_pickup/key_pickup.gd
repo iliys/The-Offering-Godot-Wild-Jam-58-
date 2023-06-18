@@ -29,7 +29,7 @@ func set_active(to := true) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	body.modify_key_count(id, 1)
-	collision_shape.set_deferred("disabled", true)
+	set_active(false)
 	sound.play()
 
 

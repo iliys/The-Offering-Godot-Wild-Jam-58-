@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://v7g84bwm8xnk"]
+[gd_scene load_steps=8 format=3 uid="uid://v7g84bwm8xnk"]
 
 [ext_resource type="PackedScene" uid="uid://bx8pdba81ce1e" path="res://actor/actor.tscn" id="1_wapaf"]
 [ext_resource type="Script" path="res://actor/enemies/enemy.gd" id="2_txdss"]
@@ -7,19 +7,11 @@
 [ext_resource type="AudioStream" uid="uid://hrlywhjhka1k" path="res://sounds/Player death.wav" id="5_qhdoj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w07g1"]
-radius = 6.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_criig"]
-resource_local_to_scene = true
-size = Vector2(16, 16)
+radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6f8xf"]
 resource_local_to_scene = true
 radius = 128.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_54aqy"]
-resource_local_to_scene = true
-size = Vector2(17, 17)
 
 [node name="Enemy" instance=ExtResource("1_wapaf")]
 z_index = 1
@@ -39,7 +31,7 @@ max_hp = 2
 shape = SubResource("CircleShape2D_w07g1")
 
 [node name="CollisionShape" parent="HitBox" index="0"]
-shape = SubResource("RectangleShape2D_criig")
+shape = null
 
 [node name="DetectionZone" parent="." index="3" instance=ExtResource("3_22il1")]
 
@@ -56,7 +48,7 @@ rect = Rect2(-8, -8, 16, 16)
 [node name="HurtBox" parent="." index="7" instance=ExtResource("5_75g6e")]
 
 [node name="CollisionShape" parent="HurtBox" index="0"]
-shape = SubResource("RectangleShape2D_54aqy")
+shape = null
 disabled = false
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="." index="8"]
