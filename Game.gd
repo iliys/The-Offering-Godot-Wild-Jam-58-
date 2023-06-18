@@ -10,6 +10,7 @@ extends Control
 
 
 func _ready() -> void:
+	Music.set_track(preload("res://sounds/real_intro_this_time.ogg"))
 	animation_player.play("logo")
 
 
@@ -19,8 +20,8 @@ func _input(event: InputEvent) -> void:
 
 func _on_play_button_pressed() -> void:
 	play_button.disabled = true
+	Music.set_track(null)
 	animation_player.play("end")
-	
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

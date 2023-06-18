@@ -7,7 +7,7 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	get_tree().paused = true
-	Music.set_playing(false)
+	Music.set_track(null)
 	var tween := create_tween()
 	tween.tween_property(darkener, "color", Color.BLACK, 1.0)
 	await tween.finished

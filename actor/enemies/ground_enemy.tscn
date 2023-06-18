@@ -12,6 +12,7 @@ resource_local_to_scene = true
 radius = 128.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u2ac3"]
+radius = 4.0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ea8ag"]
 animation = &"attack_down"
@@ -432,9 +433,16 @@ collision_mask = 907
 script = ExtResource("2_irdsb")
 
 [node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -6)
 texture = ExtResource("3_m8o6i")
 hframes = 2
 vframes = 6
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -4)
+
+[node name="HitBox" parent="." index="2"]
+position = Vector2(0, -4)
 
 [node name="CollisionShape" parent="HitBox" index="0"]
 shape = SubResource("CircleShape2D_gwl36")
@@ -446,7 +454,11 @@ volume_db = 18.0
 [node name="CollisionShape2D" parent="DetectionZone" index="0"]
 shape = SubResource("CircleShape2D_kjwp2")
 
+[node name="HurtBox" parent="." index="7"]
+position = Vector2(0, -5)
+
 [node name="CollisionShape" parent="HurtBox" index="0"]
+position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_u2ac3")
 
 [node name="AttackSound" parent="HurtBox" index="1"]

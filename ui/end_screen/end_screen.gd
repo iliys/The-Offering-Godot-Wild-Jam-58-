@@ -6,6 +6,10 @@ extends Control
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
+func _ready() -> void:
+	Music.set_track(preload("res://sounds/outro.ogg"))
+
+
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "restart":
 		var level := preload("res://Game.tscn")

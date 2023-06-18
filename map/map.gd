@@ -21,7 +21,7 @@ func _ready() -> void:
 	randomize()
 	tile_map.set_layer_modulate(LAYERS.NAVIGATION, Color.TRANSPARENT)
 	load_boxes()
-	Music.set_playing(true)
+	Music.set_track(preload("res://sounds/Music.ogg"))
 
 
 func load_boxes() -> void:
