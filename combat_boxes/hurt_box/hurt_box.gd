@@ -18,6 +18,7 @@ var actor: Actor = null
 @onready var attack_duration: Timer = $AttackDuration
 
 
+
 func attack() -> void:
 	if cooling:
 		return

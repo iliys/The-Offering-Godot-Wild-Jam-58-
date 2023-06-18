@@ -4774,6 +4774,18 @@ position = Vector2(46, 42)
 [node name="Key2" parent="." instance=ExtResource("34_ccpr6")]
 position = Vector2(65, 45)
 
+[node name="Key6" parent="." instance=ExtResource("33_um07l")]
+position = Vector2(-37, 54)
+
+[node name="Key5" parent="." instance=ExtResource("30_ldrho")]
+position = Vector2(-54, 61)
+
+[node name="Key4" parent="." instance=ExtResource("32_co2i1")]
+position = Vector2(-47, 43)
+
+[node name="Key3" parent="." instance=ExtResource("32_7mqy4")]
+position = Vector2(-52, 50)
+
 [connection signal="hand_updated" from="Rooms/Player" to="UI" method="set_hand"]
 [connection signal="hp_changed" from="Rooms/Player" to="UI" method="display_hp"]
 [connection signal="key_count_changed" from="Rooms/Player" to="UI" method="set_key_count"]

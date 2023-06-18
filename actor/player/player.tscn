@@ -1,8 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://trdy53vwdy7u"]
+[gd_scene load_steps=33 format=3 uid="uid://trdy53vwdy7u"]
 
 [ext_resource type="PackedScene" uid="uid://bx8pdba81ce1e" path="res://actor/actor.tscn" id="1_wimsm"]
 [ext_resource type="Script" path="res://actor/player/player.gd" id="2_eied7"]
 [ext_resource type="Texture2D" uid="uid://bvcvrvxtrkgcc" path="res://New sprites/Player.png" id="3_vygrq"]
+[ext_resource type="AudioStream" uid="uid://crey0p1uiirxu" path="res://sounds/Player hurt.wav" id="4_42hev"]
+[ext_resource type="AudioStream" uid="uid://hrlywhjhka1k" path="res://sounds/Player death.wav" id="5_qfsc5"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dkgj4"]
 animation = &"idle_down"
@@ -364,6 +366,14 @@ one_shot = true
 [node name="StartShoveTime" type="Timer" parent="." index="10"]
 wait_time = 0.3
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="11"]
+stream = ExtResource("4_42hev")
+volume_db = 18.0
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." index="12"]
+stream = ExtResource("5_qfsc5")
+volume_db = 18.0
 
 [connection signal="timeout" from="ShoveTimer" to="." method="_on_shove_timer_timeout"]
 [connection signal="timeout" from="StartShoveTime" to="." method="_on_start_shove_time_timeout"]

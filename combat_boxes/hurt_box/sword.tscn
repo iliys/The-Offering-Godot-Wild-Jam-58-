@@ -153,7 +153,7 @@ shape = SubResource("RectangleShape2D_mfbqn")
 
 [node name="AttackSound" parent="." index="1"]
 stream = ExtResource("3_xgyq5")
-volume_db = 24.0
+volume_db = 18.0
 
 [node name="CoolDown" parent="." index="2"]
 wait_time = 0.3

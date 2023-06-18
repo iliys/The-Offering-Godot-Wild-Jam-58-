@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://d1vp7vlluk5ql"
-path="res://.godot/imported/ghost turning into stone.wav-1be0a399f5f4339f615cdac1e1cb63cc.sample"
+path="res://.godot/imported/ghost turning.wav-42d7731feeb882ddbae4c27fd8e8da41.sample"
 
 [deps]
 
-source_file="res://sounds/ghost turning into stone.wav"
-dest_files=["res://.godot/imported/ghost turning into stone.wav-1be0a399f5f4339f615cdac1e1cb63cc.sample"]
+source_file="res://sounds/ghost turning.wav"
+dest_files=["res://.godot/imported/ghost turning.wav-42d7731feeb882ddbae4c27fd8e8da41.sample"]
 
 [params]
 

@@ -25,6 +25,8 @@ var shoving := false
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 @onready var start_shove_time: Timer = $StartShoveTime
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var audio_player2: AudioStreamPlayer = $AudioStreamPlayer2
 
 
 func _ready() -> void:
@@ -59,8 +61,10 @@ func _physics_process(_delta: float) -> void:
 
 func _on_hit_box_dmg_taken(dmg: int, attacker: Actor) -> void:
 	super(dmg, attacker)
+	#audio_player.play()
 	if tools.L != null and tools.L is MirrorShield and tools.L.blocking:
 		tools.L.got_hit = true
+		
 
 
 func _die() -> void:

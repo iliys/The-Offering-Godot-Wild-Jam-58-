@@ -169,3 +169,6 @@ tree_root = SubResource("AnimationNodeBlendSpace2D_jdbyg")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/blend_position = Vector2(0, 0)
+
+[node name="AudioStreamPlayer" parent="." index="4"]
+pitch_scale = 0.4
