@@ -9,6 +9,8 @@ extends Actor
 @export var drops: Array[PackedScene] = [] 
 @export var drop_distance := 16.0
 
+var first_spawn := true
+
 @onready var wander_position := global_position
 @onready var detection_zone: DetectionZone = $DetectionZone
 @onready var wander_timer: Timer = $WanderTimer

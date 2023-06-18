@@ -27,6 +27,11 @@ var light_beam: RayCast2D = null
 @onready var hit_box_shape: CollisionShape2D = $HitBox/CollisionShape
 @onready var sound_player: AudioStreamPlayer = $AudioStreamPlayer
 
+
+func _physics_process(delta: float) -> void:
+	sprite.global_rotation = 0.0
+
+
 func block() -> void:
 	if cooling:
 		return
@@ -43,7 +48,6 @@ func _on_cooldown_timeout() -> void:
 
 func _on_draw_time_timeout() -> void:
 	sprite.show()
-	sprite.global_rotation = 0.0
 	hit_box_shape.set_deferred("disabled", false)
 	collision_shape.set_deferred("disabled", false)
 	block_duration.start()
