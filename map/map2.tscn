@@ -4703,8 +4703,7 @@ position = Vector2(244, 255)
 enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room S/RoomZone" index="0"]
-visible = false
-position = Vector2(-237, -71)
+position = Vector2(-236, -71)
 shape = SubResource("RectangleShape2D_ymvjy")
 
 [node name="Door" parent="Rooms/Room S" instance=ExtResource("27_hoipk")]
