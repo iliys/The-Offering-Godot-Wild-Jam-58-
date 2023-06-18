@@ -17,3 +17,5 @@ region_rect = Rect2(160, 272, 16, 16)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_aefe5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
