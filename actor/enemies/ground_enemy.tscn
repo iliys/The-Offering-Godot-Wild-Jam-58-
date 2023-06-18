@@ -439,6 +439,10 @@ vframes = 6
 [node name="CollisionShape" parent="HitBox" index="0"]
 shape = SubResource("CircleShape2D_gwl36")
 
+[node name="HurtSound" parent="HitBox" index="1"]
+stream = ExtResource("4_wlqq2")
+volume_db = 18.0
+
 [node name="CollisionShape2D" parent="DetectionZone" index="0"]
 shape = SubResource("CircleShape2D_kjwp2")
 
@@ -468,10 +472,6 @@ parameters/Run/blend_position = Vector2(0, 0)
 libraries = {
 "": SubResource("AnimationLibrary_7qkkk")
 }
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="11"]
-stream = ExtResource("4_wlqq2")
-volume_db = 18.0
 
 [connection signal="attacked" from="HurtBox" to="." method="_on_hurt_box_attacked"]
 

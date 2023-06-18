@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://v7g84bwm8xnk"]
+[gd_scene load_steps=10 format=3 uid="uid://v7g84bwm8xnk"]
 
 [ext_resource type="PackedScene" uid="uid://bx8pdba81ce1e" path="res://actor/actor.tscn" id="1_wapaf"]
 [ext_resource type="Script" path="res://actor/enemies/enemy.gd" id="2_txdss"]
 [ext_resource type="PackedScene" uid="uid://bhgq51p8m8rth" path="res://actor/enemies/detection_zone/detection_zone.tscn" id="3_22il1"]
 [ext_resource type="PackedScene" uid="uid://c7tkgcmbnoj4u" path="res://combat_boxes/hurt_box/hurt_box.tscn" id="5_75g6e"]
+[ext_resource type="AudioStream" uid="uid://hrlywhjhka1k" path="res://sounds/Player death.wav" id="5_qhdoj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w07g1"]
 radius = 7.07107
@@ -57,6 +58,9 @@ rect = Rect2(-8, -8, 16, 16)
 [node name="CollisionShape" parent="HurtBox" index="0"]
 shape = SubResource("RectangleShape2D_54aqy")
 disabled = false
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." index="8"]
+stream = ExtResource("5_qhdoj")
 
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
 

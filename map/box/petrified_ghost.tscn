@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://b1srykccvrdpq"]
+[gd_scene load_steps=16 format=3 uid="uid://b1srykccvrdpq"]
 
 [ext_resource type="PackedScene" uid="uid://bgnmflu1lbrxe" path="res://map/box/box.tscn" id="1_fgmdp"]
 [ext_resource type="Texture2D" uid="uid://k6op5r0lebby" path="res://map/box/GhostStatue.png" id="2_ellec"]
 [ext_resource type="Script" path="res://map/box/petrified_ghost.gd" id="2_gjk13"]
+[ext_resource type="AudioStream" uid="uid://d1vp7vlluk5ql" path="res://sounds/ghost turning.wav" id="4_kf2yb"]
 
 [sub_resource type="Animation" id="Animation_j6jaw"]
 length = 0.001
@@ -170,5 +171,7 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/blend_position = Vector2(0, 0)
 
-[node name="AudioStreamPlayer" parent="." index="4"]
-pitch_scale = 0.4
+[node name="PetrifySound" type="AudioStreamPlayer2D" parent="." index="5"]
+stream = ExtResource("4_kf2yb")
+volume_db = 20.0
+autoplay = true

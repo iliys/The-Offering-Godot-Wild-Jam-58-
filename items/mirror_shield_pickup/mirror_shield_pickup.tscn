@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcdr284i7yy3s"]
+[gd_scene load_steps=5 format=3 uid="uid://bcdr284i7yy3s"]
 
 [ext_resource type="Texture2D" uid="uid://csji453xk2a0c" path="res://stuff.png" id="1_4ih8b"]
 [ext_resource type="Script" path="res://items/mirror_shield_pickup/mirror_shield_pickup.gd" id="1_wwpb8"]
+[ext_resource type="AudioStream" uid="uid://ul7vyxcwsyas" path="res://sounds/item pickup[.wav" id="3_wtcl4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jxf88"]
 radius = 12.0
@@ -17,7 +18,12 @@ texture = ExtResource("1_4ih8b")
 region_enabled = true
 region_rect = Rect2(48, 0, 16, 16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jxf88")
 
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_wtcl4")
+volume_db = 10.0
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="Sound" to="." method="_on_sound_finished"]

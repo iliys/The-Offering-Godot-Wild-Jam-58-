@@ -1,10 +1,14 @@
-[gd_scene load_steps=33 format=3 uid="uid://trdy53vwdy7u"]
+[gd_scene load_steps=34 format=3 uid="uid://trdy53vwdy7u"]
 
 [ext_resource type="PackedScene" uid="uid://bx8pdba81ce1e" path="res://actor/actor.tscn" id="1_wimsm"]
 [ext_resource type="Script" path="res://actor/player/player.gd" id="2_eied7"]
 [ext_resource type="Texture2D" uid="uid://bvcvrvxtrkgcc" path="res://New sprites/Player.png" id="3_vygrq"]
-[ext_resource type="AudioStream" uid="uid://crey0p1uiirxu" path="res://sounds/Player hurt.wav" id="4_42hev"]
-[ext_resource type="AudioStream" uid="uid://hrlywhjhka1k" path="res://sounds/Player death.wav" id="5_qfsc5"]
+[ext_resource type="PackedScene" uid="uid://bvtoat8mj1tbb" path="res://items/mirror_shield/mirror_shield.tscn" id="4_ohomp"]
+[ext_resource type="AudioStream" uid="uid://crey0p1uiirxu" path="res://sounds/Player hurt.wav" id="4_t0qoo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g80yg"]
+resource_local_to_scene = true
+size = Vector2(14, 16)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dkgj4"]
 animation = &"idle_down"
@@ -301,9 +305,9 @@ _data = {
 "run_up": SubResource("Animation_w13qd")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3uopw"]
-radius = 2.0
-height = 8.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k0inw"]
+radius = 4.0
+height = 10.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kwwde"]
 resource_local_to_scene = true
@@ -311,7 +315,7 @@ size = Vector2(8, 14)
 
 [node name="Player" instance=ExtResource("1_wimsm")]
 collision_layer = 2
-collision_mask = 649
+collision_mask = 641
 script = ExtResource("2_eied7")
 attack_speed_factor = 0.0
 
@@ -333,6 +337,11 @@ collision_mask = 640
 editor_description = "Rotate to change attack direction."
 position = Vector2(0, -4)
 
+[node name="MirrorShield" parent="Hand" index="0" instance=ExtResource("4_ohomp")]
+
+[node name="CollisionShape" parent="Hand/MirrorShield/HitBox" index="0"]
+shape = SubResource("RectangleShape2D_g80yg")
+
 [node name="AnimationTree" type="AnimationTree" parent="." index="4"]
 tree_root = SubResource("AnimationNodeStateMachine_0se8w")
 anim_player = NodePath("../AnimationPlayer")
@@ -347,8 +356,8 @@ libraries = {
 }
 
 [node name="CollisionShape2D" parent="." index="6"]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_3uopw")
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_k0inw")
 
 [node name="HitBox" parent="." index="7"]
 hurt_by = "Enemy"
@@ -356,6 +365,10 @@ hurt_by = "Enemy"
 [node name="CollisionShape" parent="HitBox" index="0"]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_kwwde")
+
+[node name="HurtSound" parent="HitBox" index="1"]
+stream = ExtResource("4_t0qoo")
+volume_db = 18.0
 
 [node name="ImmunityTime" parent="HitBox" index="2"]
 wait_time = 1.0
@@ -367,15 +380,9 @@ one_shot = true
 wait_time = 0.3
 one_shot = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="11"]
-stream = ExtResource("4_42hev")
-volume_db = 18.0
-
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." index="12"]
-stream = ExtResource("5_qfsc5")
-volume_db = 18.0
-
 [connection signal="timeout" from="ShoveTimer" to="." method="_on_shove_timer_timeout"]
 [connection signal="timeout" from="StartShoveTime" to="." method="_on_start_shove_time_timeout"]
 
+[editable path="Hand/MirrorShield"]
+[editable path="Hand/MirrorShield/HitBox"]
 [editable path="HitBox"]

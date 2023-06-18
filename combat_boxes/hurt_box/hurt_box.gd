@@ -22,6 +22,8 @@ var actor: Actor = null
 func attack() -> void:
 	if cooling:
 		return
+
+	attack_sound.play()
 	collision_shape.set_deferred("disabled", false)
 	attack_duration.start()
 	cooling = true
@@ -36,7 +38,6 @@ func _on_area_entered(area: Area2D) -> void:
 		return
 
 	if area.take_dmg(dmg, actor):
-		attack_sound.play()
 		attacked.emit()
 
 

@@ -16,6 +16,7 @@ var is_ready := false
 
 @onready var sprite: Sprite2D = $Sprite
 @onready var collision_shape: CollisionShape2D = $CollisionShape
+@onready var sound: AudioStreamPlayer2D = $Sound
 
 
 func _ready() -> void:
@@ -28,4 +29,9 @@ func set_active(to := true) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	body.modify_key_count(id, 1)
+	collision_shape.set_deferred("disabled", true)
+	sound.play()
+
+
+func _on_sound_finished() -> void:
 	queue_free()

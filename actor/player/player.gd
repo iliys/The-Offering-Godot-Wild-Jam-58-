@@ -25,8 +25,6 @@ var shoving := false
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 @onready var start_shove_time: Timer = $StartShoveTime
-@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
-@onready var audio_player2: AudioStreamPlayer = $AudioStreamPlayer2
 
 
 func _ready() -> void:
