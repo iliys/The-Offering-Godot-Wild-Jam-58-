@@ -4069,6 +4069,7 @@ rotation = 3.14159
 open_by_interact = false
 open_count = 0
 needed_to_trigger = 4
+gem_door = true
 
 [node name="Door2" parent="Doors" instance=ExtResource("9_g3rsh")]
 position = Vector2(-120, -88)

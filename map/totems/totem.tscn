@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxyuchn26w83s"]
+[gd_scene load_steps=6 format=3 uid="uid://bxyuchn26w83s"]
 
 [ext_resource type="Script" path="res://map/totems/totem.gd" id="1_tn5k0"]
 [ext_resource type="Texture2D" uid="uid://cywq1m4cll4um" path="res://New sprites/GuardStatues.png" id="2_uuhd8"]
+[ext_resource type="AudioStream" uid="uid://b248qmuhaq5r7" path="res://sounds/crysytal activation.wav" id="3_gvogd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_78jy3"]
-size = Vector2(16, 5)
+size = Vector2(16, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmawf"]
 size = Vector2(24, 20)
@@ -30,5 +31,9 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone"]
 shape = SubResource("RectangleShape2D_xmawf")
+
+[node name="ActivateSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_gvogd")
+volume_db = 10.0
 
 [connection signal="body_entered" from="InteractionZone" to="." method="_on_interaction_zone_body_entered"]
