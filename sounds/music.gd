@@ -11,3 +11,7 @@ func set_track(to: AudioStream) -> void:
 		play()
 	else:
 		create_tween().tween_property(self, "volume_db", -80, 1.0)
+
+
+func _on_finished() -> void:
+	play()
