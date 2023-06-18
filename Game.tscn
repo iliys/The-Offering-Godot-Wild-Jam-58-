@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://b1i6ofxbgqbmd"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_4d0q4"]
-[ext_resource type="Texture2D" uid="uid://b44hv8a75qcik" path="res://ui/logos/GWJ-Full-Logo-noBG-4k.png" id="2_3rj8k"]
+[ext_resource type="Texture2D" uid="uid://b2civdu2tocpp" path="res://ui/logos/GWJ-Full-Logo-noBG-2k.png" id="2_ityq3"]
 [ext_resource type="Texture2D" uid="uid://dw1lsll66kb0d" path="res://ui/logos/58-Theme-Rain_or_Shrine.png" id="3_ixor0"]
 [ext_resource type="Texture2D" uid="uid://ctt32tg2ly5qh" path="res://ui/logos/Textless.png" id="4_jat0q"]
 [ext_resource type="Texture2D" uid="uid://ck3x00rhesm41" path="res://ui/logos/Windy.png" id="5_ct3oh"]
@@ -263,7 +263,7 @@ offset_bottom = 2160.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.08, 0.08)
-texture = ExtResource("2_3rj8k")
+texture = ExtResource("2_ityq3")
 
 [node name="gwj_theme" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
