@@ -4117,10 +4117,11 @@ layer_5/enabled = true
 layer_5/modulate = Color(1, 1, 1, 1)
 layer_5/y_sort_enabled = false
 layer_5/y_sort_origin = 0
-layer_5/z_index = 2
+layer_5/z_index = 3
 layer_5/tile_data = PackedInt32Array(-458752, 11, 0, -655366, 11, 0, -65530, 11, 0, -6, 11, 0, 327680, 11, 0, -393230, 11, 0, 393205, 11, 0, 393201, 11, 0, -458742, 11, 0, 327690, 11, 0, 393215, 11, 0, 327681, 11, 0, 6, 11, 0, -131066, 11, 0, 327689, 11, 0, 327691, 11, 0, 393206, 11, 0, 393204, 11, 0, 393202, 11, 0, 393200, 11, 0, -393231, 11, 0, -393229, 11, 0, -393217, 11, 0, -458751, 11, 0, -720902, 11, 0, -589830, 11, 0, -458743, 11, 0, -458741, 11, 0, 65530, 11, 0, -65542, 11, 0)
 
 [node name="UI" parent="." instance=ExtResource("13_045nt")]
+layer = 5
 
 [node name="Rooms" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -4381,7 +4382,7 @@ y_sort_enabled = true
 
 [node name="Ghost2" parent="Rooms/Room ES/Enemies" instance=ExtResource("31_q8g2t")]
 z_index = 0
-position = Vector2(137, 200)
+position = Vector2(137, 216)
 
 [node name="CollisionShape" parent="Rooms/Room ES/Enemies/Ghost2/HitBox" index="0"]
 shape = SubResource("RectangleShape2D_8dphu")
@@ -4400,7 +4401,7 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_njgjc")
 
 [node name="Ghost" parent="Rooms/Room ES/Enemies" instance=ExtResource("31_q8g2t")]
 z_index = 0
-position = Vector2(185, 216)
+position = Vector2(201, 232)
 
 [node name="CollisionShape" parent="Rooms/Room ES/Enemies/Ghost/HitBox" index="0"]
 shape = SubResource("RectangleShape2D_xi36q")

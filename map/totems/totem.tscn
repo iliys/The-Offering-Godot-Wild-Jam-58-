@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cywq1m4cll4um" path="res://New sprites/GuardStatues.png" id="2_uuhd8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_78jy3"]
-size = Vector2(16, 12)
+size = Vector2(16, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmawf"]
 size = Vector2(24, 20)
@@ -20,6 +20,7 @@ texture = ExtResource("2_uuhd8")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_78jy3")
 
 [node name="InteractionZone" type="Area2D" parent="."]

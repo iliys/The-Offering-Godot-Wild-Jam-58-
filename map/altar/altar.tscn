@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcom0mxmdyx04"]
+[gd_scene load_steps=5 format=3 uid="uid://bcom0mxmdyx04"]
 
 [ext_resource type="Script" path="res://map/altar/altar.gd" id="1_j3fev"]
 [ext_resource type="Texture2D" uid="uid://cxh5f5nklsmir" path="res://New sprites/Altar.png" id="1_ugvrp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlik0"]
-size = Vector2(44.25, 19)
+size = Vector2(24.9453, 5.8125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6j6i3"]
+size = Vector2(10, 30)
 
 [node name="Altar" type="Area2D"]
 collision_layer = 0
@@ -15,8 +18,25 @@ script = ExtResource("1_j3fev")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ugvrp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0.125, -4.5)
+collision_layer = 513
+collision_mask = 513
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.125, -6.59375)
+shape = SubResource("RectangleShape2D_rlik0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-17.125, 5.5)
+shape = SubResource("RectangleShape2D_6j6i3")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(16.875, 5.5)
+shape = SubResource("RectangleShape2D_6j6i3")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_rlik0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
