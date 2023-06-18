@@ -25,6 +25,9 @@ func _ready() -> void:
 		close_anim_name = "closed_locked"
 	test_open()
 
+	if gem_door:
+		animated_sprite.play("closed_gem")
+
 
 func open_w_key(player: Player) -> void:
 	if (not player.keys.has(id)) or player.keys[id] <= 0:
