@@ -24,7 +24,7 @@ offset_bottom = 16.0
 [node name="BG" type="TextureRect" parent="HPBar"]
 modulate = Color(1, 1, 1, 0.25098)
 layout_mode = 0
-offset_right = 32.0
+offset_right = 24.0
 offset_bottom = 8.0
 texture = ExtResource("2_bj5vg")
 expand_mode = 1
@@ -32,7 +32,7 @@ stretch_mode = 1
 
 [node name="Fill" type="TextureRect" parent="HPBar"]
 layout_mode = 0
-offset_right = 16.0
+offset_right = 24.0
 offset_bottom = 8.0
 texture = ExtResource("3_lfdgq")
 expand_mode = 1
