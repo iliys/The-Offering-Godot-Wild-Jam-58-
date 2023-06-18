@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvna2fnigqljb"]
+[gd_scene load_steps=10 format=3 uid="uid://cvna2fnigqljb"]
 
 [ext_resource type="PackedScene" uid="uid://c7tkgcmbnoj4u" path="res://combat_boxes/hurt_box/hurt_box.tscn" id="1_1alm0"]
 [ext_resource type="Texture2D" uid="uid://csji453xk2a0c" path="res://stuff.png" id="2_li35c"]
 [ext_resource type="Script" path="res://combat_boxes/hurt_box/sword.gd" id="2_xbwtb"]
+[ext_resource type="AudioStream" uid="uid://c2mfd10kln6iy" path="res://sounds/sword hit.wav" id="3_xgyq5"]
 [ext_resource type="Texture2D" uid="uid://gah8cg24rxic" path="res://New sprites/Sword swing.png" id="4_hb5ru"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mfbqn"]
@@ -149,6 +150,10 @@ script = ExtResource("2_xbwtb")
 [node name="CollisionShape" parent="." index="0"]
 position = Vector2(12, 0)
 shape = SubResource("RectangleShape2D_mfbqn")
+
+[node name="AttackSound" parent="." index="1"]
+stream = ExtResource("3_xgyq5")
+volume_db = 24.0
 
 [node name="CoolDown" parent="." index="2"]
 wait_time = 0.3

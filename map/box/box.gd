@@ -18,7 +18,7 @@ var moving := false
 @onready var grid_size := tile_map.tile_set.tile_size
 @onready var sprite: Sprite2D = $Sprite
 @onready var collision_shape: CollisionShape2D = $CollisionShape
-
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
 	is_ready = true
@@ -47,4 +47,5 @@ func push(direction: Vector2) -> bool:
 	moving = true
 	tile_map.set_cell(1, tile_map.local_to_map(position), 1, Vector2i(1, 1))
 	tile_map.erase_cell(1, tile_map.local_to_map(final_pos))
+	audio_player.play()
 	return true

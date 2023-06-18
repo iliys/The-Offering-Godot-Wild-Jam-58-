@@ -4,6 +4,8 @@ extends Area2D
 
 signal activated
 
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+
 var on := false#:
 #	set(value):
 #		if on == value:
@@ -18,6 +20,7 @@ var on := false#:
 func activate() -> void:
 	if on:
 		return
+	audio_player.play()
 	on = true
 	sprite.frame = 1
 	activated.emit()

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://v3x40textpy8"]
+[gd_scene load_steps=6 format=3 uid="uid://v3x40textpy8"]
 
 [ext_resource type="PackedScene" uid="uid://bgnmflu1lbrxe" path="res://map/box/box.tscn" id="1_p8ur0"]
+[ext_resource type="AudioStream" uid="uid://c0mqy0byfikb3" path="res://sounds/stone move.wav" id="3_qshen"]
 [ext_resource type="PackedScene" uid="uid://dharx1d438le5" path="res://map/mirror/bounce_mirror_base.tscn" id="3_qug0e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oug6l"]
@@ -24,6 +25,11 @@ shape = SubResource("RectangleShape2D_oug6l")
 [node name="CollisionShape2D" parent="BounceMirrorBase/Reflective" index="0"]
 position = Vector2(0, 0)
 shape = SubResource("RectangleShape2D_xaol2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource("3_qshen")
+volume_db = 18.0
+pitch_scale = 0.43
 
 [editable path="BounceMirrorBase"]
 [editable path="BounceMirrorBase/Reflective"]

@@ -25,12 +25,12 @@ var light_beam: RayCast2D = null
 @onready var block_duration: Timer = $BlockDuration
 @onready var cool_down: Timer = $Cooldown
 @onready var hit_box_shape: CollisionShape2D = $HitBox/CollisionShape
-
+@onready var sound_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func block() -> void:
 	if cooling:
 		return
-
+	sound_player.play()
 	cooling = true
 	blocking = true
 	draw_time.start()

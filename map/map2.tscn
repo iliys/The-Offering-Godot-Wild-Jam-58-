@@ -37,7 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://b4watgg4up0rc" path="res://items/key_pickup/key_2.tscn" id="34_ccpr6"]
 [ext_resource type="PackedScene" uid="uid://bowhpy5tyctnm" path="res://map/gate/static_box/static_box.tscn" id="34_m4y15"]
 [ext_resource type="PackedScene" uid="uid://bcom0mxmdyx04" path="res://map/altar/altar.tscn" id="36_8kbsv"]
-[ext_resource type="AudioStream" uid="uid://dii43bq8kxh48" path="res://sound/audio_2023-06-18_12-46-27.ogg" id="38_iriof"]
+[ext_resource type="AudioStream" uid="uid://dii43bq8kxh48" path="res://sounds/Music.ogg" id="38_ght81"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ebfpu"]
 texture = ExtResource("2_exp6a")
@@ -4762,7 +4762,7 @@ position = Vector2(96, -31)
 position = Vector2(9, 192)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("38_iriof")
+stream = ExtResource("38_ght81")
 autoplay = true
 
 [node name="MirrorShieldPickup" parent="." instance=ExtResource("28_plqk3")]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvtoat8mj1tbb"]
+[gd_scene load_steps=7 format=3 uid="uid://bvtoat8mj1tbb"]
 
 [ext_resource type="Texture2D" uid="uid://csji453xk2a0c" path="res://stuff.png" id="1_2kltx"]
 [ext_resource type="Script" path="res://items/mirror_shield/mirror_shield.gd" id="1_mfus4"]
 [ext_resource type="PackedScene" uid="uid://bkvv6pmyu0yly" path="res://combat_boxes/hit_box/hit_box.tscn" id="3_3ufto"]
+[ext_resource type="AudioStream" uid="uid://dj3gbpe03vtbc" path="res://sounds/shield block.wav" id="4_6pghe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ivp5s"]
 size = Vector2(14, 16)
@@ -17,7 +18,6 @@ collision_mask = 9
 script = ExtResource("1_mfus4")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(4, 0)
 texture = ExtResource("1_2kltx")
 region_enabled = true
@@ -47,6 +47,10 @@ hurt_by = "Enemy"
 position = Vector2(5, 0)
 shape = SubResource("RectangleShape2D_jcf3i")
 disabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6pghe")
+volume_db = 18.0
 
 [connection signal="timeout" from="DrawTime" to="." method="_on_draw_time_timeout"]
 [connection signal="timeout" from="BlockDuration" to="." method="_on_block_duration_timeout"]

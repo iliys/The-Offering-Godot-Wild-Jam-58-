@@ -6,13 +6,15 @@ extends StaticBody2D
 @export var drops: Array[PackedScene] = []
 @export var drop_distance := 16
 
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+
 var is_open := false
 
 
 func open() -> void:
 	if is_open:
 		return
-
+	audio_player.play()
 	var interact_zone: Area2D = $InteractZone
 	interact_zone.queue_free()
 	var animated_sprite: AnimatedSprite2D = $AnimatedSprite

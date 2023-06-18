@@ -15,7 +15,7 @@ var close_anim_name := "closed"
 @onready var interation_zone: Area2D = $InteractionZone
 @onready var non_close_zone: Area2D = $NonCloseZone
 @onready var one_way: Area2D = $OneWay
-
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
 	if id >= 0:
@@ -41,6 +41,7 @@ func set_open(open := true) -> void:
 
 func test_open() -> void:
 	if open_count >= needed_to_trigger:
+		audio_player.play()
 		animated_sprite.play("open")
 		collision_shape.set_deferred("disabled", true)
 	else:
