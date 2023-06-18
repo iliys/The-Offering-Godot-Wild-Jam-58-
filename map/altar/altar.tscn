@@ -10,6 +10,7 @@ size = Vector2(24.9453, 5.8125)
 size = Vector2(10, 30)
 
 [node name="Altar" type="Area2D"]
+process_mode = 3
 collision_layer = 0
 collision_mask = 2
 monitorable = false
@@ -38,5 +39,7 @@ shape = SubResource("RectangleShape2D_6j6i3")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_rlik0")
+
+[node name="Darkener" type="CanvasModulate" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

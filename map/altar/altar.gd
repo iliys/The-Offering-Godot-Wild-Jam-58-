@@ -2,7 +2,18 @@ class_name Altar
 extends Area2D
 
 
-func _on_body_entered(_body: Node2D) -> void:
+@onready var darkener: CanvasModulate = $Darkener
+
+
+func _on_body_entered(body: Node2D) -> void:
+	get_tree().paused = true
+	Music.set_playing(false)
+	var tween := create_tween()
+	tween.tween_property(darkener, "color", Color.BLACK, 1.0)
+	await tween.finished
+	await get_tree().create_timer(1.0).timeout
+	get_tree().paused = false
+
 	var scene := "res://ui/end_screen/end_screen.tscn"
 	var error := get_tree().change_scene_to_file(scene)
 	if error != OK:

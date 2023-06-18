@@ -21,6 +21,7 @@ func _ready() -> void:
 	randomize()
 	tile_map.set_layer_modulate(LAYERS.NAVIGATION, Color.TRANSPARENT)
 	load_boxes()
+	Music.set_playing(true)
 
 
 func load_boxes() -> void:

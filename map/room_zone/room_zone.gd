@@ -30,7 +30,6 @@ func reset() -> void:
 		enemy.queue_free()
 
 	await RenderingServer.frame_pre_draw
-	print(enemies.get_child_count())
 
 	for e in start_enemies:
 		var enemy := dupllicate_node(e)
@@ -64,7 +63,6 @@ func dupllicate_node(node: Node) -> Node:
 
 func _on_enemy_dropped(index: int) -> void:
 	dropded.append(index)
-	print("dropped")
 
 
 func _on_body_entered(_body: Node2D) -> void:
