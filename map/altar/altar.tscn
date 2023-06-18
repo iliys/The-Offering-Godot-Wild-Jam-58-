@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cxh5f5nklsmir" path="res://New sprites/Altar.png" id="1_ugvrp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlik0"]
-size = Vector2(96, 64)
+size = Vector2(44.25, 19)
 
 [node name="Altar" type="Area2D"]
 collision_layer = 0
@@ -16,6 +16,7 @@ script = ExtResource("1_j3fev")
 texture = ExtResource("1_ugvrp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.125, -4.5)
 shape = SubResource("RectangleShape2D_rlik0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

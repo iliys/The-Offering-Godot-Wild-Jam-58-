@@ -29,3 +29,4 @@ func _ready() -> void:
 
 func set_active(value := not active) -> void:
 	active = value
+

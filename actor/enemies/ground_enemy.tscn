@@ -4,17 +4,13 @@
 [ext_resource type="Script" path="res://actor/enemies/ground_enemy.gd" id="2_irdsb"]
 [ext_resource type="Texture2D" uid="uid://b7ebpy6rgpann" path="res://New sprites/Snakeman.png" id="3_m8o6i"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kiulq"]
-resource_local_to_scene = true
-size = Vector2(16, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_gwl36"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kjwp2"]
 resource_local_to_scene = true
 radius = 128.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nktgb"]
-resource_local_to_scene = true
-size = Vector2(17, 17)
+[sub_resource type="CircleShape2D" id="CircleShape2D_u2ac3"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ea8ag"]
 animation = &"attack_down"
@@ -440,13 +436,13 @@ hframes = 2
 vframes = 6
 
 [node name="CollisionShape" parent="HitBox" index="0"]
-shape = SubResource("RectangleShape2D_kiulq")
+shape = SubResource("CircleShape2D_gwl36")
 
 [node name="CollisionShape2D" parent="DetectionZone" index="0"]
 shape = SubResource("CircleShape2D_kjwp2")
 
 [node name="CollisionShape" parent="HurtBox" index="0"]
-shape = SubResource("RectangleShape2D_nktgb")
+shape = SubResource("CircleShape2D_u2ac3")
 
 [node name="NavigationAgent" type="NavigationAgent2D" parent="." index="8"]
 radius = 6.0

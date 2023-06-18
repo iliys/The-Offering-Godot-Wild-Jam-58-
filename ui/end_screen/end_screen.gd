@@ -8,7 +8,7 @@ extends Control
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "restart":
-		var level := preload("res://map/map2.tscn")
+		var level := preload("res://Game.tscn")
 		var error := get_tree().change_scene_to_packed(level)
 		if error != OK:
 			OS.alert("Could not load game.")
