@@ -28,7 +28,7 @@ var light_beam: RayCast2D = null
 @onready var sound_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
-func _physics_process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	sprite.global_rotation = 0.0
 
 

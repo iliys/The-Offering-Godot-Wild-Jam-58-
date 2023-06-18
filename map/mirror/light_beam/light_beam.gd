@@ -74,6 +74,7 @@ func distance_to_tile(distance: float) -> Vector2:
 	return snap_to_tile(global_position + (Vector2.RIGHT * distance).rotated(global_rotation))
 
 
+@warning_ignore("shadowed_variable")
 func find_opening(obstacles: PackedVector2Array, start: int, end: int, increment: int) -> Vector2:
 	var pos := Vector2.INF
 	for distance in range(start, end, increment):
