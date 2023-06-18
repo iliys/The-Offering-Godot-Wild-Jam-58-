@@ -4128,7 +4128,7 @@ y_sort_enabled = true
 
 [node name="Player" parent="Rooms" instance=ExtResource("17_g6ok7")]
 z_index = 1
-position = Vector2(-31, 32)
+position = Vector2(185, -236)
 
 [node name="Room 0" type="Node2D" parent="Rooms"]
 y_sort_enabled = true
@@ -4650,7 +4650,7 @@ enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room WS/RoomZone" index="0"]
 visible = false
-position = Vector2(-236, -71)
+position = Vector2(-235, -71)
 shape = SubResource("RectangleShape2D_ymvjy")
 
 [node name="Chest" parent="Rooms/Room WS" instance=ExtResource("19_ebxk7")]
@@ -4704,7 +4704,7 @@ enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room S/RoomZone" index="0"]
 visible = false
-position = Vector2(-236, -71)
+position = Vector2(-235, -71)
 shape = SubResource("RectangleShape2D_ymvjy")
 
 [node name="Door" parent="Rooms/Room S" instance=ExtResource("27_hoipk")]
