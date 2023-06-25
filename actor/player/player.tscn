@@ -368,7 +368,7 @@ shape = SubResource("RectangleShape2D_kwwde")
 
 [node name="HurtSound" parent="HitBox" index="1"]
 stream = ExtResource("4_t0qoo")
-volume_db = 18.0
+volume_db = 16.0
 
 [node name="ImmunityTime" parent="HitBox" index="2"]
 wait_time = 1.0

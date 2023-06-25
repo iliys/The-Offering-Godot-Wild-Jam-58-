@@ -1,12 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://drmce1rgl26xj"]
+[gd_scene load_steps=9 format=3 uid="uid://drmce1rgl26xj"]
 
 [ext_resource type="Script" path="res://items/chest/chest.gd" id="1_1ohf4"]
 [ext_resource type="Texture2D" uid="uid://dk1vn823cmwuj" path="res://items/chest/Chest.png" id="1_o4ase"]
 [ext_resource type="AudioStream" uid="uid://d1wysbbrn4qy4" path="res://sounds/chest door open.wav" id="3_pfda6"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5dd4e"]
-atlas = ExtResource("1_o4ase")
-region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3i3js"]
 atlas = ExtResource("1_o4ase")
@@ -19,9 +15,6 @@ region = Rect2(32, 0, 16, 16)
 [sub_resource type="SpriteFrames" id="SpriteFrames_r5skr"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5dd4e")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3i3js")
 }, {
@@ -67,7 +60,7 @@ scale = Vector2(0.7, 0.8)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_pfda6")
-volume_db = 18.0
+volume_db = 10.0
 pitch_scale = 0.7
 
 [connection signal="body_entered" from="InteractZone" to="." method="_on_interact_zone_body_entered"]

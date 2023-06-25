@@ -1,10 +1,11 @@
-[gd_scene load_steps=118 format=3 uid="uid://dco1jt8jtb7n2"]
+[gd_scene load_steps=120 format=3 uid="uid://dco1jt8jtb7n2"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_kgoiv"]
 [ext_resource type="Texture2D" uid="uid://52jeqi0kgm4m" path="res://map/Floortile.png" id="2_exp6a"]
 [ext_resource type="Texture2D" uid="uid://bqrykudf6rf7s" path="res://map/navigation_visualizer.png" id="3_uilv1"]
 [ext_resource type="Texture2D" uid="uid://b361iysspdqum" path="res://map/Wall.png" id="4_5jrt4"]
 [ext_resource type="Texture2D" uid="uid://bg06w8rsuyqa3" path="res://map/box/Block.png" id="5_4xbrt"]
+[ext_resource type="Texture2D" uid="uid://8vmjpn08ro74" path="res://New sprites/Groove3.png" id="5_sth1a"]
 [ext_resource type="Texture2D" uid="uid://nat2nsqdq0rh" path="res://prototyping_tiles_from_kenney.png" id="6_7umon"]
 [ext_resource type="Texture2D" uid="uid://c0db3ovaeehxw" path="res://map/BigWall1x3.png" id="7_ymtu5"]
 [ext_resource type="Texture2D" uid="uid://c5ul38snhstcq" path="res://map/BigWall2x2.png" id="8_x7bvb"]
@@ -763,6 +764,12 @@ texture = ExtResource("4_5jrt4")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_srxkw"]
 resource_name = "Wall (no collision)"
 texture = ExtResource("4_5jrt4")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gh77w"]
+texture = ExtResource("5_sth1a")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -4011,6 +4018,7 @@ sources/8 = SubResource("TileSetAtlasSource_pb2dk")
 sources/9 = SubResource("TileSetAtlasSource_v3773")
 sources/10 = SubResource("TileSetAtlasSource_ygdgg")
 sources/11 = SubResource("TileSetAtlasSource_srxkw")
+sources/12 = SubResource("TileSetAtlasSource_gh77w")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymvjy"]
 size = Vector2(144, 144)
@@ -4095,7 +4103,7 @@ layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array(131081, 196611, 5, 131082, 196611, 5, 131083, 196611, 5, -720886, 196611, 5, -720885, 196611, 5, -1114100, 196611, 5, -1048564, 196611, 5, 196593, 196611, 5, 131057, 196611, 5, 65521, 196611, 5, -15, 196611, 5, 196597, 196611, 5, 131061, 196611, 5, 65525, 196611, 5, -11, 196611, 5, 655349, 196611, 5, 720885, 196611, 5, 720884, 196611, 5, 786420, 196611, 5, 786419, 196611, 5, 655346, 196611, 5, 655345, 196611, 5, 851959, 196611, 5, 786423, 196611, 5, 262129, 196611, 5)
+layer_2/tile_data = PackedInt32Array(131081, 12, 0, 131082, 12, 0, 131083, 12, 0, -720886, 12, 0, -720885, 12, 0, -1114100, 12, 0, -1048564, 12, 0, 196593, 12, 0, 131057, 12, 0, 65521, 12, 0, -15, 12, 0, 196597, 12, 0, 131061, 12, 0, 65525, 12, 0, -11, 12, 0, 655349, 12, 0, 720885, 12, 0, 720884, 12, 0, 786420, 12, 0, 786419, 12, 0, 655346, 12, 0, 655345, 12, 0, 851959, 12, 0, 786423, 12, 0, 262129, 12, 0)
 layer_3/name = "Boxes"
 layer_3/enabled = true
 layer_3/modulate = Color(1, 1, 1, 1)
@@ -4126,13 +4134,13 @@ y_sort_enabled = true
 
 [node name="Player" parent="Rooms" instance=ExtResource("17_g6ok7")]
 z_index = 1
-position = Vector2(8, -50)
+position = Vector2(8, -51)
 
 [node name="Room 0" type="Node2D" parent="Rooms"]
 y_sort_enabled = true
 
 [node name="RoomZone" parent="Rooms/Room 0" instance=ExtResource("18_l5f7m")]
-z_index = 1
+z_index = 6
 position = Vector2(244, 63)
 enemies = NodePath("../Enemies")
 
@@ -4158,6 +4166,7 @@ rotation = -1.5708
 id = 1
 open_count = 0
 needed_to_trigger = 4
+gem_door = true
 
 [node name="Door3" parent="Rooms/Room 0" instance=ExtResource("27_hoipk")]
 position = Vector2(-72, -8)
@@ -4235,12 +4244,11 @@ shape = SubResource("RectangleShape2D_40p3v")
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_hdcd0")
 
 [node name="RoomZone" parent="Rooms/Room E" instance=ExtResource("18_l5f7m")]
-z_index = 1
+z_index = 6
 position = Vector2(436, 63)
 enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room E/RoomZone" index="0"]
-visible = false
 position = Vector2(-236, -71)
 shape = SubResource("RectangleShape2D_ymvjy")
 
@@ -4326,7 +4334,7 @@ shape = SubResource("RectangleShape2D_7nc65")
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_yw756")
 
 [node name="RoomZone" parent="Rooms/Room EN" instance=ExtResource("18_l5f7m")]
-z_index = 1
+z_index = 6
 position = Vector2(435, -129)
 enemies = NodePath("../Enemies")
 
@@ -4418,7 +4426,7 @@ shape = SubResource("RectangleShape2D_38edh")
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_kho1h")
 
 [node name="RoomZone" parent="Rooms/Room ES" instance=ExtResource("18_l5f7m")]
-z_index = 1
+z_index = 6
 position = Vector2(436, 255)
 enemies = NodePath("../Enemies")
 
@@ -4453,7 +4461,7 @@ open_count = 0
 position = Vector2(248, 136)
 
 [node name="Key4" parent="Rooms/Room ES" instance=ExtResource("32_co2i1")]
-position = Vector2(248, 216)
+position = Vector2(248, 200)
 active = false
 
 [node name="Room N" type="Node2D" parent="Rooms"]
@@ -4464,7 +4472,7 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="RoomZone" parent="Rooms/Room N" instance=ExtResource("18_l5f7m")]
-z_index = 1
+z_index = 6
 position = Vector2(244, -129)
 enemies = NodePath("../Enemies")
 
@@ -4526,7 +4534,7 @@ position = Vector2(-301, -135)
 drops = Array[PackedScene]([ExtResource("20_0nuh1")])
 
 [node name="RoomZone" parent="Rooms/Room WN" instance=ExtResource("18_l5f7m")]
-z_index = 1
+z_index = 6
 position = Vector2(51, -129)
 enemies = NodePath("../Enemies")
 
@@ -4580,7 +4588,7 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="RoomZone" parent="Rooms/Room W" instance=ExtResource("18_l5f7m")]
-z_index = 1
+z_index = 6
 position = Vector2(51, 63)
 enemies = NodePath("../Enemies2")
 
@@ -4643,7 +4651,7 @@ y_sort_enabled = true
 position = Vector2(53, 255)
 
 [node name="RoomZone" parent="Rooms/Room WS" instance=ExtResource("18_l5f7m")]
-z_index = 1
+z_index = 6
 position = Vector2(52, 255)
 enemies = NodePath("../Enemies")
 
@@ -4698,19 +4706,20 @@ y_sort_enabled = true
 position = Vector2(245, 255)
 
 [node name="RoomZone" parent="Rooms/Room S" instance=ExtResource("18_l5f7m")]
-z_index = 1
+z_index = 6
 position = Vector2(244, 255)
 enemies = NodePath("../Enemies")
 
 [node name="CollisionShape" parent="Rooms/Room S/RoomZone" index="0"]
 visible = false
-position = Vector2(-237, -71)
+position = Vector2(-236, -71)
 shape = SubResource("RectangleShape2D_ymvjy")
 
 [node name="Door" parent="Rooms/Room S" instance=ExtResource("27_hoipk")]
 position = Vector2(8, 104)
 rotation = 1.5708
 open_count = 0
+gem_door = true
 
 [node name="Boxes" type="Node2D" parent="."]
 
